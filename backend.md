@@ -70,7 +70,7 @@ recives query params from client (according to ```Filter``` interface).
 * __type-__ recives one of the `eventName` options according to the `Event` interface, and returns only matching Events.
 * __browser-__ recives one of the `browser` options according to the `Event` interface, and returns only matching Events.
 * __search-__ recives a value and test if it exists in one of the `Event` entities.
-* __offset-__ recives an integer and representing the number of events to send back to the client.
+* __offset-__ recives an integer representing the number of events to send back to the client.
 
 __IMPORTANT__
 The entry point response format is
@@ -140,75 +140,57 @@ __current date-__ 30/10/2020, __http request-__ `http://localhost:3000/events/by
 ]
 
 ```
+---
 
-## /by-hours/:offset !incomplete!
+## /by-hours/:offset
 
 reutns a count of __unique sessions__ (events with different `session_id`), grouped by hour, __for one day.__
 
-__`offset`-__ number of days to go back from today. If `offset` is 0 the return result should yesterdays events.
+__`offset`-__ number of days to go back from today. If `offset` is 0 the return result should todays sessions.
 
-example: __current date-__ 30/10/2020, __http request-__ `http://localhost:3000/events/by-days/0` 
+example: __current date-__ 30/10/2020, __http request-__ `http://localhost:3000/events/by-hours/1` 
 ```typescript
-[
+[ // sessions count for 29/10/2020
   {
-    date: "29/10/2020",
+    hour: "00:00",
     count: 12
   }, 
   {
-    date: "28/10/2020",
+    hour: "01:00",
     count: 43
   }, 
   {
-    date: "27/10/2020",
+    hour: "02:00",
     count: 7
   }, 
   {
-    date: "26/10/2020",
+    hour: "03:00",
     count: 78
   }, 
   ...
   ...
   ...
+  {
+    hour: "23:00",
+    count: 54
+  }
 ]
 
 ```
+---
 
-__current date-__ 30/10/2020, __http request-__ `http://localhost:3000/events/by-days/2` 
-```typescript
-[
-  {
-    date: "27/10/2020",
-    count: 7
-  }, 
-  {
-    date: "26/10/2020",
-    count: 78
-  }, 
-  {
-    date: "25/10/2020",
-    count: 25
-  }, 
-  {
-    date: "24/10/2020",
-    count: 26
-  }, 
-  ...
-  ...
-  ...
-]
-
-```
 ## /today
-gets events from the last 24 hours
+gets events from today
 ```typescript
 declare function getToday() : event[] 
 ```
+---
 ## /week
 gets events from the last 7 days
 ```typescript
 declare function getWeek() : event[] 
 ```
-
+---
 ## /retention
 return the an array of objects with User retention Information for every week since launch.
 For every week, what percent of the users that signed up on that week have logged in to the site on every consecutive week.
