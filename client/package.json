@@ -91,7 +91,7 @@
   "scripts": {
     "start": "react-scripts -r @cypress/instrument-cra start",
     "dev": "cross-env NODE_ENV=development concurrently npm:start npm:start:api",
-    "start:api": "yarn tsnode --files ../server/backend/app.ts",
+    "start:api": "npm run tsnode --files ../server/backend/app.ts",
     
     
     
