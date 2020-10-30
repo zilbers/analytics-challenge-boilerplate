@@ -109,7 +109,7 @@
     "cypress:open:mobile": "cypress open --config viewportWidth=375,viewportHeight=667",
     "cypress:run": "cypress run",
     "cypress:run:mobile": "cypress run --config viewportWidth=375,viewportHeight=667",
-    "test": "jest \"events.test.ts\"",
+    "test": "jest \"server/backend/__tests__/events.test.ts\"",
     "test:headless": "yarn cypress:run",
     "test:api": "yarn cypress:run --spec 'integration/api/*'",
     "test:unit": "react-scripts test --runInBand",
@@ -169,6 +169,18 @@
         1280
       ]
     }
+  },
+  "jest":{
+      "roots": [
+        "<rootDir>"
+      ],
+      "testMatch": [
+        "**/__tests__/**/*.+(ts|tsx|js)",
+        "**/?(*.)+(spec|test).+(ts|tsx|js)"
+      ],
+      "transform": {
+        "^.+\\.(ts|tsx)$": "ts-jest"
+      }
   },
   "nyc": {
     "exclude": [
