@@ -30,10 +30,13 @@ type Location = {
 ### /all
 returns all events in an array:
 ```typescript
-declare function allEvents():Event[]
+declare function allEvents():event[]
 ```
-### /all-filtered?
-returns all events in an array:
+
+### /all-filtered !incomplete!
+
+__what does it do?__
+
 ```typescript
 interface Filter {
   sorting: string;
@@ -43,27 +46,61 @@ interface Filter {
   offset: number;
 }
 const filters: Filter = req.query;
-declare function allEvents():Event[]
+declare function allEvents():event[]
 ```
 });
 
-router.get(/by-days/:offset, (req: Request, res: Response) => {
-});
+## /by-days/:offset !incomplete!
 
-router.get(/by-hours/:offset, (req: Request, res: Response) => {
-});
+## /by-hours/:offset !incomplete!
 
-router.get(/today, (req: Request, res: Response) => {
-});
-
-router.get(/week, (req: Request, res: Response) => {
-});
-
-router.get(/retention, (req: Request, res: Response) => {
-});
-router.get(/:eventId,(req, res) => {
-});
+## /today
+gets events from the last 24 hours
+```typescript
+declare function getToday() : event[] 
+```
+## /week
+gets events from the last 7 days
+```typescript
+declare function getWeek() : event[] 
 ```
 
+## /retention
+return the an array of objects with User retention Information for every week since launch.
+For every week, what percent of the users that signed up on that week have logged in to the site on every consecutive week.
+```typescript
+interface weeklyRetentionObject {
+  registrationWeek:number;  //launch is week 0 and so on
+  newUsers:number;  // how many new user have joined this week
+  weeklyRetention:number[]; // for every week since, what percentage of the users came back. weeklyRetention[0] is always 100% because it's the week of registration  
+  start:string;  //date string for the first day of the week
+  end:string  //date string for the first day of the week
+}
+let week0Retention : weeklyRetentionObject = {
+  registrationWeek: 1, 
+  newUsers: 34, 
+  weeklyRetention:[100,24,45,66,1,80],  // here we see there were 7 in total since week 1 has data for 6 weeks 
+  start:'01/11/2020',
+  end: '07/11/2020'
+} 
 
-export default router;
+declare function getRetentionCohort() : weeklyRetentionObject[]
+```
+
+## /:eventId
+return an event by its Id
+```typescript
+declare function getEventById():event
+```
+
+## /chart/os/:time
+
+## /chart/pageview/:time
+
+## /chart/timeonurl/allusers
+
+## /chart/timeonurl/inhours
+
+## /chart/timeonurl/:time
+
+## /chart/geolocation/:time
