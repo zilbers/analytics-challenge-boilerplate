@@ -1,7 +1,7 @@
 # Event routes:
 keep in mind:
 ```typeScript
-  type eventName = "login" | "signup" | "pageView";
+  type eventName = "login" | "signup" | "admin" | "/";
   type os = "windows" | "mac" | "linux" | "ios" | "android" | "other";
   type browser = "chrome" | "safari" | "edge" | "firefox" | "ie" | "other";
   type GeoLocation = {
