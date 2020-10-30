@@ -47,8 +47,24 @@ router.get("/week", (req: Request, res: Response) => {
 
 router.get("/retention", (req: Request, res: Response) => {
 });
-router.get("/:eventId",(req, res) => {
+router.get("/:eventId",(req : Request, res : Response) => {
 });
+
+router.post("/", (req: Request, res: Response) => {
+});
+
+router.get('/chart/os/:time',(req: Request, res: Response) => {
+})
+
+  
+router.get('/chart/pageview/:time',(req: Request, res: Response) => {
+})
+
+router.get('/chart/timeonurl/:time',(req: Request, res: Response) => {
+})
+
+router.get('/chart/geolocation/:time',(req: Request, res: Response) => {
+})
 
 
 export default router;
