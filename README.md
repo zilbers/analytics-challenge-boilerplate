@@ -98,6 +98,6 @@ note- the repo uses 'husky' and you might find you can't push to github while th
   - Make the tiles resizable.
   - Add an option to change chart type (pie | bars | line) in the same tile 
   - Make the tiles move by drag and drop.
-  - Make the timeframe adjustable on all charts
+  - Make the time-frame adjustable on all charts
   - Add any feature you wish
   - Add tests for your features
