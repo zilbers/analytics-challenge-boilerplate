@@ -144,7 +144,7 @@ export const createFakeUser = (): User => {
 
 const randomName = () => {
   const randomNumber = Math.floor(Math.random() * 2);
-  const types: eventName[] = ["login", "pageView"];
+  const types: eventName[] = ["login", "admin", "/"];
   return types[randomNumber];
 };
 const randomOS = () => {
