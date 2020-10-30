@@ -17,7 +17,7 @@ clone the repo this repo and build your project on top of it.
     1. `cd client`  
     3. `npm i` 
     3. `npm start` in `/client`. this can take a while
-- after installing all dependencies, you can also use `npm run dev` in `/client` to run both concurrently.
+- after installing all dependencies, you can also use `npm run dev` in in either folder to run both concurrently.
   
 ### other useful commands:
 - /server

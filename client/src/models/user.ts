@@ -1,5 +1,4 @@
 
-import {} from 'google-maps'
 export enum DefaultPrivacyLevel {
   public = "public",
   private = "private",
@@ -20,7 +19,6 @@ export interface User {
   createdAt: Date;
   modifiedAt: Date;
   isAdmin?: Boolean;
-  location?: google.maps.LatLng;
 }
 
 export type UserSettingsPayload = Pick<

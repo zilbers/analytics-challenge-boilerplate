@@ -29,6 +29,7 @@
     "@types/faker": "5.1.2",
     "@types/jest": "26.0.14",
     "@types/json-server": "0.14.2",
+    "@types/lowdb": "^1.0.9",
     "@types/react": "16.9.52",
     "@types/react-dom": "16.9.8",
     "@types/react-infinite-calendar": "2.3.5",
@@ -52,6 +53,7 @@
     "formik": "2.2.0",
     "husky": "4.3.0",
     "json": "10.0.0",
+    "lowdb": "^1.0.0",
     "ncp": "2.0.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -91,11 +93,8 @@
   "scripts": {
     "start": "react-scripts -r @cypress/instrument-cra start",
     "dev": "cross-env NODE_ENV=development concurrently npm:start npm:start:api",
-    "start:api": "npm run tsnode --files ../server/backend/app.ts",
-    
-    
-    
-    "seed": "npm run tsnode ../server/scripts/generateSeedData",
+    "start:api": "npm run tsnode --files ../server/backend",
+    "db:seed": "npm run tsnode ../server/scripts/generateSeedData",
     "start:ci": "cross-env NODE_ENV=test concurrently yarn:start:react yarn:start:api",
     "start:react": "npm run react-scripts -r @cypress/instrument-cra start",
     "start:empty": "cross-env NODE_ENV=development EMPTY_SEED=true concurrently yarn:start:react yarn:start:api:watch",
@@ -105,7 +104,7 @@
     "cypress:open:mobile": "cypress open --config viewportWidth=375,viewportHeight=667",
     "cypress:run": "cypress run",
     "cypress:run:mobile": "cypress run --config viewportWidth=375,viewportHeight=667",
-    "test": "yarn cypress:open",
+    "test": "npm run cypress:open",
     "test:headless": "yarn cypress:run",
     "test:api": "yarn cypress:run --spec 'integration/api/*'",
     "test:unit": "react-scripts test --runInBand",
@@ -118,7 +117,7 @@
     "db:seedEvents": "yarn tsnode scripts/seedEvents",
     "db:seed:dev": "ncp ./data/database-seed.json ./data/database.json",
     "db:seed:empty": "ncp ./data/empty-seed.json ./data/database.json",
-    "postdb:seed": "yarn db:seed:dev",
+    "postdb:seed": "npm run db:seed:dev",
     "prestart:empty": "yarn db:seed:empty",
     "prebuild": "yarn types",
     "react-start": "react-scripts start",

@@ -35,17 +35,16 @@ describe("main test", () => {
 
   it("can get all events", async () => {
     
-    console.log('0909')
     const { body: allEvents } = await request(app).get("/events/all").expect(200);
     expect(allEvents.length).toBe(250);
   });
 
-  it.skip("getting all events from the server must return array of event types", async () => {
+  it("getting all events from the server must return array of event types", async () => {
     const { body: allEvents } = await request(app).get("/events/all").expect(200);
     expect(isEventArray(allEvents)).toBe(true);
   });
 
-  it.skip("can post new event", async () => {
+  it("can post new event", async () => {
     await request(app).post("/events").send(mockData.events[0]).expect(200);
     const { body: allEvents2 } = await request(app).get("/events/all").expect(200);
     expect(allEvents2.length).toBe(251);
@@ -53,7 +52,7 @@ describe("main test", () => {
     expect(allEvents2[250].os).toBe(mockData.events[0].os);
   });
 
-  it.skip("can get unique sessions count by day", async () => {
+  it("can get unique sessions count by day", async () => {
     const { body: sessionsByDays } = await request(app).get("/events/by-days/0").expect(200)
 
     expect(sessionsByDays.length).toBe(7)
@@ -68,9 +67,6 @@ describe("main test", () => {
     expect(sessionsByDays2[1].count).toBe(8);
     expect(sessionsByDays2[6].count).toBe(7);
   });
-
-
-  
 
   it.skip("can get unique sessions count by hour", async () => {
     const { body: sessionsByHours } = await request(app).get("/events/by-hours/0").expect(200)

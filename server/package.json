@@ -92,12 +92,12 @@
   "scripts": {
     "prestart": "npm run db:seed:dev",
     "start": "npm run start:api",
-    "start:api": "npm run tsnode --files ./backend/app.ts",
+    "start:api": "npm run tsnode --files ./backend",
     "db:seed": "npm run tsnode scripts/generateSeedData",
     "tsnode": "nyc --silent ts-node -P ./tsconfig.tsnode.json",
     "postdb:seed": "npm run db:seed:dev",
     "db:seed:dev": "ncp ./data/database-seed.json ./data/database.json",
-    "dev": "echo \"we don't have 'dev' here, did you mean to run it from /client?\" ",
+    "dev": "cd .. && cd client && npm run dev",
     "start:api:watch": "nodemon --exec npm run tsnode --watch 'backend' backend/app.ts",
     "start:ci": "cross-env NODE_ENV=test concurrently yarn:start:react yarn:start:api",
     "start:react": "react-scripts -r @cypress/instrument-cra start",
@@ -156,7 +156,6 @@
       "not dead",
       "not op_mini all"
     ],
-    
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
@@ -171,16 +170,16 @@
       ]
     }
   },
-  "jest":{
-      "roots": [
-        "<rootDir>"
-      ],
-      "testMatch": [
-        "<rootDir>/backend/__tests__/*.test.+(ts|tsx|js)"
-      ],
-      "transform": {
-        "^.+\\.(ts|tsx)$": "ts-jest"
-      }
+  "jest": {
+    "roots": [
+      "<rootDir>"
+    ],
+    "testMatch": [
+      "<rootDir>/backend/__tests__/*.test.+(ts|tsx|js)"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    }
   },
   "nyc": {
     "exclude": [
