@@ -1,7 +1,7 @@
 /* eslint-disable import/first */
 require("dotenv").config();
 
-import {dayZero} from '../backend/database'
+import {dayZero} from '../backend/timeFrames'
 import shortid from "shortid";
 import faker from "faker";
 import bcrypt from "bcryptjs";

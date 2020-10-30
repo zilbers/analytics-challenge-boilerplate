@@ -24,6 +24,8 @@ clone the repo this repo and build your project on top of it.
 
 ![](https://i.imgur.com/gtPzvXP.jpg)
  - While loading data show loading indicator you built using canvas tag
+ - add controls for time-ranges in the charts 
+ - The site uses `xstate` state machines for its data. you can use another method to send out AJAX if you prefer.
 
 ### Tiles to present:
  - Showing events on Google Map (show number of events from area. (you can use whichever library you choose, but [this one](https://www.npmjs.com/package/@react-google-maps/api) is recommended) 
@@ -44,17 +46,12 @@ clone the repo this repo and build your project on top of it.
  - Showing pie charts with users by operating system usage.
 
 ## Backend Requirements:
-
  - POST "/event" - adding new event to event collection.  
- this should be fired o every:
-    - signup
-    - login
-    - page view
-    - login
+ - implement the existing endpoints in [/events](server/backend/event-routes.ts) in the [following way](backend.md) 
  - Any other entry point needed.
  - Use lowdb and create collection for the '[event](client/src/models/event.ts)' entity.
 	Sample of events documents (you can add any other properties you wish):
-```
+```json
 {
   "_id": "VATb6bdcOEW", 
   "session_id": "d788bae3-6909-49a2-a54a-6d50d35b3c70",  
@@ -75,7 +72,6 @@ clone the repo this repo and build your project on top of it.
 
 ```
 ## General Requirement
-
  - All system will be coded using Typescript.
  - Add Error Boundaries around each tile (chart).
  - Use Styled Components for styling.
@@ -86,6 +82,7 @@ clone the repo this repo and build your project on top of it.
   - Make your own custom tiles.
   - Make the tiles resizable.
   - Make the tiles move by drag and drop.
+  - Make the timeframe adjustable on all charts
   - Add any feature you wish
   - Add tests for your features
   
