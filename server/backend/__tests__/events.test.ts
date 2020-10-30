@@ -34,7 +34,6 @@ describe("main test", () => {
   })
 
   it("can get all events", async () => {
-    
     const { body: allEvents } = await request(app).get("/events/all").expect(200);
     expect(allEvents.length).toBe(250);
   });
@@ -68,40 +67,60 @@ describe("main test", () => {
     expect(sessionsByDays2[6].count).toBe(7);
   });
 
-  it.skip("can get unique sessions count by hour", async () => {
+  it("can get unique sessions count by hour", async () => {
     const { body: sessionsByHours } = await request(app).get("/events/by-hours/0").expect(200)
 
     expect(sessionsByHours.length).toBe(24)
-    expect(sessionsByHours.reduce((sum: number, day: {date: string; count: number}) => sum += day.count, 0)).toBe(6)
+    expect(sessionsByHours.reduce((sum: number, day: {date: string; count: number}) => sum += day.count, 0)).toBe(2)
 
-    const { body: sessionsByHours2 } = await request(app).get("/events/by-hours/1").expect(200)
+    const { body: sessionsByHours2 } = await request(app).get("/events/by-hours/2").expect(200)
 
     expect(sessionsByHours2.length).toBe(24)
     expect(sessionsByHours2.reduce((sum: number, day: {date: string; count: number}) => sum += day.count, 0)).toBe(8)
   });
-  
-  //deleted timeoneurl tests
-  const charts: string[] = ['os','pageview','geolocation']
-  const timeRange: string[] = ['today','week','all']
-  
-  charts.forEach(chart => {
-    timeRange.forEach(timeRange => {
-      it.skip(`${chart} entry point can get ${timeRange} as a param to determine the wanted time range for the data`, async () => {
-        const { body: events } = await request(app).get(`/events/chart/${chart}/${timeRange}`).expect(200);
-        expect(events.length).not.toBe(0);
-      }); 
-    });
-  });
-  
-  // it.skip("can get time of each URL for 'time on URL chart'", async () => {
-  //   const { body: time } = await request(app).get("/chart/timeonurl/allusers").expect(200)
-  //   const { body: timeIHours } = await request(app).get("/chart/timeonurl/inhours").expect(200)
-  //   expect(time.length).toBe(7)
-  //   expect(countBy((day) => day.count, time)).toBe(47)
-  // });
 
-  it.skip("retention cohort", async () => {
+  it("can get data for os chart", async () => {
+    const { body: eventsToday } = await request(app).get(`/events/chart/os/today`).expect(200);
+    expect(eventsToday.length).toBe(4);
+    expect(eventsToday[0].os).toBe(mockData.events[0].os)
+    expect(eventsToday[2].os).toBe(mockData.events[2].os)
 
+    const { body: eventsWeek } = await request(app).get(`/events/chart/os/week`).expect(200);
+    expect(eventsWeek.length).toBe(45);
+
+    const { body: eventsAll } = await request(app).get(`/events/chart/os/all`).expect(200);
+    expect(eventsAll.length).toBe(251);
+    
+  })
+
+  it("can get data for pageview chart", async () => {
+    const { body: eventsToday } = await request(app).get(`/events/chart/pageview/today`).expect(200);
+    expect(eventsToday.length).toBe(4);
+    expect(eventsToday[0].url).toBe(mockData.events[0].url)
+    expect(eventsToday[2].url).toBe(mockData.events[2].url)
+
+    const { body: eventsWeek } = await request(app).get(`/events/chart/pageview/week`).expect(200);
+    expect(eventsWeek.length).toBe(45);
+
+    const { body: eventsAll } = await request(app).get(`/events/chart/pageview/all`).expect(200);
+    expect(eventsAll.length).toBe(251);
+  })
+
+  it("can get data for geolocation chart", async () => {
+    const { body: eventsToday } = await request(app).get(`/events/chart/geolocation/today`).expect(200);
+    expect(eventsToday.length).toBe(4);
+    expect(eventsToday[0].geolocation).toStrictEqual(mockData.events[0].geolocation)
+    expect(eventsToday[2].geolocation).toStrictEqual(mockData.events[2].geolocation)
+
+    const { body: eventsWeek } = await request(app).get(`/events/chart/geolocation/week`).expect(200);
+    expect(eventsWeek.length).toBe(45);
+
+    const { body: eventsAll } = await request(app).get(`/events/chart/geolocation/all`).expect(200);
+    expect(eventsAll.length).toBe(251);
+  })
+
+  it("retention cohort", async () => {
+  
     const { body: retentionData } = await request(app).get("/events/retention").expect(200);
     expect(retentionData.length).toBe(6);
 
@@ -112,4 +131,49 @@ describe("main test", () => {
     expect(retentionData[1].weeklyRetention[4]).toBe(0);
 
   });
+
+  it("can filter events by browser", async () => {
+
+    const { body: events}  = await request(app).get("/events/all-filtered")
+    .query({
+      browser: "chrome",
+      offset: 20,
+    })
+    .expect(200);
+    expect(events.events.length).toBe(20);
+    expect(events.events[0].browser).toBe("chrome")
+    expect(events.events[15].browser).toBe( "chrome")
+  })
+
+  it("can filter events by type", async () => {
+    const { body: events}  = await request(app).get("/events/all-filtered")
+    .query({
+      type: "signup",
+      offset: 5,
+      search: "100"
+    })
+    .expect(200);
+    expect(events.events.length).toBe(2);
+    expect(events.events[0].session_id).toMatch(/100/i)
+    expect(events.events[1].session_id).toMatch(/100/i)
+  })
+
+  it("can sort events by date", async () => {
+    const { body: events}  = await request(app).get("/events/all-filtered")
+    .query({
+      offset: 5,
+      sorting: "-date"
+    })
+    .expect(200);
+    const { body: events2}  = await request(app).get("/events/all-filtered")
+    .query({
+      offset: 5,
+      sorting: "+date"
+    })
+    .expect(200);
+    expect(events.events[0].date).toBeGreaterThan(events2.events[0].date)
+    expect(events.events[0].date).toBeGreaterThan(events.events[4].date)
+    expect(events2.events[1].date).toBeGreaterThan(events2.events[0].date)
+  })
+
 })

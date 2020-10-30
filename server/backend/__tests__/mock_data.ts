@@ -25,7 +25,7 @@ const mockData: any = {
     },
     {
       "_id": "RQM9E8WHvzN",
-      "session_id": "a388f4ee-aa0c-443e-92cd-0ed24572873b",
+      "session_id": "ebd9da74-3965-43c8-932f-a47b6bffd380",
       "name": "signup",
       "distinct_user_id": "RjCuj9IIwI",
       "date": Date.now(),
