@@ -147,7 +147,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "yarn types"
+      "pre-push": "npm run types"
     }
   },
   "browserslist": {

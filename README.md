@@ -18,6 +18,8 @@ clone the repo this repo and build your project on top of it.
     3. `npm i` 
     3. `npm start` in `/client`. this can take a while
 - after installing all dependencies, you can also use `npm run dev` in in either folder to run both concurrently.
+
+- note: do not delete the root folder's package.json, it is necessary.
   
 ### other useful commands:
 - /server
