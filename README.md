@@ -18,6 +18,10 @@ clone the repo this repo and build your project on top of it.
     3. `npm start` in `/client`. this can take a while
 - after installing all dependencies, you can also use `npm run dev` in `/client` to run both concurrently.
   
+### other useful commands:
+- /server
+    - `npm run test` - runs backend tests (required to pass)
+    - `npm run db:seed` - reseed the database (does not affect tests.) you can determine different parameters in [.env](server/.env) 
 ## Home Page Requirements:
 
  - Make the following layout for tiles and make it compatible with different tile sizes and different screen sizes.
@@ -46,11 +50,17 @@ clone the repo this repo and build your project on top of it.
  - Showing pie charts with users by operating system usage.
 
 ## Backend Requirements:
- - POST "/event" - adding new event to event collection.  
- - implement the existing endpoints in [/events](server/backend/event-routes.ts) in the [following way](backend.md) 
+ - POST "/event" - adding new event to event collection.
+ - An event should be registered on:
+    - signup
+    - login
+    - pageview
+    - the more the merrier
+ - Implement the existing endpoints in [/events](server/backend/event-routes.ts) in the [following way](backend.md) 
  - Any other entry point needed.
- - Use lowdb and create collection for the '[event](client/src/models/event.ts)' entity.
-	Sample of events documents (you can add any other properties you wish):
+ - Use lowdb and create functions for the '[event](client/src/models/event.ts)' endpoints.
+	
+  Sample of [event](client/src/models/event.ts) (you can add any other properties you if wish):
 ```json
 {
   "_id": "VATb6bdcOEW", 

@@ -1,31 +1,47 @@
 # Event routes:
 keep in mind:
 ```typeScript
-interface event{
+  type eventName = "login" | "signup" | "pageView";
+  type os = "windows" | "mac" | "linux" | "ios" | "android" | "other";
+  type browser = "chrome" | "safari" | "edge" | "firefox" | "ie" | "other";
+  type GeoLocation = {
+    location: Location;
+    accuracy: number;
+  };
+  type Location = {
+    lat: number;
+    lng: number;
+  };
+
+interface event {
    _id: string;
   session_id: string;
   name: eventName;
   url: string;
   distinct_user_id: string;
-  date: number;
+  date: number; // Date.prototype.getTime()
   os: os;
   browser: browser;
   geolocation: GeoLocation;
   }
 
-type eventName = "login" | "signup" | "pageView";
-type os = "windows" | "mac" | "linux" | "ios" | "android" | "other";
-type browser = "chrome" | "safari" | "edge" | "firefox" | "ie" | "other";
-type GeoLocation = {
-  location: Location;
-  accuracy: number;
-};
-type Location = {
-  lat: number;
-  lng: number;
-
-  
-};
+let exampleEvent = {
+  _id: 'VATb6bdcOEW', 
+  session_id: 'd788bae3-6909-49a2-a54a-6d50d35b3c70',  
+  name: 'signup',  
+  distinct_user_id: 'O-5mFsaxp9',  
+  date: 1603316369846,  
+  os: 'ios',  
+  browser: 'chrome',  
+  geolocation: {  
+    location: {
+      lat: 81,
+      lng: 86
+    },  
+    accuracy: 1708
+  },  
+  url: 'http://localhost3000/signup'
+}
 ```
 ### /all
 returns all events in an array:
