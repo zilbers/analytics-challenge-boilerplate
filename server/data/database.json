@@ -5,7 +5,7 @@
       "session_id": "ebd9da74-3965-43c8-932f-a47b6bffd380",
       "name": "signup",
       "distinct_user_id": "eqR0ppLYH",
-      "date": 1604075228118,
+      "date": 1604091060874,
       "os": "windows",
       "browser": "firefox",
       "geolocation": {
@@ -19,10 +19,10 @@
     },
     {
       "_id": "RQM9E8WHvzN",
-      "session_id": "a388f4ee-aa0c-443e-92cd-0ed24572873b",
+      "session_id": "ebd9da74-3965-43c8-932f-a47b6bffd380",
       "name": "signup",
       "distinct_user_id": "RjCuj9IIwI",
-      "date": 1604075228118,
+      "date": 1604091060874,
       "os": "ios",
       "browser": "ie",
       "geolocation": {
@@ -39,7 +39,7 @@
       "session_id": "375271ed-63c7-4fcf-bf85-a145ac09c218",
       "name": "signup",
       "distinct_user_id": "_67ag3j-O0",
-      "date": 1604075228118,
+      "date": 1604091060874,
       "os": "other",
       "browser": "other",
       "geolocation": {

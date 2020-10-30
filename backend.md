@@ -43,20 +43,19 @@ let exampleEvent = {
   url: 'http://localhost3000/signup'
 }
 ```
-### /all
+## /all
 returns all events in an array:
 ```typescript
 declare function allEvents():event[]
 ```
+---
 
-### /all-filtered !incomplete!
-
-__what does it do?__
+## /all-filtered
 
 ```typescript
 interface Filter {
-  sorting: string;
-  type: string;
+  sorting: string; // '+date'/'-date'
+  type: string; 
   browser: string;
   search: string;
   offset: number;
@@ -64,12 +63,141 @@ interface Filter {
 const filters: Filter = req.query;
 declare function allEvents():event[]
 ```
-});
 
-## /by-days/:offset !incomplete!
+recives query params from client (according to ```Filter``` interface).
+
+* __sorting-__ __must option__ : `+date` sort the events from latest to earliest, `-date` the opposite ( you can add more options if you want )
+* __type-__ recives one of the `eventName` options according to the `Event` interface, and returns only matching Events.
+* __browser-__ recives one of the `browser` options according to the `Event` interface, and returns only matching Events.
+* __search-__ recives a value and test if it exists in one of the `Event` entities.
+* __offset-__ recives an integer and representing the number of events to send back to the client.
+
+__IMPORTANT__
+The entry point response format is
+```typescript
+{
+  events: [], // array containing the filtered events
+  more: true // or false
+}
+```
+`more` - informs the client if there are events that weren't sent (becuase of the offset).
+
+---
+## /by-days/:offset
+
+reutns a count of __unique sessions__ (events with different `session_id`), grouped by days, __for one week.__
+
+__`offset`-__ number of days to go back from today. If `offset` is 0 the return result should be week ago strting from today.
+
+example: __current date-__ 30/10/2020, __http request-__ `http://localhost:3000/events/by-days/0` 
+```typescript
+[
+  {
+    date: "24/10/2020",
+    count: 12
+  }, 
+  {
+    date: "25/10/2020",
+    count: 43
+  }, 
+  {
+    date: "26/10/2020",
+    count: 7
+  }, 
+  ...
+  ...
+  ...
+  {
+    date: "30/10/2020",
+    count: 78
+  }, 
+]
+
+```
+
+__current date-__ 30/10/2020, __http request-__ `http://localhost:3000/events/by-days/2` 
+```typescript
+[
+  {
+    date: "22/10/2020",
+    count: 7
+  }, 
+  {
+    date: "23/10/2020",
+    count: 78
+  }, 
+  {
+    date: "24/10/2020",
+    count: 12
+  }, 
+  ...
+  ...
+  ...
+  {
+    date: "28/10/2020",
+    count: 26
+  }, 
+]
+
+```
 
 ## /by-hours/:offset !incomplete!
 
+reutns a count of __unique sessions__ (events with different `session_id`), grouped by hour, __for one day.__
+
+__`offset`-__ number of days to go back from today. If `offset` is 0 the return result should yesterdays events.
+
+example: __current date-__ 30/10/2020, __http request-__ `http://localhost:3000/events/by-days/0` 
+```typescript
+[
+  {
+    date: "29/10/2020",
+    count: 12
+  }, 
+  {
+    date: "28/10/2020",
+    count: 43
+  }, 
+  {
+    date: "27/10/2020",
+    count: 7
+  }, 
+  {
+    date: "26/10/2020",
+    count: 78
+  }, 
+  ...
+  ...
+  ...
+]
+
+```
+
+__current date-__ 30/10/2020, __http request-__ `http://localhost:3000/events/by-days/2` 
+```typescript
+[
+  {
+    date: "27/10/2020",
+    count: 7
+  }, 
+  {
+    date: "26/10/2020",
+    count: 78
+  }, 
+  {
+    date: "25/10/2020",
+    count: 25
+  }, 
+  {
+    date: "24/10/2020",
+    count: 26
+  }, 
+  ...
+  ...
+  ...
+]
+
+```
 ## /today
 gets events from the last 24 hours
 ```typescript
