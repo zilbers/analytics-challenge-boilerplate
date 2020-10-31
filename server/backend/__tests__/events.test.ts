@@ -79,44 +79,6 @@ describe("main test", () => {
     expect(sessionsByHours2.reduce((sum: number, day: {date: string; count: number}) => sum += day.count, 0)).toBe(8)
   });
 
-  it("can get data for os chart", async () => {
-    const { body: eventsToday } = await request(app).get(`/events/chart/os/today`).expect(200);
-    expect(eventsToday.length).toBe(4);
-    expect(eventsToday[0].os).toBe(mockData.events[0].os)
-
-    const { body: eventsWeek } = await request(app).get(`/events/chart/os/week`).expect(200);
-    expect(eventsWeek.length).toBe(49);
-
-    const { body: eventsAll } = await request(app).get(`/events/chart/os/all`).expect(200);
-    expect(eventsAll.length).toBe(251);
-    
-  })
-
-  it("can get data for pageview chart", async () => {
-    const { body: eventsToday } = await request(app).get(`/events/chart/pageview/today`).expect(200);
-    expect(eventsToday.length).toBe(4);
-    expect(eventsToday[0].url).toBe(mockData.events[0].url)
-    expect(eventsToday[2].url).toBe(mockData.events[2].url)
-
-    const { body: eventsWeek } = await request(app).get(`/events/chart/pageview/week`).expect(200);
-    expect(eventsWeek.length).toBe(49);
-
-    const { body: eventsAll } = await request(app).get(`/events/chart/pageview/all`).expect(200);
-    expect(eventsAll.length).toBe(251);
-  })
-
-  it("can get data for geolocation chart", async () => {
-    const { body: eventsToday } = await request(app).get(`/events/chart/geolocation/today`).expect(200);
-    expect(eventsToday.length).toBe(4);
-    expect(eventsToday[0].geolocation).toStrictEqual(mockData.events[0].geolocation)
-
-    const { body: eventsWeek } = await request(app).get(`/events/chart/geolocation/week`).expect(200);
-    expect(eventsWeek.length).toBe(49);
-
-    const { body: eventsAll } = await request(app).get(`/events/chart/geolocation/all`).expect(200);
-    expect(eventsAll.length).toBe(251);
-  })
-
   it("retention cohort", async () => {
   
     const { body: retentionData } = await request(app).get("/events/retention").expect(200);
