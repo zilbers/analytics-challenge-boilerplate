@@ -186,7 +186,8 @@ example: __current date-__ 30/10/2020, __http request-__ `http://localhost:3000/
 ---
 
 ## /retention
-return the an array of objects with User retention Information for every week since launch.
+request url should look like: `/retention?dayZero=11231231` for instance.   
+get a "dayZero" query Parameter which denotes the day, as milliseconds, to start calculating from, return the an array of objects with User retention Information for every week since dayZero.
 For every week, what percent of the users that signed up on that week have logged in to the site on every consecutive week.
 ```typescript
 interface weeklyRetentionObject {
@@ -204,7 +205,7 @@ let week0Retention : weeklyRetentionObject = {
   end: '07/11/2020'
 } 
 
-declare function getRetentionCohort() : weeklyRetentionObject[]
+declare function getRetentionCohort(dayZero:number) : weeklyRetentionObject[]
 ```
 
 
