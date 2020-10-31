@@ -6,22 +6,22 @@ You will build analytics system that would present usage analytics about a websi
 
 ## Getting Started
 
-clone this repo and build your project on top of it.  
+Clone this repo and build your project on top of it.  
 
-- setup server  
+- Setup server  
     1. `cd server`  
     3. `npm i` 
     3. `npm start` in `/server`. (yes, in server)
     4. `npm run test` - runs backend tests (required to pass).
-- setup client  
+- Setup client  
     1. `cd client`  
     3. `npm i` 
     3. `npm start` in `/client`. this can take a while
-- after installing all dependencies, you can also use `npm run dev` in in either folder to run both concurrently.
+- After installing all dependencies, you can also use `npm run dev` in in either folder to run both concurrently.
 
-- note: do not delete the root folder's package.json, it is necessary.
+- Note: do not delete the root folder's package.json, it is necessary.
   
-### other useful commands:
+### Other useful commands:
 - /server
     - `npm run db:seed` - reseed the database (does not affect tests.) you can determine different parameters in [.env](server/.env). Useful in case the existing data is has very old dates and you want newer entries. 
 
@@ -31,7 +31,7 @@ clone this repo and build your project on top of it.
 
 ![](https://i.imgur.com/gtPzvXP.jpg)
 
- - add controls for time-ranges in relevant charts (you can implement it in any way that still works with the [default requirements](backend.md)) 
+ - Add controls for time-ranges in relevant charts (you can implement it in any way that still works with the [default requirements](backend.md)) 
  - The site uses `xstate` state machines for its data. you can use another method to send out AJAX if you prefer.
 
 ### Tiles to present:
