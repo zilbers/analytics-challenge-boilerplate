@@ -31,7 +31,6 @@ clone the repo this repo and build your project on top of it.
 
 ![](https://i.imgur.com/gtPzvXP.jpg)
 
- - While loading data show loading indicator you built using canvas tag
  - add controls for time-ranges in relevant charts (you can implement it in any way that still works with the [default requirements](backend.md)) 
  - The site uses `xstate` state machines for its data. you can use another method to send out AJAX if you prefer.
 
@@ -103,5 +102,6 @@ note- the repo uses 'husky' and you might find you can't push to github while th
   - Add an option to change chart type (pie | bars | line) in the same tile 
   - Make the tiles move by drag and drop.
   - Make the time-frame adjustable on all charts
+  - While loading data show loading indicator you built using canvas tag
   - Add any feature you wish
   - Add tests for your features
