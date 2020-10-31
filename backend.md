@@ -209,14 +209,6 @@ declare function getRetentionCohort(dayZero:number) : weeklyRetentionObject[]
 ```
 
 
-## /chart/os/:time
-
-## /chart/pageview/:time
-
-
-## /chart/geolocation/:time
-
-
 <!-- ## /today
 gets events from today
 ```typescript
