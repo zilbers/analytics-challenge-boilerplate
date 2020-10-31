@@ -23,7 +23,7 @@ clone the repo this repo and build your project on top of it.
   
 ### other useful commands:
 - /server
-    - `npm run db:seed` - reseed the database (does not affect tests.) you can determine different parameters in [.env](server/.env)
+    - `npm run db:seed` - reseed the database (does not affect tests.) you can determine different parameters in [.env](server/.env). Useful in case the existing data is has very old dates and you want newer entries. 
 
 ## Admin Page Requirements:
 
