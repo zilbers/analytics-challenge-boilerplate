@@ -1,9 +1,6 @@
-import { TDatabase } from "../database";
 
-const yesterday = new Date(new Date().toDateString()).getTime() - 9400000;
+const yesterday = new Date(new Date().toDateString()).getTime() - 7200001;
  
-
-
 const mockData: any = {
   "events":[
     {
@@ -62,7 +59,7 @@ const mockData: any = {
       "session_id": "17a359d9-017d-4494-a4fe-0a7f540a6a1c",
       "name": "signup",
       "distinct_user_id": "KmaQHEeqfq",
-      "date": yesterday - 9400000 - 3 * 11520000,
+      "date": yesterday - 3 * 10800000,
       "os": "windows",
       "browser": "chrome",
       "geolocation": {
@@ -79,7 +76,7 @@ const mockData: any = {
       "session_id": "0016688a-21f8-450b-895d-f844a4073172",
       "name": "signup",
       "distinct_user_id": "VyukXD26CY",
-      "date": yesterday - 9400000 - 4 * 11520000,
+      "date": yesterday - 4 * 10800000,
       "os": "windows",
       "browser": "edge",
       "geolocation": {
@@ -96,7 +93,7 @@ const mockData: any = {
       "session_id": "403f66e5-75c7-412d-b81b-c6a6594be231",
       "name": "signup",
       "distinct_user_id": "-uyjoD6P5E",
-      "date": yesterday - 9400000 - 5 * 11520000,
+      "date": yesterday - 5 * 10800000,
       "os": "windows",
       "browser": "other",
       "geolocation": {
@@ -113,7 +110,7 @@ const mockData: any = {
       "session_id": "2801b7b4-4941-4c15-8900-374b0ed0a923",
       "name": "signup",
       "distinct_user_id": "vDYkdlECx1",
-      "date": yesterday - 9400000 - 6 * 11520000,
+      "date": yesterday - 6 * 10800000,
       "os": "mac",
       "browser": "other",
       "geolocation": {
@@ -130,7 +127,7 @@ const mockData: any = {
       "session_id": "5f25cfb0-7922-46a2-aa78-7d8aae4fd21b",
       "name": "signup",
       "distinct_user_id": "DAamyhiWtx",
-      "date": yesterday - 9400000 - 7 * 11520000,
+      "date": yesterday - 7 * 10800000,
       "os": "other",
       "browser": "chrome",
       "geolocation": {
@@ -147,7 +144,7 @@ const mockData: any = {
       "session_id": "3799d6fe-1316-4644-8854-f80840228278",
       "name": "signup",
       "distinct_user_id": "CKbac_Y4hz",
-      "date": yesterday - 9400000 - 8 * 11520000,
+      "date": yesterday - 8 * 10800000,
       "os": "ios",
       "browser": "edge",
       "geolocation": {
@@ -164,7 +161,7 @@ const mockData: any = {
       "session_id": "76d89270-8f44-4071-a229-54a1c4ae732d",
       "name": "signup",
       "distinct_user_id": "bvPpfqz_kK",
-      "date": yesterday - 9400000 - 9 * 11520000,
+      "date": yesterday - 9 * 10800000,
       "os": "windows",
       "browser": "chrome",
       "geolocation": {
@@ -181,7 +178,7 @@ const mockData: any = {
       "session_id": "fa2a9f72-7b72-4cd8-899f-5438bf89877e",
       "name": "signup",
       "distinct_user_id": "K9DlkVNBBL",
-      "date": yesterday - 9400000 - 10 * 11520000,
+      "date": yesterday - 10 * 10800000,
       "os": "other",
       "browser": "safari",
       "geolocation": {
@@ -198,7 +195,7 @@ const mockData: any = {
       "session_id": "8ac3b217-e421-4a3e-a731-1681f8991150",
       "name": "signup",
       "distinct_user_id": "AR1STupilg",
-      "date": yesterday - 9400000 - 11 * 11520000,
+      "date": yesterday - 11 * 10800000,
       "os": "ios",
       "browser": "ie",
       "geolocation": {
@@ -215,7 +212,7 @@ const mockData: any = {
       "session_id": "129efdba-89f3-4f08-b902-8030cc90ec54",
       "name": "signup",
       "distinct_user_id": "5nws4oxZq6",
-      "date": yesterday - 9400000 - 12 * 11520000,
+      "date": yesterday - 12 * 10800000,
       "os": "linux",
       "browser": "ie",
       "geolocation": {
@@ -232,7 +229,7 @@ const mockData: any = {
       "session_id": "996101d4-8f36-48d6-b181-41e0497fffb3",
       "name": "signup",
       "distinct_user_id": "Z7DM1Q4VvW",
-      "date": yesterday - 9400000 - 13 * 11520000,
+      "date": yesterday - 13 * 10800000,
       "os": "other",
       "browser": "firefox",
       "geolocation": {
@@ -249,7 +246,7 @@ const mockData: any = {
       "session_id": "42fb0a85-4c07-4638-84f8-813a5e2db1a4",
       "name": "signup",
       "distinct_user_id": "8nuqlmor5m",
-      "date": yesterday - 9400000 - 14 * 11520000,
+      "date": yesterday - 14 * 10800000,
       "os": "android",
       "browser": "edge",
       "geolocation": {
@@ -266,7 +263,7 @@ const mockData: any = {
       "session_id": "f5ce30ae-a418-44c7-9c12-fc162bb9bd42",
       "name": "signup",
       "distinct_user_id": "U7XwB1I7KX",
-      "date": yesterday - 9400000 - 15 * 11520000,
+      "date": yesterday - 15 * 10800000,
       "os": "mac",
       "browser": "chrome",
       "geolocation": {
@@ -283,7 +280,7 @@ const mockData: any = {
       "session_id": "e6cf0e1d-2274-4910-beff-46e1e795c1c5",
       "name": "signup",
       "distinct_user_id": "MbO7TjEMuKg",
-      "date": yesterday - 9400000 - 16 * 11520000,
+      "date": yesterday - 16 * 10800000,
       "os": "windows",
       "browser": "ie",
       "geolocation": {
@@ -300,7 +297,7 @@ const mockData: any = {
       "session_id": "a8aeab98-e272-4f28-aeda-7f9002e2173e",
       "name": "signup",
       "distinct_user_id": "QHxbjArp6b9",
-      "date": yesterday - 9400000 - 17 * 11520000,
+      "date": yesterday - 17 * 10800000,
       "os": "mac",
       "browser": "ie",
       "geolocation": {
@@ -317,7 +314,7 @@ const mockData: any = {
       "session_id": "46f965e8-ec16-4deb-bcce-eade2f3992c3",
       "name": "signup",
       "distinct_user_id": "IENYI05sRLg",
-      "date": yesterday - 9400000 - 18 * 11520000,
+      "date": yesterday - 18 * 10800000,
       "os": "mac",
       "browser": "firefox",
       "geolocation": {
@@ -334,7 +331,7 @@ const mockData: any = {
       "session_id": "ff08be9a-65d1-47e2-8e48-54b7b09cedaf",
       "name": "signup",
       "distinct_user_id": "B7XAnHMMANb",
-      "date": yesterday - 9400000 - 19 * 11520000,
+      "date": yesterday - 19 * 10800000,
       "os": "other",
       "browser": "ie",
       "geolocation": {
@@ -351,7 +348,7 @@ const mockData: any = {
       "session_id": "727b0f32-174f-468a-97b7-bcca59078677",
       "name": "signup",
       "distinct_user_id": "Y82oCwGWsWL",
-      "date": yesterday - 9400000 - 20 * 11520000,
+      "date": yesterday - 20 * 10800000,
       "os": "other",
       "browser": "other",
       "geolocation": {
@@ -368,7 +365,7 @@ const mockData: any = {
       "session_id": "5a72408e-8201-41ce-8521-c7587f5fe892",
       "name": "signup",
       "distinct_user_id": "5euQUL-5Ys1",
-      "date": yesterday - 9400000 - 21 * 11520000,
+      "date": yesterday - 21 * 10800000,
       "os": "mac",
       "browser": "safari",
       "geolocation": {
@@ -385,7 +382,7 @@ const mockData: any = {
       "session_id": "614bf3d1-8b13-4579-af81-92fcba7e8dd2",
       "name": "signup",
       "distinct_user_id": "5BSPGqgCmDA",
-      "date": yesterday - 9400000 - 22 * 11520000,
+      "date": yesterday - 22 * 10800000,
       "os": "other",
       "browser": "other",
       "geolocation": {
@@ -402,7 +399,7 @@ const mockData: any = {
       "session_id": "541508c6-867c-4143-b767-f121c219f1d7",
       "name": "signup",
       "distinct_user_id": "nxdMe1TBz4j",
-      "date": yesterday - 9400000 - 23 * 11520000,
+      "date": yesterday - 23 * 10800000,
       "os": "mac",
       "browser": "chrome",
       "geolocation": {
@@ -419,7 +416,7 @@ const mockData: any = {
       "session_id": "e95c84d3-02b5-46ff-8d1a-2981a1a712a2",
       "name": "signup",
       "distinct_user_id": "4RMPG3u8rit",
-      "date": yesterday - 9400000 - 24 * 11520000,
+      "date": yesterday - 24 * 10800000,
       "os": "android",
       "browser": "other",
       "geolocation": {
@@ -436,7 +433,7 @@ const mockData: any = {
       "session_id": "a29b0c7f-d57c-496f-8ef6-c35848a98e5f",
       "name": "signup",
       "distinct_user_id": "IKyM5jbKn3L",
-      "date": yesterday - 9400000 - 25 * 11520000,
+      "date": yesterday - 25 * 10800000,
       "os": "android",
       "browser": "other",
       "geolocation": {
@@ -453,7 +450,7 @@ const mockData: any = {
       "session_id": "bc422964-9903-4824-b655-802b08604228",
       "name": "signup",
       "distinct_user_id": "6qTRoZudMPj",
-      "date": yesterday - 9400000 - 26 * 11520000,
+      "date": yesterday - 26 * 10800000,
       "os": "mac",
       "browser": "safari",
       "geolocation": {
@@ -470,7 +467,7 @@ const mockData: any = {
       "session_id": "a1143361-4b05-44ff-b552-d4e0c372bb55",
       "name": "signup",
       "distinct_user_id": "ezcz9kkdXbG",
-      "date": yesterday - 9400000 - 27 * 11520000,
+      "date": yesterday - 27 * 10800000,
       "os": "ios",
       "browser": "firefox",
       "geolocation": {
@@ -487,7 +484,7 @@ const mockData: any = {
       "session_id": "db8fe893-b8b4-4f56-b026-8693247f8666",
       "name": "signup",
       "distinct_user_id": "SzWMF_JrHbo",
-      "date": yesterday - 9400000 - 28 * 11520000,
+      "date": yesterday - 28 * 10800000,
       "os": "ios",
       "browser": "safari",
       "geolocation": {
@@ -504,7 +501,7 @@ const mockData: any = {
       "session_id": "651bd208-fc9f-4a3e-823e-181adcc19295",
       "name": "signup",
       "distinct_user_id": "-rM3zUf9-hj",
-      "date": yesterday - 9400000 - 29 * 11520000,
+      "date": yesterday - 29 * 10800000,
       "os": "mac",
       "browser": "edge",
       "geolocation": {
@@ -521,7 +518,7 @@ const mockData: any = {
       "session_id": "6e7529b8-dc83-43e1-96d1-6068333753ad",
       "name": "signup",
       "distinct_user_id": "cPPpoy6NQb-",
-      "date": yesterday - 9400000 - 30 * 11520000,
+      "date": yesterday - 30 * 10800000,
       "os": "other",
       "browser": "other",
       "geolocation": {
@@ -538,7 +535,7 @@ const mockData: any = {
       "session_id": "a2c8715a-3dd6-4a87-af07-0737d2fccf09",
       "name": "signup",
       "distinct_user_id": "QzHXRIXnBph",
-      "date": yesterday - 9400000 - 31 * 11520000,
+      "date": yesterday - 31 * 10800000,
       "os": "android",
       "browser": "firefox",
       "geolocation": {
@@ -555,7 +552,7 @@ const mockData: any = {
       "session_id": "64b96695-626c-489a-95ea-8e2bc8affed1",
       "name": "signup",
       "distinct_user_id": "v4IDuhMl9LX",
-      "date": yesterday - 9400000 - 32 * 11520000,
+      "date": yesterday - 32 * 10800000,
       "os": "mac",
       "browser": "firefox",
       "geolocation": {
@@ -572,7 +569,7 @@ const mockData: any = {
       "session_id": "b126b28d-ff6d-4d7e-8030-11269b5af0dd",
       "name": "signup",
       "distinct_user_id": "96h5E0qk7QT",
-      "date": yesterday - 9400000 - 33 * 11520000,
+      "date": yesterday - 33 * 10800000,
       "os": "android",
       "browser": "firefox",
       "geolocation": {
@@ -589,7 +586,7 @@ const mockData: any = {
       "session_id": "5bf5389c-aac0-4b12-840c-5117276a439d",
       "name": "signup",
       "distinct_user_id": "Xm38M-LdL5I",
-      "date": yesterday - 9400000 - 34 * 11520000,
+      "date": yesterday - 34 * 10800000,
       "os": "android",
       "browser": "other",
       "geolocation": {
@@ -606,7 +603,7 @@ const mockData: any = {
       "session_id": "47c106b2-b54b-444e-88ac-bcc32ec134d7",
       "name": "signup",
       "distinct_user_id": "mMFU_0DFlDH",
-      "date": yesterday - 9400000 - 35 * 11520000,
+      "date": yesterday - 35 * 10800000,
       "os": "linux",
       "browser": "firefox",
       "geolocation": {
@@ -623,7 +620,7 @@ const mockData: any = {
       "session_id": "3d48f871-0b82-4174-bcca-d5ecbebae474",
       "name": "signup",
       "distinct_user_id": "x2iFGML6XfG",
-      "date": yesterday - 9400000 - 36 * 11520000,
+      "date": yesterday - 36 * 10800000,
       "os": "android",
       "browser": "edge",
       "geolocation": {
@@ -640,7 +637,7 @@ const mockData: any = {
       "session_id": "efe00031-a88e-4fb9-bdc7-db413984c801",
       "name": "signup",
       "distinct_user_id": "szz4XV7B3NC",
-      "date": yesterday - 9400000 - 37 * 11520000,
+      "date": yesterday - 37 * 10800000,
       "os": "mac",
       "browser": "firefox",
       "geolocation": {
@@ -657,7 +654,7 @@ const mockData: any = {
       "session_id": "3f7714f4-559e-4e81-972f-8401008673a2",
       "name": "signup",
       "distinct_user_id": "KQyoomQyyVv",
-      "date": yesterday - 9400000 - 38 * 11520000,
+      "date": yesterday - 38 * 10800000,
       "os": "android",
       "browser": "edge",
       "geolocation": {
@@ -674,7 +671,7 @@ const mockData: any = {
       "session_id": "04aca2c9-1d20-4133-a5cf-fc14e153b066",
       "name": "signup",
       "distinct_user_id": "Oh7gDjSdEr4",
-      "date": yesterday - 9400000 - 39 * 11520000,
+      "date": yesterday - 39 * 10800000,
       "os": "android",
       "browser": "chrome",
       "geolocation": {
@@ -691,7 +688,7 @@ const mockData: any = {
       "session_id": "98c01148-bd44-427f-925a-5f594f93b768",
       "name": "signup",
       "distinct_user_id": "KS3HTkOZoze",
-      "date": yesterday - 9400000 - 40 * 11520000,
+      "date": yesterday - 40 * 10800000,
       "os": "windows",
       "browser": "ie",
       "geolocation": {
@@ -708,7 +705,7 @@ const mockData: any = {
       "session_id": "a929938f-0fee-49d4-9915-9e0551005a3f",
       "name": "signup",
       "distinct_user_id": "utuRVj4LOdB",
-      "date": yesterday - 9400000 - 41 * 11520000,
+      "date": yesterday - 41 * 10800000,
       "os": "windows",
       "browser": "ie",
       "geolocation": {
@@ -725,7 +722,7 @@ const mockData: any = {
       "session_id": "cc6542ee-0230-4769-857f-1bc58c2e5d4f",
       "name": "signup",
       "distinct_user_id": "HGX_CB3jSze",
-      "date": yesterday - 9400000 - 42 * 11520000,
+      "date": yesterday - 42 * 10800000,
       "os": "windows",
       "browser": "other",
       "geolocation": {
@@ -742,7 +739,7 @@ const mockData: any = {
       "session_id": "cdccf790-801b-4106-ab7d-f669d8f63136",
       "name": "signup",
       "distinct_user_id": "a4wAAAWneP6",
-      "date": yesterday - 9400000 - 43 * 11520000,
+      "date": yesterday - 43 * 10800000,
       "os": "other",
       "browser": "other",
       "geolocation": {
@@ -759,7 +756,7 @@ const mockData: any = {
       "session_id": "0ee8ca46-ae41-412c-b3ea-47b3b18f792d",
       "name": "signup",
       "distinct_user_id": "LKqwj-Dl1L0",
-      "date": yesterday - 9400000 - 44 * 11520000,
+      "date": yesterday - 44 * 10800000,
       "os": "windows",
       "browser": "edge",
       "geolocation": {
@@ -776,7 +773,7 @@ const mockData: any = {
       "session_id": "cc956975-86d2-4905-aa24-b9b27b5c05dd",
       "name": "signup",
       "distinct_user_id": "w1bhxxrmlov",
-      "date": yesterday - 9400000 - 45 * 11520000,
+      "date": yesterday - 45 * 10800000,
       "os": "mac",
       "browser": "other",
       "geolocation": {
@@ -793,7 +790,7 @@ const mockData: any = {
       "session_id": "a2512672-3436-4b39-8b29-698b9ca1fed2",
       "name": "signup",
       "distinct_user_id": "iZWdP-lqiiV",
-      "date": yesterday - 9400000 - 46 * 11520000,
+      "date": yesterday - 46 * 10800000,
       "os": "ios",
       "browser": "safari",
       "geolocation": {
@@ -810,7 +807,7 @@ const mockData: any = {
       "session_id": "2d660517-458e-4563-86ef-9a6ff52a24c1",
       "name": "signup",
       "distinct_user_id": "sEXmsbIDc2m",
-      "date": yesterday - 9400000 - 47 * 11520000,
+      "date": yesterday - 47 * 10800000,
       "os": "linux",
       "browser": "edge",
       "geolocation": {
@@ -827,7 +824,7 @@ const mockData: any = {
       "session_id": "b6e31207-7dea-4208-b3ec-0daf5ec21a5b",
       "name": "signup",
       "distinct_user_id": "yXsfx1JDAEB",
-      "date": yesterday - 9400000 - 48 * 11520000,
+      "date": yesterday - 48 * 10800000,
       "os": "linux",
       "browser": "ie",
       "geolocation": {
@@ -844,7 +841,7 @@ const mockData: any = {
       "session_id": "42c7841e-9708-442e-a23f-8e534bf7e2f5",
       "name": "signup",
       "distinct_user_id": "VHrFyv1kytH",
-      "date": yesterday - 9400000 - 49 * 11520000,
+      "date": yesterday - 49 * 10800000,
       "os": "windows",
       "browser": "ie",
       "geolocation": {
@@ -861,7 +858,7 @@ const mockData: any = {
       "session_id": "93aea56d-f87f-48f8-bb42-8e4f48d1adde",
       "name": "signup",
       "distinct_user_id": "B7XAnHMMANb",
-      "date": yesterday - 9400000 - 50 * 11520000,
+      "date": yesterday - 50 * 10800000,
       "os": "windows",
       "browser": "ie",
       "geolocation": {
@@ -878,7 +875,7 @@ const mockData: any = {
       "session_id": "0d6dd62b-e236-44d0-a380-49830d64e693",
       "name": "admin",
       "distinct_user_id": "6qTRoZudMPj",
-      "date": yesterday - 9400000 - 51 * 11520000,
+      "date": yesterday - 51 * 10800000,
       "os": "android",
       "browser": "firefox",
       "geolocation": {
@@ -895,7 +892,7 @@ const mockData: any = {
       "session_id": "1e63cc8f-4ef2-484e-b7ad-384e957bd204",
       "name": "signup",
       "distinct_user_id": "SzWMF_JrHbo",
-      "date": yesterday - 9400000 - 52 * 11520000,
+      "date": yesterday - 52 * 10800000,
       "os": "android",
       "browser": "edge",
       "geolocation": {
@@ -912,7 +909,7 @@ const mockData: any = {
       "session_id": "db0184e2-fd80-4788-aa9c-4caa1004d30e",
       "name": "login",
       "distinct_user_id": "HGX_CB3jSze",
-      "date": yesterday - 9400000 - 53 * 11520000,
+      "date": yesterday - 53 * 10800000,
       "os": "android",
       "browser": "firefox",
       "geolocation": {
@@ -929,7 +926,7 @@ const mockData: any = {
       "session_id": "66085eba-23ca-414f-ac6f-86da95e810e5",
       "name": "signup",
       "distinct_user_id": "-uyjoD6P5E",
-      "date": yesterday - 9400000 - 54 * 11520000,
+      "date": yesterday - 54 * 10800000,
       "os": "android",
       "browser": "other",
       "geolocation": {
@@ -946,7 +943,7 @@ const mockData: any = {
       "session_id": "19104204-fb08-4827-b185-c579d84ba7a2",
       "name": "/",
       "distinct_user_id": "mMFU_0DFlDH",
-      "date": yesterday - 9400000 - 55 * 11520000,
+      "date": yesterday - 55 * 10800000,
       "os": "other",
       "browser": "chrome",
       "geolocation": {
@@ -963,7 +960,7 @@ const mockData: any = {
       "session_id": "ae40eb33-ccec-4118-a66f-0fc8e3679cd8",
       "name": "signup",
       "distinct_user_id": "Y82oCwGWsWL",
-      "date": yesterday - 9400000 - 56 * 11520000,
+      "date": yesterday - 56 * 10800000,
       "os": "windows",
       "browser": "firefox",
       "geolocation": {
@@ -980,7 +977,7 @@ const mockData: any = {
       "session_id": "7ed8ddae-f054-45df-85fe-0c6deaa0fd48",
       "name": "login",
       "distinct_user_id": "vDYkdlECx1",
-      "date": yesterday - 9400000 - 57 * 11520000,
+      "date": yesterday - 57 * 10800000,
       "os": "ios",
       "browser": "other",
       "geolocation": {
@@ -997,7 +994,7 @@ const mockData: any = {
       "session_id": "6a6b9e19-1c36-4b73-9e68-2b6c0963c2b2",
       "name": "admin",
       "distinct_user_id": "HGX_CB3jSze",
-      "date": yesterday - 9400000 - 58 * 11520000,
+      "date": yesterday - 58 * 10800000,
       "os": "ios",
       "browser": "safari",
       "geolocation": {
@@ -1014,7 +1011,7 @@ const mockData: any = {
       "session_id": "eb307990-0ed6-440f-ac78-22618b4e6fa7",
       "name": "admin",
       "distinct_user_id": "U7XwB1I7KX",
-      "date": yesterday - 9400000 - 59 * 11520000,
+      "date": yesterday - 59 * 10800000,
       "os": "linux",
       "browser": "chrome",
       "geolocation": {
@@ -1031,7 +1028,7 @@ const mockData: any = {
       "session_id": "c808465b-b8d2-42bc-a58a-c22d2c21aa5f",
       "name": "login",
       "distinct_user_id": "sEXmsbIDc2m",
-      "date": yesterday - 9400000 - 60 * 11520000,
+      "date": yesterday - 60 * 10800000,
       "os": "windows",
       "browser": "ie",
       "geolocation": {
@@ -1048,7 +1045,7 @@ const mockData: any = {
       "session_id": "11ca077f-0e0d-4a66-b4f4-8a288d568d96",
       "name": "login",
       "distinct_user_id": "_67ag3j-O0",
-      "date": yesterday - 9400000 - 61 * 11520000,
+      "date": yesterday - 61 * 10800000,
       "os": "other",
       "browser": "firefox",
       "geolocation": {
@@ -1065,7 +1062,7 @@ const mockData: any = {
       "session_id": "c6519b24-2dea-4f6f-8410-b4744920cf66",
       "name": "admin",
       "distinct_user_id": "AR1STupilg",
-      "date": yesterday - 9400000 - 62 * 11520000,
+      "date": yesterday - 62 * 10800000,
       "os": "linux",
       "browser": "ie",
       "geolocation": {
@@ -1082,7 +1079,7 @@ const mockData: any = {
       "session_id": "6ee863c8-ff1b-4898-9511-f088ce069ad0",
       "name": "/",
       "distinct_user_id": "QHxbjArp6b9",
-      "date": yesterday - 9400000 - 63 * 11520000,
+      "date": yesterday - 63 * 10800000,
       "os": "other",
       "browser": "ie",
       "geolocation": {
@@ -1099,7 +1096,7 @@ const mockData: any = {
       "session_id": "037c71b5-4da3-4d9a-a4d4-95cdff570d81",
       "name": "signup",
       "distinct_user_id": "B7XAnHMMANb",
-      "date": yesterday - 9400000 - 64 * 11520000,
+      "date": yesterday - 64 * 10800000,
       "os": "ios",
       "browser": "ie",
       "geolocation": {
@@ -1116,7 +1113,7 @@ const mockData: any = {
       "session_id": "eedae426-1abf-4999-9088-21f4b5ff2785",
       "name": "signup",
       "distinct_user_id": "K9DlkVNBBL",
-      "date": yesterday - 9400000 - 65 * 11520000,
+      "date": yesterday - 65 * 10800000,
       "os": "linux",
       "browser": "safari",
       "geolocation": {
@@ -1133,7 +1130,7 @@ const mockData: any = {
       "session_id": "e1c8138a-abb1-4096-91cf-84f89f519c19",
       "name": "admin",
       "distinct_user_id": "KS3HTkOZoze",
-      "date": yesterday - 9400000 - 66 * 11520000,
+      "date": yesterday - 66 * 10800000,
       "os": "windows",
       "browser": "chrome",
       "geolocation": {
@@ -1150,7 +1147,7 @@ const mockData: any = {
       "session_id": "071d26c5-42f9-4bbb-8e59-4599bf0ec804",
       "name": "signup",
       "distinct_user_id": "DAamyhiWtx",
-      "date": yesterday - 9400000 - 67 * 11520000,
+      "date": yesterday - 67 * 10800000,
       "os": "android",
       "browser": "safari",
       "geolocation": {
@@ -1167,7 +1164,7 @@ const mockData: any = {
       "session_id": "1642b2b7-0e35-4972-9bbf-166c492d6a17",
       "name": "login",
       "distinct_user_id": "x2iFGML6XfG",
-      "date": yesterday - 9400000 - 68 * 11520000,
+      "date": yesterday - 68 * 10800000,
       "os": "android",
       "browser": "firefox",
       "geolocation": {
@@ -1184,7 +1181,7 @@ const mockData: any = {
       "session_id": "0b8c3f5f-ff97-4928-acde-1000cdf7331b",
       "name": "/",
       "distinct_user_id": "HGX_CB3jSze",
-      "date": yesterday - 9400000 - 69 * 11520000,
+      "date": yesterday - 69 * 10800000,
       "os": "windows",
       "browser": "firefox",
       "geolocation": {
@@ -1201,7 +1198,7 @@ const mockData: any = {
       "session_id": "2482e1a1-292a-4d69-85fc-ea1cc629c0f4",
       "name": "signup",
       "distinct_user_id": "AR1STupilg",
-      "date": yesterday - 9400000 - 70 * 11520000,
+      "date": yesterday - 70 * 10800000,
       "os": "mac",
       "browser": "safari",
       "geolocation": {
@@ -1218,7 +1215,7 @@ const mockData: any = {
       "session_id": "1f22541f-db28-4378-9d14-a36567b7cb8a",
       "name": "signup",
       "distinct_user_id": "KS3HTkOZoze",
-      "date": yesterday - 9400000 - 71 * 11520000,
+      "date": yesterday - 71 * 10800000,
       "os": "other",
       "browser": "other",
       "geolocation": {
@@ -1235,7 +1232,7 @@ const mockData: any = {
       "session_id": "bc84195e-4098-465d-9ea1-b59fb476c1b2",
       "name": "login",
       "distinct_user_id": "mMFU_0DFlDH",
-      "date": yesterday - 9400000 - 72 * 11520000,
+      "date": yesterday - 72 * 10800000,
       "os": "ios",
       "browser": "safari",
       "geolocation": {
@@ -1252,7 +1249,7 @@ const mockData: any = {
       "session_id": "b5e934c4-b352-4d38-a9f6-4b90bab61a61",
       "name": "signup",
       "distinct_user_id": "-rM3zUf9-hj",
-      "date": yesterday - 9400000 - 73 * 11520000,
+      "date": yesterday - 73 * 10800000,
       "os": "ios",
       "browser": "firefox",
       "geolocation": {
@@ -1269,7 +1266,7 @@ const mockData: any = {
       "session_id": "43ed9fa6-d775-4221-89ea-de7de5bf6a1f",
       "name": "/",
       "distinct_user_id": "LKqwj-Dl1L0",
-      "date": yesterday - 9400000 - 74 * 11520000,
+      "date": yesterday - 74 * 10800000,
       "os": "windows",
       "browser": "other",
       "geolocation": {
@@ -1286,7 +1283,7 @@ const mockData: any = {
       "session_id": "7f39824d-2c06-47fc-a06b-635871a9f612",
       "name": "admin",
       "distinct_user_id": "KS3HTkOZoze",
-      "date": yesterday - 9400000 - 75 * 11520000,
+      "date": yesterday - 75 * 10800000,
       "os": "android",
       "browser": "safari",
       "geolocation": {
@@ -1303,7 +1300,7 @@ const mockData: any = {
       "session_id": "f4fec99b-9800-4510-b275-64b56804d2db",
       "name": "admin",
       "distinct_user_id": "RjCuj9IIwI",
-      "date": yesterday - 9400000 - 76 * 11520000,
+      "date": yesterday - 76 * 10800000,
       "os": "other",
       "browser": "other",
       "geolocation": {
@@ -1320,7 +1317,7 @@ const mockData: any = {
       "session_id": "99293d83-9784-4c5f-a776-70b6d19e7fd9",
       "name": "admin",
       "distinct_user_id": "LKqwj-Dl1L0",
-      "date": yesterday - 9400000 - 77 * 11520000,
+      "date": yesterday - 77 * 10800000,
       "os": "linux",
       "browser": "other",
       "geolocation": {
@@ -1337,7 +1334,7 @@ const mockData: any = {
       "session_id": "882e5a25-2629-4e95-9a64-b81fc7087f10",
       "name": "login",
       "distinct_user_id": "_67ag3j-O0",
-      "date": yesterday - 9400000 - 78 * 11520000,
+      "date": yesterday - 78 * 10800000,
       "os": "ios",
       "browser": "safari",
       "geolocation": {
@@ -1354,7 +1351,7 @@ const mockData: any = {
       "session_id": "29ebcfb8-5bdb-434b-9667-a40174f323ff",
       "name": "admin",
       "distinct_user_id": "utuRVj4LOdB",
-      "date": yesterday - 9400000 - 79 * 11520000,
+      "date": yesterday - 79 * 10800000,
       "os": "other",
       "browser": "firefox",
       "geolocation": {
@@ -1371,7 +1368,7 @@ const mockData: any = {
       "session_id": "7fe14dcf-4398-4b46-87ce-f1ace874884e",
       "name": "/",
       "distinct_user_id": "8nuqlmor5m",
-      "date": yesterday - 9400000 - 80 * 11520000,
+      "date": yesterday - 80 * 10800000,
       "os": "other",
       "browser": "firefox",
       "geolocation": {
@@ -1388,7 +1385,7 @@ const mockData: any = {
       "session_id": "5dd7639e-45dc-4eee-82b1-c67390ff4b5c",
       "name": "/",
       "distinct_user_id": "B7XAnHMMANb",
-      "date": yesterday - 9400000 - 81 * 11520000,
+      "date": yesterday - 81 * 10800000,
       "os": "windows",
       "browser": "other",
       "geolocation": {
@@ -1405,7 +1402,7 @@ const mockData: any = {
       "session_id": "9eda5b7c-0abb-492f-a2f4-70876b6f6736",
       "name": "admin",
       "distinct_user_id": "5BSPGqgCmDA",
-      "date": yesterday - 9400000 - 82 * 11520000,
+      "date": yesterday - 82 * 10800000,
       "os": "ios",
       "browser": "safari",
       "geolocation": {
@@ -1422,7 +1419,7 @@ const mockData: any = {
       "session_id": "6ad334c2-6c34-4a61-bc69-d9b7a310b6be",
       "name": "admin",
       "distinct_user_id": "utuRVj4LOdB",
-      "date": yesterday - 9400000 - 83 * 11520000,
+      "date": yesterday - 83 * 10800000,
       "os": "mac",
       "browser": "firefox",
       "geolocation": {
@@ -1439,7 +1436,7 @@ const mockData: any = {
       "session_id": "39d97daa-1277-433e-932a-8246e8eacd80",
       "name": "/",
       "distinct_user_id": "5euQUL-5Ys1",
-      "date": yesterday - 9400000 - 84 * 11520000,
+      "date": yesterday - 84 * 10800000,
       "os": "windows",
       "browser": "ie",
       "geolocation": {
@@ -1456,7 +1453,7 @@ const mockData: any = {
       "session_id": "4c2a681d-d3b7-43cf-b98a-df0f3dbad0b5",
       "name": "signup",
       "distinct_user_id": "x2iFGML6XfG",
-      "date": yesterday - 9400000 - 85 * 11520000,
+      "date": yesterday - 85 * 10800000,
       "os": "linux",
       "browser": "chrome",
       "geolocation": {
@@ -1473,7 +1470,7 @@ const mockData: any = {
       "session_id": "4cdf168a-49a2-410f-8246-eef58b5cd2c9",
       "name": "signup",
       "distinct_user_id": "cPPpoy6NQb-",
-      "date": yesterday - 9400000 - 86 * 11520000,
+      "date": yesterday - 86 * 10800000,
       "os": "android",
       "browser": "firefox",
       "geolocation": {
@@ -1490,7 +1487,7 @@ const mockData: any = {
       "session_id": "70e42c69-2885-4872-b458-6c2eaf0172f5",
       "name": "login",
       "distinct_user_id": "Z7DM1Q4VvW",
-      "date": yesterday - 9400000 - 87 * 11520000,
+      "date": yesterday - 87 * 10800000,
       "os": "windows",
       "browser": "safari",
       "geolocation": {
@@ -1507,7 +1504,7 @@ const mockData: any = {
       "session_id": "7b305617-cbd8-426e-968e-dbef2b9ac4fb",
       "name": "admin",
       "distinct_user_id": "w1bhxxrmlov",
-      "date": yesterday - 9400000 - 88 * 11520000,
+      "date": yesterday - 88 * 10800000,
       "os": "linux",
       "browser": "safari",
       "geolocation": {
@@ -1524,7 +1521,7 @@ const mockData: any = {
       "session_id": "7099e55e-6666-4b4a-923f-257c7b8b759a",
       "name": "admin",
       "distinct_user_id": "vDYkdlECx1",
-      "date": yesterday - 9400000 - 89 * 11520000,
+      "date": yesterday - 89 * 10800000,
       "os": "windows",
       "browser": "safari",
       "geolocation": {
@@ -1541,7 +1538,7 @@ const mockData: any = {
       "session_id": "5084f3b3-84c3-41a4-9ca5-14a1a3fa4087",
       "name": "signup",
       "distinct_user_id": "5nws4oxZq6",
-      "date": yesterday - 9400000 - 90 * 11520000,
+      "date": yesterday - 90 * 10800000,
       "os": "windows",
       "browser": "ie",
       "geolocation": {
@@ -1558,7 +1555,7 @@ const mockData: any = {
       "session_id": "39b476f7-84e2-41ff-9cdf-b8ce44cba5f7",
       "name": "signup",
       "distinct_user_id": "mMFU_0DFlDH",
-      "date": yesterday - 9400000 - 91 * 11520000,
+      "date": yesterday - 91 * 10800000,
       "os": "other",
       "browser": "firefox",
       "geolocation": {
@@ -1575,7 +1572,7 @@ const mockData: any = {
       "session_id": "96b5111c-ee1f-4a9e-8976-a3460333cf6c",
       "name": "signup",
       "distinct_user_id": "RjCuj9IIwI",
-      "date": yesterday - 9400000 - 92 * 11520000,
+      "date": yesterday - 92 * 10800000,
       "os": "mac",
       "browser": "other",
       "geolocation": {
@@ -1592,7 +1589,7 @@ const mockData: any = {
       "session_id": "516d6830-630f-4b09-8619-3dc9a7b0cd66",
       "name": "/",
       "distinct_user_id": "Z7DM1Q4VvW",
-      "date": yesterday - 9400000 - 93 * 11520000,
+      "date": yesterday - 93 * 10800000,
       "os": "ios",
       "browser": "edge",
       "geolocation": {
@@ -1609,7 +1606,7 @@ const mockData: any = {
       "session_id": "3043227f-16a2-4400-86c3-d21a79b9f14f",
       "name": "admin",
       "distinct_user_id": "96h5E0qk7QT",
-      "date": yesterday - 9400000 - 94 * 11520000,
+      "date": yesterday - 94 * 10800000,
       "os": "mac",
       "browser": "edge",
       "geolocation": {
@@ -1626,7 +1623,7 @@ const mockData: any = {
       "session_id": "2a475109-42be-4a87-948f-56e906ab64ed",
       "name": "admin",
       "distinct_user_id": "QHxbjArp6b9",
-      "date": yesterday - 9400000 - 95 * 11520000,
+      "date": yesterday - 95 * 10800000,
       "os": "other",
       "browser": "firefox",
       "geolocation": {
@@ -1643,7 +1640,7 @@ const mockData: any = {
       "session_id": "ba1a1482-5ad4-4e66-822b-40e765b84ba6",
       "name": "admin",
       "distinct_user_id": "cPPpoy6NQb-",
-      "date": yesterday - 9400000 - 96 * 11520000,
+      "date": yesterday - 96 * 10800000,
       "os": "other",
       "browser": "ie",
       "geolocation": {
@@ -1660,7 +1657,7 @@ const mockData: any = {
       "session_id": "69a6b404-0dba-400c-9aa8-beb7d7d90d59",
       "name": "admin",
       "distinct_user_id": "5BSPGqgCmDA",
-      "date": yesterday - 9400000 - 97 * 11520000,
+      "date": yesterday - 97 * 10800000,
       "os": "linux",
       "browser": "chrome",
       "geolocation": {
@@ -1677,7 +1674,7 @@ const mockData: any = {
       "session_id": "4547a4e7-dac5-422c-a117-51d1d79f4683",
       "name": "signup",
       "distinct_user_id": "szz4XV7B3NC",
-      "date": yesterday - 9400000 - 98 * 11520000,
+      "date": yesterday - 98 * 10800000,
       "os": "mac",
       "browser": "safari",
       "geolocation": {
@@ -1694,7 +1691,7 @@ const mockData: any = {
       "session_id": "278b8a88-ed63-4af8-840b-df92c046396f",
       "name": "login",
       "distinct_user_id": "HGX_CB3jSze",
-      "date": yesterday - 9400000 - 99 * 11520000,
+      "date": yesterday - 99 * 10800000,
       "os": "ios",
       "browser": "safari",
       "geolocation": {
@@ -1711,7 +1708,7 @@ const mockData: any = {
       "session_id": "208830ca-0b44-4fca-aa0e-df7ca0bbb812",
       "name": "login",
       "distinct_user_id": "vDYkdlECx1",
-      "date": yesterday - 9400000 - 100 * 11520000,
+      "date": yesterday - 100 * 10800000,
       "os": "mac",
       "browser": "firefox",
       "geolocation": {
@@ -1728,7 +1725,7 @@ const mockData: any = {
       "session_id": "d140e235-c50c-4b8a-a395-be79825c2f0d",
       "name": "signup",
       "distinct_user_id": "AR1STupilg",
-      "date": yesterday - 9400000 - 101 * 11520000,
+      "date": yesterday - 101 * 10800000,
       "os": "linux",
       "browser": "ie",
       "geolocation": {
@@ -1745,7 +1742,7 @@ const mockData: any = {
       "session_id": "1ca097da-da96-4823-97a8-7f5913479817",
       "name": "/",
       "distinct_user_id": "6qTRoZudMPj",
-      "date": yesterday - 9400000 - 102 * 11520000,
+      "date": yesterday - 102 * 10800000,
       "os": "linux",
       "browser": "edge",
       "geolocation": {
@@ -1762,7 +1759,7 @@ const mockData: any = {
       "session_id": "b8bc4ce2-0a7a-492d-8529-c5453be84ac9",
       "name": "login",
       "distinct_user_id": "K9DlkVNBBL",
-      "date": yesterday - 9400000 - 103 * 11520000,
+      "date": yesterday - 103 * 10800000,
       "os": "ios",
       "browser": "ie",
       "geolocation": {
@@ -1779,7 +1776,7 @@ const mockData: any = {
       "session_id": "d783eb7d-ac40-457f-aae4-5bcb2b38f7a7",
       "name": "signup",
       "distinct_user_id": "KS3HTkOZoze",
-      "date": yesterday - 9400000 - 104 * 11520000,
+      "date": yesterday - 104 * 10800000,
       "os": "windows",
       "browser": "other",
       "geolocation": {
@@ -1796,7 +1793,7 @@ const mockData: any = {
       "session_id": "6eadd3d7-4350-4a07-af5e-5563d6c61491",
       "name": "signup",
       "distinct_user_id": "a4wAAAWneP6",
-      "date": yesterday - 9400000 - 105 * 11520000,
+      "date": yesterday - 105 * 10800000,
       "os": "android",
       "browser": "chrome",
       "geolocation": {
@@ -1813,7 +1810,7 @@ const mockData: any = {
       "session_id": "63d151be-c0d1-4a2f-94e4-6ec2c672206d",
       "name": "login",
       "distinct_user_id": "szz4XV7B3NC",
-      "date": yesterday - 9400000 - 106 * 11520000,
+      "date": yesterday - 106 * 10800000,
       "os": "mac",
       "browser": "ie",
       "geolocation": {
@@ -1830,7 +1827,7 @@ const mockData: any = {
       "session_id": "2241bfa1-b1a7-41ae-bb5a-9f6a35df6e90",
       "name": "admin",
       "distinct_user_id": "Z7DM1Q4VvW",
-      "date": yesterday - 9400000 - 107 * 11520000,
+      "date": yesterday - 107 * 10800000,
       "os": "ios",
       "browser": "other",
       "geolocation": {
@@ -1847,7 +1844,7 @@ const mockData: any = {
       "session_id": "b9f49c19-d6ba-4021-8ea0-1227c4d7942a",
       "name": "login",
       "distinct_user_id": "KS3HTkOZoze",
-      "date": yesterday - 9400000 - 108 * 11520000,
+      "date": yesterday - 108 * 10800000,
       "os": "ios",
       "browser": "other",
       "geolocation": {
@@ -1864,7 +1861,7 @@ const mockData: any = {
       "session_id": "369599bc-586f-4e7f-ba06-c1f8199eaed2",
       "name": "/",
       "distinct_user_id": "AR1STupilg",
-      "date": yesterday - 9400000 - 109 * 11520000,
+      "date": yesterday - 109 * 10800000,
       "os": "other",
       "browser": "edge",
       "geolocation": {
@@ -1881,7 +1878,7 @@ const mockData: any = {
       "session_id": "60628945-f345-4ccd-8c58-968723db3881",
       "name": "admin",
       "distinct_user_id": "5euQUL-5Ys1",
-      "date": yesterday - 9400000 - 110 * 11520000,
+      "date": yesterday - 110 * 10800000,
       "os": "android",
       "browser": "edge",
       "geolocation": {
@@ -1898,7 +1895,7 @@ const mockData: any = {
       "session_id": "a200267d-4bd0-4fb2-ac27-b1d8c2affe40",
       "name": "login",
       "distinct_user_id": "IENYI05sRLg",
-      "date": yesterday - 9400000 - 111 * 11520000,
+      "date": yesterday - 111 * 10800000,
       "os": "other",
       "browser": "ie",
       "geolocation": {
@@ -1915,7 +1912,7 @@ const mockData: any = {
       "session_id": "464b0984-2c08-4f8d-937a-b1b057c176b8",
       "name": "signup",
       "distinct_user_id": "-uyjoD6P5E",
-      "date": yesterday - 9400000 - 112 * 11520000,
+      "date": yesterday - 112 * 10800000,
       "os": "linux",
       "browser": "chrome",
       "geolocation": {
@@ -1932,7 +1929,7 @@ const mockData: any = {
       "session_id": "d06df589-4a36-4655-a71a-518c48726269",
       "name": "signup",
       "distinct_user_id": "x2iFGML6XfG",
-      "date": yesterday - 9400000 - 113 * 11520000,
+      "date": yesterday - 113 * 10800000,
       "os": "mac",
       "browser": "firefox",
       "geolocation": {
@@ -1949,7 +1946,7 @@ const mockData: any = {
       "session_id": "51f58e8d-1fd7-4d03-bba8-acef31a48197",
       "name": "admin",
       "distinct_user_id": "SzWMF_JrHbo",
-      "date": yesterday - 9400000 - 114 * 11520000,
+      "date": yesterday - 114 * 10800000,
       "os": "ios",
       "browser": "other",
       "geolocation": {
@@ -1966,7 +1963,7 @@ const mockData: any = {
       "session_id": "81ed7e22-109d-4a63-998f-2ccf95b26688",
       "name": "/",
       "distinct_user_id": "MbO7TjEMuKg",
-      "date": yesterday - 9400000 - 115 * 11520000,
+      "date": yesterday - 115 * 10800000,
       "os": "android",
       "browser": "edge",
       "geolocation": {
@@ -1983,7 +1980,7 @@ const mockData: any = {
       "session_id": "053c1cc7-9861-4959-8bb9-81f998009865",
       "name": "admin",
       "distinct_user_id": "5nws4oxZq6",
-      "date": yesterday - 9400000 - 116 * 11520000,
+      "date": yesterday - 116 * 10800000,
       "os": "mac",
       "browser": "edge",
       "geolocation": {
@@ -2000,7 +1997,7 @@ const mockData: any = {
       "session_id": "c0e8a696-8409-4a89-9925-be64bc5d0544",
       "name": "/",
       "distinct_user_id": "x2iFGML6XfG",
-      "date": yesterday - 9400000 - 117 * 11520000,
+      "date": yesterday - 117 * 10800000,
       "os": "windows",
       "browser": "edge",
       "geolocation": {
@@ -2017,7 +2014,7 @@ const mockData: any = {
       "session_id": "eeb7eb30-5c3b-48f7-b086-76c246625ff8",
       "name": "login",
       "distinct_user_id": "DAamyhiWtx",
-      "date": yesterday - 9400000 - 118 * 11520000,
+      "date": yesterday - 118 * 10800000,
       "os": "ios",
       "browser": "safari",
       "geolocation": {
@@ -2034,7 +2031,7 @@ const mockData: any = {
       "session_id": "89908519-0eca-4d04-97b8-719d84e685d1",
       "name": "login",
       "distinct_user_id": "U7XwB1I7KX",
-      "date": yesterday - 9400000 - 119 * 11520000,
+      "date": yesterday - 119 * 10800000,
       "os": "other",
       "browser": "chrome",
       "geolocation": {
@@ -2051,7 +2048,7 @@ const mockData: any = {
       "session_id": "2ea36243-6130-4162-96b6-9c8066fce81e",
       "name": "signup",
       "distinct_user_id": "cPPpoy6NQb-",
-      "date": yesterday - 9400000 - 120 * 11520000,
+      "date": yesterday - 120 * 10800000,
       "os": "mac",
       "browser": "safari",
       "geolocation": {
@@ -2068,7 +2065,7 @@ const mockData: any = {
       "session_id": "412553b9-8163-4555-b0d7-9c025aabd094",
       "name": "login",
       "distinct_user_id": "LKqwj-Dl1L0",
-      "date": yesterday - 9400000 - 121 * 11520000,
+      "date": yesterday - 121 * 10800000,
       "os": "mac",
       "browser": "firefox",
       "geolocation": {
@@ -2085,7 +2082,7 @@ const mockData: any = {
       "session_id": "214a7921-bcc9-47dd-8211-008c8bef2190",
       "name": "/",
       "distinct_user_id": "Z7DM1Q4VvW",
-      "date": yesterday - 9400000 - 122 * 11520000,
+      "date": yesterday - 122 * 10800000,
       "os": "windows",
       "browser": "firefox",
       "geolocation": {
@@ -2102,7 +2099,7 @@ const mockData: any = {
       "session_id": "29d57d92-065a-4a32-aba2-faf267aefbe4",
       "name": "admin",
       "distinct_user_id": "QHxbjArp6b9",
-      "date": yesterday - 9400000 - 123 * 11520000,
+      "date": yesterday - 123 * 10800000,
       "os": "other",
       "browser": "edge",
       "geolocation": {
@@ -2119,7 +2116,7 @@ const mockData: any = {
       "session_id": "0c5496ef-c8a6-4fa3-924e-ab0a2b6f0dd1",
       "name": "login",
       "distinct_user_id": "Oh7gDjSdEr4",
-      "date": yesterday - 9400000 - 124 * 11520000,
+      "date": yesterday - 124 * 10800000,
       "os": "ios",
       "browser": "chrome",
       "geolocation": {
@@ -2136,7 +2133,7 @@ const mockData: any = {
       "session_id": "d772aa02-57de-417c-9c8c-7697443b9585",
       "name": "admin",
       "distinct_user_id": "LKqwj-Dl1L0",
-      "date": yesterday - 9400000 - 125 * 11520000,
+      "date": yesterday - 125 * 10800000,
       "os": "windows",
       "browser": "ie",
       "geolocation": {
@@ -2153,7 +2150,7 @@ const mockData: any = {
       "session_id": "3a671efd-273c-446a-90a0-88978de34ba4",
       "name": "/",
       "distinct_user_id": "MbO7TjEMuKg",
-      "date": yesterday - 9400000 - 126 * 11520000,
+      "date": yesterday - 126 * 10800000,
       "os": "mac",
       "browser": "safari",
       "geolocation": {
@@ -2170,7 +2167,7 @@ const mockData: any = {
       "session_id": "5fbb8bbd-1afd-4a02-a631-037089dc57c0",
       "name": "login",
       "distinct_user_id": "vDYkdlECx1",
-      "date": yesterday - 9400000 - 127 * 11520000,
+      "date": yesterday - 127 * 10800000,
       "os": "ios",
       "browser": "edge",
       "geolocation": {
@@ -2187,7 +2184,7 @@ const mockData: any = {
       "session_id": "7374ef4f-349a-4268-8fa3-246f52c4d930",
       "name": "login",
       "distinct_user_id": "sEXmsbIDc2m",
-      "date": yesterday - 9400000 - 128 * 11520000,
+      "date": yesterday - 128 * 10800000,
       "os": "linux",
       "browser": "other",
       "geolocation": {
@@ -2204,7 +2201,7 @@ const mockData: any = {
       "session_id": "a6ef4a1d-a8ac-4f71-9a79-b214eec575b6",
       "name": "admin",
       "distinct_user_id": "v4IDuhMl9LX",
-      "date": yesterday - 9400000 - 129 * 11520000,
+      "date": yesterday - 129 * 10800000,
       "os": "other",
       "browser": "edge",
       "geolocation": {
@@ -2221,7 +2218,7 @@ const mockData: any = {
       "session_id": "f64b74cf-9823-4ea0-a698-b3b6e33d1621",
       "name": "login",
       "distinct_user_id": "B7XAnHMMANb",
-      "date": yesterday - 9400000 - 130 * 11520000,
+      "date": yesterday - 130 * 10800000,
       "os": "ios",
       "browser": "other",
       "geolocation": {
@@ -2238,7 +2235,7 @@ const mockData: any = {
       "session_id": "7aebcd33-ef8b-4773-bf52-939584c1a877",
       "name": "login",
       "distinct_user_id": "sEXmsbIDc2m",
-      "date": yesterday - 9400000 - 131 * 11520000,
+      "date": yesterday - 131 * 10800000,
       "os": "other",
       "browser": "safari",
       "geolocation": {
@@ -2255,7 +2252,7 @@ const mockData: any = {
       "session_id": "2f014697-4ea7-45fb-b8e6-bf3fc0d27389",
       "name": "/",
       "distinct_user_id": "Y82oCwGWsWL",
-      "date": yesterday - 9400000 - 132 * 11520000,
+      "date": yesterday - 132 * 10800000,
       "os": "other",
       "browser": "chrome",
       "geolocation": {
@@ -2272,7 +2269,7 @@ const mockData: any = {
       "session_id": "fd44c756-83ec-42a9-8e6c-f15f80ad9d3e",
       "name": "admin",
       "distinct_user_id": "szz4XV7B3NC",
-      "date": yesterday - 9400000 - 133 * 11520000,
+      "date": yesterday - 133 * 10800000,
       "os": "android",
       "browser": "edge",
       "geolocation": {
@@ -2289,7 +2286,7 @@ const mockData: any = {
       "session_id": "e59f5db5-d228-4996-83da-0e2f5f71b367",
       "name": "admin",
       "distinct_user_id": "mMFU_0DFlDH",
-      "date": yesterday - 9400000 - 134 * 11520000,
+      "date": yesterday - 134 * 10800000,
       "os": "linux",
       "browser": "ie",
       "geolocation": {
@@ -2306,7 +2303,7 @@ const mockData: any = {
       "session_id": "d6829da6-4ce4-4632-96b6-590272d3f80c",
       "name": "/",
       "distinct_user_id": "_67ag3j-O0",
-      "date": yesterday - 9400000 - 135 * 11520000,
+      "date": yesterday - 135 * 10800000,
       "os": "windows",
       "browser": "other",
       "geolocation": {
@@ -2323,7 +2320,7 @@ const mockData: any = {
       "session_id": "b3c579fb-2b17-4023-af1d-b56e5f0f102e",
       "name": "/",
       "distinct_user_id": "w1bhxxrmlov",
-      "date": yesterday - 9400000 - 136 * 11520000,
+      "date": yesterday - 136 * 10800000,
       "os": "linux",
       "browser": "other",
       "geolocation": {
@@ -2340,7 +2337,7 @@ const mockData: any = {
       "session_id": "4bef238e-78d5-4dbd-be38-815c079aa105",
       "name": "admin",
       "distinct_user_id": "szz4XV7B3NC",
-      "date": yesterday - 9400000 - 137 * 11520000,
+      "date": yesterday - 137 * 10800000,
       "os": "ios",
       "browser": "edge",
       "geolocation": {
@@ -2357,7 +2354,7 @@ const mockData: any = {
       "session_id": "0d21f38d-6ac9-4b99-a550-725264f9ce95",
       "name": "/",
       "distinct_user_id": "Z7DM1Q4VvW",
-      "date": yesterday - 9400000 - 138 * 11520000,
+      "date": yesterday - 138 * 10800000,
       "os": "mac",
       "browser": "ie",
       "geolocation": {
@@ -2374,7 +2371,7 @@ const mockData: any = {
       "session_id": "fe571ec1-5f5f-4954-a68f-21c8ca313eab",
       "name": "login",
       "distinct_user_id": "U7XwB1I7KX",
-      "date": yesterday - 9400000 - 139 * 11520000,
+      "date": yesterday - 139 * 10800000,
       "os": "android",
       "browser": "other",
       "geolocation": {
@@ -2391,7 +2388,7 @@ const mockData: any = {
       "session_id": "54369af7-5c1e-4c34-8c2e-812bf6990ba1",
       "name": "login",
       "distinct_user_id": "SzWMF_JrHbo",
-      "date": yesterday - 9400000 - 140 * 11520000,
+      "date": yesterday - 140 * 10800000,
       "os": "windows",
       "browser": "other",
       "geolocation": {
@@ -2408,7 +2405,7 @@ const mockData: any = {
       "session_id": "cd3c81b1-7a6c-458c-9860-2e029ca2b2e1",
       "name": "signup",
       "distinct_user_id": "Xm38M-LdL5I",
-      "date": yesterday - 9400000 - 141 * 11520000,
+      "date": yesterday - 141 * 10800000,
       "os": "android",
       "browser": "chrome",
       "geolocation": {
@@ -2425,7 +2422,7 @@ const mockData: any = {
       "session_id": "6c5e2e26-13a4-4b9d-bd8e-47ab60c19469",
       "name": "signup",
       "distinct_user_id": "U7XwB1I7KX",
-      "date": yesterday - 9400000 - 142 * 11520000,
+      "date": yesterday - 142 * 10800000,
       "os": "other",
       "browser": "edge",
       "geolocation": {
@@ -2442,7 +2439,7 @@ const mockData: any = {
       "session_id": "6d8afd58-eb80-4e6d-b52f-5c93419e0c00",
       "name": "/",
       "distinct_user_id": "Xm38M-LdL5I",
-      "date": yesterday - 9400000 - 143 * 11520000,
+      "date": yesterday - 143 * 10800000,
       "os": "windows",
       "browser": "firefox",
       "geolocation": {
@@ -2459,7 +2456,7 @@ const mockData: any = {
       "session_id": "67a6d846-acc7-4fa1-a068-e5f0367591a9",
       "name": "/",
       "distinct_user_id": "iZWdP-lqiiV",
-      "date": yesterday - 9400000 - 144 * 11520000,
+      "date": yesterday - 144 * 10800000,
       "os": "ios",
       "browser": "safari",
       "geolocation": {
@@ -2476,7 +2473,7 @@ const mockData: any = {
       "session_id": "258af996-5226-4887-b334-a8ec664e49fb",
       "name": "admin",
       "distinct_user_id": "VyukXD26CY",
-      "date": yesterday - 9400000 - 145 * 11520000,
+      "date": yesterday - 145 * 10800000,
       "os": "mac",
       "browser": "chrome",
       "geolocation": {
@@ -2493,7 +2490,7 @@ const mockData: any = {
       "session_id": "c1a7ebf3-5675-4740-84bb-1ccd46288420",
       "name": "login",
       "distinct_user_id": "K9DlkVNBBL",
-      "date": yesterday - 9400000 - 146 * 11520000,
+      "date": yesterday - 146 * 10800000,
       "os": "linux",
       "browser": "chrome",
       "geolocation": {
@@ -2510,7 +2507,7 @@ const mockData: any = {
       "session_id": "c815fad2-3ec4-40cd-bed8-38747e4cce79",
       "name": "/",
       "distinct_user_id": "96h5E0qk7QT",
-      "date": yesterday - 9400000 - 147 * 11520000,
+      "date": yesterday - 147 * 10800000,
       "os": "mac",
       "browser": "ie",
       "geolocation": {
@@ -2527,7 +2524,7 @@ const mockData: any = {
       "session_id": "dff8490f-cb18-47cf-8831-52f5159a8ebf",
       "name": "admin",
       "distinct_user_id": "QHxbjArp6b9",
-      "date": yesterday - 9400000 - 148 * 11520000,
+      "date": yesterday - 148 * 10800000,
       "os": "mac",
       "browser": "firefox",
       "geolocation": {
@@ -2544,7 +2541,7 @@ const mockData: any = {
       "session_id": "8bfb21d7-17cc-45a1-ac6a-c3ddfcc215a3",
       "name": "/",
       "distinct_user_id": "bvPpfqz_kK",
-      "date": yesterday - 9400000 - 149 * 11520000,
+      "date": yesterday - 149 * 10800000,
       "os": "android",
       "browser": "safari",
       "geolocation": {
@@ -2561,7 +2558,7 @@ const mockData: any = {
       "session_id": "8739b7a4-92d1-46e8-9639-a47ef8386554",
       "name": "login",
       "distinct_user_id": "x2iFGML6XfG",
-      "date": yesterday - 9400000 - 150 * 11520000,
+      "date": yesterday - 150 * 10800000,
       "os": "android",
       "browser": "edge",
       "geolocation": {
@@ -2578,7 +2575,7 @@ const mockData: any = {
       "session_id": "5fe44f97-9e04-40b7-93b7-35a9ac6e343d",
       "name": "admin",
       "distinct_user_id": "vDYkdlECx1",
-      "date": yesterday - 9400000 - 151 * 11520000,
+      "date": yesterday - 151 * 10800000,
       "os": "android",
       "browser": "other",
       "geolocation": {
@@ -2595,7 +2592,7 @@ const mockData: any = {
       "session_id": "fedfda3d-dd90-4703-8928-3de504ea73d0",
       "name": "/",
       "distinct_user_id": "U7XwB1I7KX",
-      "date": yesterday - 9400000 - 152 * 11520000,
+      "date": yesterday - 152 * 10800000,
       "os": "ios",
       "browser": "edge",
       "geolocation": {
@@ -2612,7 +2609,7 @@ const mockData: any = {
       "session_id": "66dcbe76-e8b4-4767-bf00-ecbb424edb78",
       "name": "signup",
       "distinct_user_id": "ezcz9kkdXbG",
-      "date": yesterday - 9400000 - 153 * 11520000,
+      "date": yesterday - 153 * 10800000,
       "os": "linux",
       "browser": "other",
       "geolocation": {
@@ -2629,7 +2626,7 @@ const mockData: any = {
       "session_id": "31772aea-96a3-4438-a7be-b20d960d12a3",
       "name": "admin",
       "distinct_user_id": "HGX_CB3jSze",
-      "date": yesterday - 9400000 - 154 * 11520000,
+      "date": yesterday - 154 * 10800000,
       "os": "android",
       "browser": "ie",
       "geolocation": {
@@ -2646,7 +2643,7 @@ const mockData: any = {
       "session_id": "f5506c37-d6b1-448a-84d1-bd19137508af",
       "name": "admin",
       "distinct_user_id": "RjCuj9IIwI",
-      "date": yesterday - 9400000 - 155 * 11520000,
+      "date": yesterday - 155 * 10800000,
       "os": "other",
       "browser": "other",
       "geolocation": {
@@ -2663,7 +2660,7 @@ const mockData: any = {
       "session_id": "906dcd08-bff0-48b2-b932-e10e0d2c3128",
       "name": "/",
       "distinct_user_id": "CKbac_Y4hz",
-      "date": yesterday - 9400000 - 156 * 11520000,
+      "date": yesterday - 156 * 10800000,
       "os": "mac",
       "browser": "firefox",
       "geolocation": {
@@ -2680,7 +2677,7 @@ const mockData: any = {
       "session_id": "85aa001c-2a0c-44ce-8fe7-97aed9b704de",
       "name": "login",
       "distinct_user_id": "AR1STupilg",
-      "date": yesterday - 9400000 - 157 * 11520000,
+      "date": yesterday - 157 * 10800000,
       "os": "linux",
       "browser": "edge",
       "geolocation": {
@@ -2697,7 +2694,7 @@ const mockData: any = {
       "session_id": "776ba7e5-a370-45be-9ef0-a989b46d3602",
       "name": "login",
       "distinct_user_id": "Oh7gDjSdEr4",
-      "date": yesterday - 9400000 - 158 * 11520000,
+      "date": yesterday - 158 * 10800000,
       "os": "other",
       "browser": "firefox",
       "geolocation": {
@@ -2714,7 +2711,7 @@ const mockData: any = {
       "session_id": "c582b04e-2d25-42e4-b3cf-dfad26f6044e",
       "name": "admin",
       "distinct_user_id": "sEXmsbIDc2m",
-      "date": yesterday - 9400000 - 159 * 11520000,
+      "date": yesterday - 159 * 10800000,
       "os": "ios",
       "browser": "ie",
       "geolocation": {
@@ -2731,7 +2728,7 @@ const mockData: any = {
       "session_id": "03e3133d-3d7b-4e06-b43f-b0a4dced2197",
       "name": "/",
       "distinct_user_id": "5euQUL-5Ys1",
-      "date": yesterday - 9400000 - 160 * 11520000,
+      "date": yesterday - 160 * 10800000,
       "os": "other",
       "browser": "chrome",
       "geolocation": {
@@ -2748,7 +2745,7 @@ const mockData: any = {
       "session_id": "b6d75b6b-6e8c-4984-a2ed-633a45656a07",
       "name": "/",
       "distinct_user_id": "yXsfx1JDAEB",
-      "date": yesterday - 9400000 - 161 * 11520000,
+      "date": yesterday - 161 * 10800000,
       "os": "android",
       "browser": "chrome",
       "geolocation": {
@@ -2765,7 +2762,7 @@ const mockData: any = {
       "session_id": "bdc375c2-45e2-4a8a-8399-433d29657d0b",
       "name": "admin",
       "distinct_user_id": "szz4XV7B3NC",
-      "date": yesterday - 9400000 - 162 * 11520000,
+      "date": yesterday - 162 * 10800000,
       "os": "windows",
       "browser": "other",
       "geolocation": {
@@ -2782,7 +2779,7 @@ const mockData: any = {
       "session_id": "c31948a3-f0eb-487e-9a9d-36251a6d3881",
       "name": "signup",
       "distinct_user_id": "x2iFGML6XfG",
-      "date": yesterday - 9400000 - 163 * 11520000,
+      "date": yesterday - 163 * 10800000,
       "os": "android",
       "browser": "safari",
       "geolocation": {
@@ -2799,7 +2796,7 @@ const mockData: any = {
       "session_id": "6633a1fa-7c23-4ea1-8121-f9f3245f89a6",
       "name": "/",
       "distinct_user_id": "VyukXD26CY",
-      "date": yesterday - 9400000 - 164 * 11520000,
+      "date": yesterday - 164 * 10800000,
       "os": "android",
       "browser": "chrome",
       "geolocation": {
@@ -2816,7 +2813,7 @@ const mockData: any = {
       "session_id": "594f8000-ed7f-4ba3-a8e9-54414e8339a1",
       "name": "login",
       "distinct_user_id": "cPPpoy6NQb-",
-      "date": yesterday - 9400000 - 165 * 11520000,
+      "date": yesterday - 165 * 10800000,
       "os": "other",
       "browser": "chrome",
       "geolocation": {
@@ -2833,7 +2830,7 @@ const mockData: any = {
       "session_id": "9375cc7b-9402-48ae-a6f8-8d0bce42eda5",
       "name": "admin",
       "distinct_user_id": "IKyM5jbKn3L",
-      "date": yesterday - 9400000 - 166 * 11520000,
+      "date": yesterday - 166 * 10800000,
       "os": "ios",
       "browser": "firefox",
       "geolocation": {
@@ -2850,7 +2847,7 @@ const mockData: any = {
       "session_id": "8dba9641-1de5-4a2c-890b-0f6595b190b9",
       "name": "/",
       "distinct_user_id": "LKqwj-Dl1L0",
-      "date": yesterday - 9400000 - 167 * 11520000,
+      "date": yesterday - 167 * 10800000,
       "os": "other",
       "browser": "ie",
       "geolocation": {
@@ -2867,7 +2864,7 @@ const mockData: any = {
       "session_id": "97bf9c88-3069-49ba-9d4c-03ac6ca0faf4",
       "name": "admin",
       "distinct_user_id": "Xm38M-LdL5I",
-      "date": yesterday - 9400000 - 168 * 11520000,
+      "date": yesterday - 168 * 10800000,
       "os": "other",
       "browser": "edge",
       "geolocation": {
@@ -2884,7 +2881,7 @@ const mockData: any = {
       "session_id": "bdc27791-b02c-444c-9305-c2559df133a3",
       "name": "/",
       "distinct_user_id": "Z7DM1Q4VvW",
-      "date": yesterday - 9400000 - 169 * 11520000,
+      "date": yesterday - 169 * 10800000,
       "os": "ios",
       "browser": "chrome",
       "geolocation": {
@@ -2901,7 +2898,7 @@ const mockData: any = {
       "session_id": "6c829d14-c4b8-4573-ade1-828409474ce1",
       "name": "signup",
       "distinct_user_id": "cPPpoy6NQb-",
-      "date": yesterday - 9400000 - 170 * 11520000,
+      "date": yesterday - 170 * 10800000,
       "os": "ios",
       "browser": "other",
       "geolocation": {
@@ -2918,7 +2915,7 @@ const mockData: any = {
       "session_id": "fc9307e4-8e46-4708-8b50-3197c88b7060",
       "name": "signup",
       "distinct_user_id": "sEXmsbIDc2m",
-      "date": yesterday - 9400000 - 171 * 11520000,
+      "date": yesterday - 171 * 10800000,
       "os": "mac",
       "browser": "ie",
       "geolocation": {
@@ -2935,7 +2932,7 @@ const mockData: any = {
       "session_id": "ab20f8da-c447-48be-92fa-d1246dd924f7",
       "name": "login",
       "distinct_user_id": "96h5E0qk7QT",
-      "date": yesterday - 9400000 - 172 * 11520000,
+      "date": yesterday - 172 * 10800000,
       "os": "windows",
       "browser": "safari",
       "geolocation": {
@@ -2952,7 +2949,7 @@ const mockData: any = {
       "session_id": "8f4f5d37-9980-4b2a-8c74-1062d481e69a",
       "name": "signup",
       "distinct_user_id": "Xm38M-LdL5I",
-      "date": yesterday - 9400000 - 173 * 11520000,
+      "date": yesterday - 173 * 10800000,
       "os": "mac",
       "browser": "chrome",
       "geolocation": {
@@ -2969,7 +2966,7 @@ const mockData: any = {
       "session_id": "f4ef085e-43e8-4051-a568-fc8df0ac74ad",
       "name": "signup",
       "distinct_user_id": "KmaQHEeqfq",
-      "date": yesterday - 9400000 - 174 * 11520000,
+      "date": yesterday - 174 * 10800000,
       "os": "android",
       "browser": "edge",
       "geolocation": {
@@ -2986,7 +2983,7 @@ const mockData: any = {
       "session_id": "21182626-0c25-43e9-a0f3-065b552cdd04",
       "name": "/",
       "distinct_user_id": "mMFU_0DFlDH",
-      "date": yesterday - 9400000 - 175 * 11520000,
+      "date": yesterday - 175 * 10800000,
       "os": "android",
       "browser": "other",
       "geolocation": {
@@ -3003,7 +3000,7 @@ const mockData: any = {
       "session_id": "96c4ef47-b538-49aa-a227-5f67dc55b40b",
       "name": "signup",
       "distinct_user_id": "KS3HTkOZoze",
-      "date": yesterday - 9400000 - 176 * 11520000,
+      "date": yesterday - 176 * 10800000,
       "os": "android",
       "browser": "edge",
       "geolocation": {
@@ -3020,7 +3017,7 @@ const mockData: any = {
       "session_id": "f33a7bb6-4805-429d-a6cc-6ffb64a1e02a",
       "name": "/",
       "distinct_user_id": "KS3HTkOZoze",
-      "date": yesterday - 9400000 - 177 * 11520000,
+      "date": yesterday - 177 * 10800000,
       "os": "windows",
       "browser": "ie",
       "geolocation": {
@@ -3037,7 +3034,7 @@ const mockData: any = {
       "session_id": "b3420cd4-ffb5-48bc-9280-bb3da151286b",
       "name": "login",
       "distinct_user_id": "8nuqlmor5m",
-      "date": yesterday - 9400000 - 178 * 11520000,
+      "date": yesterday - 178 * 10800000,
       "os": "linux",
       "browser": "safari",
       "geolocation": {
@@ -3054,7 +3051,7 @@ const mockData: any = {
       "session_id": "bf3a16fc-bd6f-4be9-ba7e-0f1096b21233",
       "name": "signup",
       "distinct_user_id": "-rM3zUf9-hj",
-      "date": yesterday - 9400000 - 179 * 11520000,
+      "date": yesterday - 179 * 10800000,
       "os": "android",
       "browser": "other",
       "geolocation": {
@@ -3071,7 +3068,7 @@ const mockData: any = {
       "session_id": "96c37524-3308-478d-b783-a9b05d2ebb1f",
       "name": "signup",
       "distinct_user_id": "QzHXRIXnBph",
-      "date": yesterday - 9400000 - 180 * 11520000,
+      "date": yesterday - 180 * 10800000,
       "os": "mac",
       "browser": "edge",
       "geolocation": {
@@ -3088,7 +3085,7 @@ const mockData: any = {
       "session_id": "5211d64c-929d-4373-83c0-0e6a37e311de",
       "name": "login",
       "distinct_user_id": "DAamyhiWtx",
-      "date": yesterday - 9400000 - 181 * 11520000,
+      "date": yesterday - 181 * 10800000,
       "os": "mac",
       "browser": "safari",
       "geolocation": {
@@ -3105,7 +3102,7 @@ const mockData: any = {
       "session_id": "df377689-1b69-41df-8720-1bbafee77210",
       "name": "signup",
       "distinct_user_id": "_67ag3j-O0",
-      "date": yesterday - 9400000 - 182 * 11520000,
+      "date": yesterday - 182 * 10800000,
       "os": "android",
       "browser": "edge",
       "geolocation": {
@@ -3122,7 +3119,7 @@ const mockData: any = {
       "session_id": "c8b83922-d3fb-4424-ac3d-fd31d9828c6a",
       "name": "signup",
       "distinct_user_id": "nxdMe1TBz4j",
-      "date": yesterday - 9400000 - 183 * 11520000,
+      "date": yesterday - 183 * 10800000,
       "os": "mac",
       "browser": "firefox",
       "geolocation": {
@@ -3139,7 +3136,7 @@ const mockData: any = {
       "session_id": "1315d919-c1b0-48a6-9c70-68777527f7b6",
       "name": "admin",
       "distinct_user_id": "5nws4oxZq6",
-      "date": yesterday - 9400000 - 184 * 11520000,
+      "date": yesterday - 184 * 10800000,
       "os": "android",
       "browser": "edge",
       "geolocation": {
@@ -3156,7 +3153,7 @@ const mockData: any = {
       "session_id": "acb5c0e1-dc3b-4762-954c-801f9f7d0a23",
       "name": "admin",
       "distinct_user_id": "yXsfx1JDAEB",
-      "date": yesterday - 9400000 - 185 * 11520000,
+      "date": yesterday - 185 * 10800000,
       "os": "mac",
       "browser": "ie",
       "geolocation": {
@@ -3173,7 +3170,7 @@ const mockData: any = {
       "session_id": "a59fa99c-1dba-46ea-82df-2c7d1bba8a70",
       "name": "/",
       "distinct_user_id": "Y82oCwGWsWL",
-      "date": yesterday - 9400000 - 186 * 11520000,
+      "date": yesterday - 186 * 10800000,
       "os": "windows",
       "browser": "safari",
       "geolocation": {
@@ -3190,7 +3187,7 @@ const mockData: any = {
       "session_id": "965ff998-6f0a-4125-b11d-a8a5843e726c",
       "name": "signup",
       "distinct_user_id": "utuRVj4LOdB",
-      "date": yesterday - 9400000 - 187 * 11520000,
+      "date": yesterday - 187 * 10800000,
       "os": "windows",
       "browser": "firefox",
       "geolocation": {
@@ -3207,7 +3204,7 @@ const mockData: any = {
       "session_id": "e19f35b7-f8c5-4348-86c3-1d3bcda5d2d6",
       "name": "/",
       "distinct_user_id": "VHrFyv1kytH",
-      "date": yesterday - 9400000 - 188 * 11520000,
+      "date": yesterday - 188 * 10800000,
       "os": "android",
       "browser": "chrome",
       "geolocation": {
@@ -3224,7 +3221,7 @@ const mockData: any = {
       "session_id": "104f6ced-6e54-439f-8fb7-bccc18c83fff",
       "name": "login",
       "distinct_user_id": "K9DlkVNBBL",
-      "date": yesterday - 9400000 - 189 * 11520000,
+      "date": yesterday - 189 * 10800000,
       "os": "android",
       "browser": "ie",
       "geolocation": {
@@ -3241,7 +3238,7 @@ const mockData: any = {
       "session_id": "0a81559b-f76f-4104-a04c-793ad1d7fe15",
       "name": "/",
       "distinct_user_id": "eqR0ppLYH",
-      "date": yesterday - 9400000 - 190 * 11520000,
+      "date": yesterday - 190 * 10800000,
       "os": "linux",
       "browser": "edge",
       "geolocation": {
@@ -3258,7 +3255,7 @@ const mockData: any = {
       "session_id": "ece8c1a9-e907-45c3-bb8c-15c1dc5864a3",
       "name": "admin",
       "distinct_user_id": "IKyM5jbKn3L",
-      "date": yesterday - 9400000 - 191 * 11520000,
+      "date": yesterday - 191 * 10800000,
       "os": "other",
       "browser": "chrome",
       "geolocation": {
@@ -3275,7 +3272,7 @@ const mockData: any = {
       "session_id": "fa484c53-20b0-4d0f-9057-9a38bfcf77a2",
       "name": "/",
       "distinct_user_id": "ezcz9kkdXbG",
-      "date": yesterday - 9400000 - 192 * 11520000,
+      "date": yesterday - 192 * 10800000,
       "os": "ios",
       "browser": "chrome",
       "geolocation": {
@@ -3292,7 +3289,7 @@ const mockData: any = {
       "session_id": "d05c684c-63fc-494c-8500-d53229ac2a40",
       "name": "admin",
       "distinct_user_id": "DAamyhiWtx",
-      "date": yesterday - 9400000 - 193 * 11520000,
+      "date": yesterday - 193 * 10800000,
       "os": "ios",
       "browser": "edge",
       "geolocation": {
@@ -3309,7 +3306,7 @@ const mockData: any = {
       "session_id": "50fdf861-b3c1-48ba-8f21-c63a1dc6ae45",
       "name": "/",
       "distinct_user_id": "Y82oCwGWsWL",
-      "date": yesterday - 9400000 - 194 * 11520000,
+      "date": yesterday - 194 * 10800000,
       "os": "android",
       "browser": "edge",
       "geolocation": {
@@ -3326,7 +3323,7 @@ const mockData: any = {
       "session_id": "a4231204-29e2-4d3a-8c95-52dcc3175868",
       "name": "login",
       "distinct_user_id": "Xm38M-LdL5I",
-      "date": yesterday - 9400000 - 195 * 11520000,
+      "date": yesterday - 195 * 10800000,
       "os": "ios",
       "browser": "chrome",
       "geolocation": {
@@ -3343,7 +3340,7 @@ const mockData: any = {
       "session_id": "5972468b-f1b3-4b0d-81d5-3ed185323a91",
       "name": "admin",
       "distinct_user_id": "RjCuj9IIwI",
-      "date": yesterday - 9400000 - 196 * 11520000,
+      "date": yesterday - 196 * 10800000,
       "os": "android",
       "browser": "firefox",
       "geolocation": {
@@ -3360,7 +3357,7 @@ const mockData: any = {
       "session_id": "f36bc55d-88e7-4f2b-ac0f-bfe581d69153",
       "name": "admin",
       "distinct_user_id": "SzWMF_JrHbo",
-      "date": yesterday - 9400000 - 197 * 11520000,
+      "date": yesterday - 197 * 10800000,
       "os": "other",
       "browser": "edge",
       "geolocation": {
@@ -3377,7 +3374,7 @@ const mockData: any = {
       "session_id": "9e26bd1f-934b-40b2-a56c-661f7f6c9c33",
       "name": "login",
       "distinct_user_id": "RjCuj9IIwI",
-      "date": yesterday - 9400000 - 198 * 11520000,
+      "date": yesterday - 198 * 10800000,
       "os": "ios",
       "browser": "ie",
       "geolocation": {
@@ -3394,7 +3391,7 @@ const mockData: any = {
       "session_id": "a6cde6e5-5211-4ddf-9525-6694ddfca41c",
       "name": "admin",
       "distinct_user_id": "K9DlkVNBBL",
-      "date": yesterday - 9400000 - 199 * 11520000,
+      "date": yesterday - 199 * 10800000,
       "os": "windows",
       "browser": "other",
       "geolocation": {
@@ -3411,7 +3408,7 @@ const mockData: any = {
       "session_id": "b433f46d-0d72-44ae-abd5-39f80f4cc28b",
       "name": "/",
       "distinct_user_id": "Z7DM1Q4VvW",
-      "date": yesterday - 9400000 - 200 * 11520000,
+      "date": yesterday - 200 * 10800000,
       "os": "other",
       "browser": "safari",
       "geolocation": {
@@ -3428,7 +3425,7 @@ const mockData: any = {
       "session_id": "2c309490-e97f-4c00-afdd-7d77c0e509a8",
       "name": "/",
       "distinct_user_id": "eqR0ppLYH",
-      "date": yesterday - 9400000 - 201 * 11520000,
+      "date": yesterday - 201 * 10800000,
       "os": "windows",
       "browser": "firefox",
       "geolocation": {
@@ -3445,7 +3442,7 @@ const mockData: any = {
       "session_id": "c508e560-730c-4ea9-afd1-3ee67f45f178",
       "name": "admin",
       "distinct_user_id": "96h5E0qk7QT",
-      "date": yesterday - 9400000 - 202 * 11520000,
+      "date": yesterday - 202 * 10800000,
       "os": "windows",
       "browser": "ie",
       "geolocation": {
@@ -3462,7 +3459,7 @@ const mockData: any = {
       "session_id": "5dc3cd75-0864-486c-b1b7-1a0f780a42c7",
       "name": "signup",
       "distinct_user_id": "iZWdP-lqiiV",
-      "date": yesterday - 9400000 - 203 * 11520000,
+      "date": yesterday - 203 * 10800000,
       "os": "ios",
       "browser": "edge",
       "geolocation": {
@@ -3479,7 +3476,7 @@ const mockData: any = {
       "session_id": "b94e3547-ed3f-4270-8d15-332d62251b61",
       "name": "admin",
       "distinct_user_id": "iZWdP-lqiiV",
-      "date": yesterday - 9400000 - 204 * 11520000,
+      "date": yesterday - 204 * 10800000,
       "os": "linux",
       "browser": "ie",
       "geolocation": {
@@ -3496,7 +3493,7 @@ const mockData: any = {
       "session_id": "9252247d-5cbc-4a9b-9c12-86a4ca3d75b0",
       "name": "admin",
       "distinct_user_id": "HGX_CB3jSze",
-      "date": yesterday - 9400000 - 205 * 11520000,
+      "date": yesterday - 205 * 10800000,
       "os": "mac",
       "browser": "edge",
       "geolocation": {
@@ -3513,7 +3510,7 @@ const mockData: any = {
       "session_id": "f68f1981-f236-4ec9-bc99-796cdccfec9a",
       "name": "login",
       "distinct_user_id": "Xm38M-LdL5I",
-      "date": yesterday - 9400000 - 206 * 11520000,
+      "date": yesterday - 206 * 10800000,
       "os": "android",
       "browser": "chrome",
       "geolocation": {
@@ -3530,7 +3527,7 @@ const mockData: any = {
       "session_id": "9cb1d610-98b2-41aa-86f3-f97122251d28",
       "name": "signup",
       "distinct_user_id": "AR1STupilg",
-      "date": yesterday - 9400000 - 207 * 11520000,
+      "date": yesterday - 207 * 10800000,
       "os": "other",
       "browser": "other",
       "geolocation": {
@@ -3547,7 +3544,7 @@ const mockData: any = {
       "session_id": "9ef53d68-a913-40ba-a924-321ce896f453",
       "name": "login",
       "distinct_user_id": "MbO7TjEMuKg",
-      "date": yesterday - 9400000 - 208 * 11520000,
+      "date": yesterday - 208 * 10800000,
       "os": "mac",
       "browser": "safari",
       "geolocation": {
@@ -3564,7 +3561,7 @@ const mockData: any = {
       "session_id": "e10aa37e-9d3b-4607-b7cf-b0f9a1babd2c",
       "name": "/",
       "distinct_user_id": "cPPpoy6NQb-",
-      "date": yesterday - 9400000 - 209 * 11520000,
+      "date": yesterday - 209 * 10800000,
       "os": "android",
       "browser": "safari",
       "geolocation": {
@@ -3581,7 +3578,7 @@ const mockData: any = {
       "session_id": "6bbdcbe9-5796-4e8a-b064-a4a95ff3790c",
       "name": "signup",
       "distinct_user_id": "B7XAnHMMANb",
-      "date": yesterday - 9400000 - 210 * 11520000,
+      "date": yesterday - 210 * 10800000,
       "os": "windows",
       "browser": "chrome",
       "geolocation": {
@@ -3598,7 +3595,7 @@ const mockData: any = {
       "session_id": "e150fdfe-6718-463c-b0c8-d03382ddb983",
       "name": "admin",
       "distinct_user_id": "mMFU_0DFlDH",
-      "date": yesterday - 9400000 - 211 * 11520000,
+      "date": yesterday - 211 * 10800000,
       "os": "linux",
       "browser": "chrome",
       "geolocation": {
@@ -3615,7 +3612,7 @@ const mockData: any = {
       "session_id": "9ea9533d-404e-46ab-a108-54d3ef6c4075",
       "name": "/",
       "distinct_user_id": "nxdMe1TBz4j",
-      "date": yesterday - 9400000 - 212 * 11520000,
+      "date": yesterday - 212 * 10800000,
       "os": "android",
       "browser": "edge",
       "geolocation": {
@@ -3632,7 +3629,7 @@ const mockData: any = {
       "session_id": "673693e1-d6fc-402f-b436-4a6e3ecad944",
       "name": "login",
       "distinct_user_id": "iZWdP-lqiiV",
-      "date": yesterday - 9400000 - 213 * 11520000,
+      "date": yesterday - 213 * 10800000,
       "os": "linux",
       "browser": "firefox",
       "geolocation": {
@@ -3649,7 +3646,7 @@ const mockData: any = {
       "session_id": "4af72915-345b-47e0-84b9-390fb9be6beb",
       "name": "admin",
       "distinct_user_id": "iZWdP-lqiiV",
-      "date": yesterday - 9400000 - 214 * 11520000,
+      "date": yesterday - 214 * 10800000,
       "os": "other",
       "browser": "other",
       "geolocation": {
@@ -3666,7 +3663,7 @@ const mockData: any = {
       "session_id": "7b3f5a8b-83af-418d-87d1-e0181d1452a1",
       "name": "login",
       "distinct_user_id": "LKqwj-Dl1L0",
-      "date": yesterday - 9400000 - 215 * 11520000,
+      "date": yesterday - 215 * 10800000,
       "os": "other",
       "browser": "other",
       "geolocation": {
@@ -3683,7 +3680,7 @@ const mockData: any = {
       "session_id": "a9cb4ebe-d841-495a-90b8-de1f5ce2212e",
       "name": "login",
       "distinct_user_id": "iZWdP-lqiiV",
-      "date": yesterday - 9400000 - 216 * 11520000,
+      "date": yesterday - 216 * 10800000,
       "os": "ios",
       "browser": "edge",
       "geolocation": {
@@ -3700,7 +3697,7 @@ const mockData: any = {
       "session_id": "319fd0b9-4006-4396-b435-596e149b1192",
       "name": "signup",
       "distinct_user_id": "sEXmsbIDc2m",
-      "date": yesterday - 9400000 - 217 * 11520000,
+      "date": yesterday - 217 * 10800000,
       "os": "mac",
       "browser": "firefox",
       "geolocation": {
@@ -3717,7 +3714,7 @@ const mockData: any = {
       "session_id": "f10359e6-2789-4258-a057-2eb2cdea5e44",
       "name": "signup",
       "distinct_user_id": "QHxbjArp6b9",
-      "date": yesterday - 9400000 - 218 * 11520000,
+      "date": yesterday - 218 * 10800000,
       "os": "ios",
       "browser": "safari",
       "geolocation": {
@@ -3734,7 +3731,7 @@ const mockData: any = {
       "session_id": "26b72e56-619f-4f97-be57-60da964da0c2",
       "name": "login",
       "distinct_user_id": "_67ag3j-O0",
-      "date": yesterday - 9400000 - 219 * 11520000,
+      "date": yesterday - 219 * 10800000,
       "os": "android",
       "browser": "firefox",
       "geolocation": {
@@ -3751,7 +3748,7 @@ const mockData: any = {
       "session_id": "a556002d-003b-4db8-a514-077ad74f3e9e",
       "name": "admin",
       "distinct_user_id": "x2iFGML6XfG",
-      "date": yesterday - 9400000 - 220 * 11520000,
+      "date": yesterday - 220 * 10800000,
       "os": "mac",
       "browser": "chrome",
       "geolocation": {
@@ -3768,7 +3765,7 @@ const mockData: any = {
       "session_id": "f3ee070d-8f40-4d67-a931-bc8c8e16fbee",
       "name": "signup",
       "distinct_user_id": "mMFU_0DFlDH",
-      "date": yesterday - 9400000 - 221 * 11520000,
+      "date": yesterday - 221 * 10800000,
       "os": "ios",
       "browser": "other",
       "geolocation": {
@@ -3785,7 +3782,7 @@ const mockData: any = {
       "session_id": "c6b441ff-cc0d-4950-a855-1e3440246609",
       "name": "signup",
       "distinct_user_id": "QHxbjArp6b9",
-      "date": yesterday - 9400000 - 222 * 11520000,
+      "date": yesterday - 222 * 10800000,
       "os": "android",
       "browser": "chrome",
       "geolocation": {
@@ -3802,7 +3799,7 @@ const mockData: any = {
       "session_id": "005ea861-3f9e-45b9-b57c-5f4d36132e6d",
       "name": "/",
       "distinct_user_id": "6qTRoZudMPj",
-      "date": yesterday - 9400000 - 223 * 11520000,
+      "date": yesterday - 223 * 10800000,
       "os": "android",
       "browser": "chrome",
       "geolocation": {
@@ -3819,7 +3816,7 @@ const mockData: any = {
       "session_id": "42c2b900-4757-46fc-a25e-f5c77483f388",
       "name": "/",
       "distinct_user_id": "96h5E0qk7QT",
-      "date": yesterday - 9400000 - 224 * 11520000,
+      "date": yesterday - 224 * 10800000,
       "os": "linux",
       "browser": "firefox",
       "geolocation": {
@@ -3836,7 +3833,7 @@ const mockData: any = {
       "session_id": "5be8ef22-6e67-4517-8a28-7ca541ce2ddc",
       "name": "/",
       "distinct_user_id": "96h5E0qk7QT",
-      "date": yesterday - 9400000 - 225 * 11520000,
+      "date": yesterday - 225 * 10800000,
       "os": "mac",
       "browser": "edge",
       "geolocation": {
@@ -3853,7 +3850,7 @@ const mockData: any = {
       "session_id": "80d2027c-6b96-4c17-8461-5d2929752ee2",
       "name": "admin",
       "distinct_user_id": "MbO7TjEMuKg",
-      "date": yesterday - 9400000 - 226 * 11520000,
+      "date": yesterday - 226 * 10800000,
       "os": "ios",
       "browser": "chrome",
       "geolocation": {
@@ -3870,7 +3867,7 @@ const mockData: any = {
       "session_id": "6cc26d62-48f8-46d5-a4f8-8ddd76153541",
       "name": "login",
       "distinct_user_id": "LKqwj-Dl1L0",
-      "date": yesterday - 9400000 - 227 * 11520000,
+      "date": yesterday - 227 * 10800000,
       "os": "android",
       "browser": "chrome",
       "geolocation": {
@@ -3887,7 +3884,7 @@ const mockData: any = {
       "session_id": "8f4a5c88-b2af-4142-ad1f-3052aae09cc1",
       "name": "admin",
       "distinct_user_id": "QHxbjArp6b9",
-      "date": yesterday - 9400000 - 228 * 11520000,
+      "date": yesterday - 228 * 10800000,
       "os": "other",
       "browser": "chrome",
       "geolocation": {
@@ -3904,7 +3901,7 @@ const mockData: any = {
       "session_id": "2617a058-063b-4b25-91c0-604c745c98d2",
       "name": "signup",
       "distinct_user_id": "utuRVj4LOdB",
-      "date": yesterday - 9400000 - 229 * 11520000,
+      "date": yesterday - 229 * 10800000,
       "os": "linux",
       "browser": "other",
       "geolocation": {
@@ -3921,7 +3918,7 @@ const mockData: any = {
       "session_id": "0d69be43-1847-41a5-9e8c-7c3078e8fba3",
       "name": "/",
       "distinct_user_id": "96h5E0qk7QT",
-      "date": yesterday - 9400000 - 230 * 11520000,
+      "date": yesterday - 230 * 10800000,
       "os": "ios",
       "browser": "safari",
       "geolocation": {
@@ -3938,7 +3935,7 @@ const mockData: any = {
       "session_id": "426535f1-71b1-417c-bc81-46e0d28571bc",
       "name": "signup",
       "distinct_user_id": "yXsfx1JDAEB",
-      "date": yesterday - 9400000 - 231 * 11520000,
+      "date": yesterday - 231 * 10800000,
       "os": "windows",
       "browser": "chrome",
       "geolocation": {
@@ -3955,7 +3952,7 @@ const mockData: any = {
       "session_id": "58ba5460-4e53-4f89-b877-2e2148df0bbd",
       "name": "/",
       "distinct_user_id": "Oh7gDjSdEr4",
-      "date": yesterday - 9400000 - 232 * 11520000,
+      "date": yesterday - 232 * 10800000,
       "os": "android",
       "browser": "edge",
       "geolocation": {
@@ -3972,7 +3969,7 @@ const mockData: any = {
       "session_id": "80bac872-6cd0-4374-9c81-427c871afcbc",
       "name": "signup",
       "distinct_user_id": "a4wAAAWneP6",
-      "date": yesterday - 9400000 - 233 * 11520000,
+      "date": yesterday - 233 * 10800000,
       "os": "other",
       "browser": "firefox",
       "geolocation": {
@@ -3989,7 +3986,7 @@ const mockData: any = {
       "session_id": "500dee28-0646-4eb2-a5db-11de99adbc75",
       "name": "admin",
       "distinct_user_id": "w1bhxxrmlov",
-      "date": yesterday - 9400000 - 234 * 11520000,
+      "date": yesterday - 234 * 10800000,
       "os": "android",
       "browser": "ie",
       "geolocation": {
@@ -4006,7 +4003,7 @@ const mockData: any = {
       "session_id": "0425fc2b-9791-40b6-804d-0325a96cafe9",
       "name": "login",
       "distinct_user_id": "K9DlkVNBBL",
-      "date": yesterday - 9400000 - 235 * 11520000,
+      "date": yesterday - 235 * 10800000,
       "os": "linux",
       "browser": "firefox",
       "geolocation": {
@@ -4023,7 +4020,7 @@ const mockData: any = {
       "session_id": "6205c956-a72c-4362-940b-9fec0cb76852",
       "name": "admin",
       "distinct_user_id": "utuRVj4LOdB",
-      "date": yesterday - 9400000 - 236 * 11520000,
+      "date": yesterday - 236 * 10800000,
       "os": "other",
       "browser": "ie",
       "geolocation": {
@@ -4040,7 +4037,7 @@ const mockData: any = {
       "session_id": "130cbe49-9990-4a25-9aa5-f984f34395bb",
       "name": "/",
       "distinct_user_id": "IENYI05sRLg",
-      "date": yesterday - 9400000 - 237 * 11520000,
+      "date": yesterday - 237 * 10800000,
       "os": "linux",
       "browser": "other",
       "geolocation": {
@@ -4057,7 +4054,7 @@ const mockData: any = {
       "session_id": "d82ac8ae-a7ac-43f1-9569-e5b7d5805206",
       "name": "admin",
       "distinct_user_id": "QzHXRIXnBph",
-      "date": yesterday - 9400000 - 238 * 11520000,
+      "date": yesterday - 238 * 10800000,
       "os": "other",
       "browser": "firefox",
       "geolocation": {
@@ -4074,7 +4071,7 @@ const mockData: any = {
       "session_id": "845465e6-637d-44f8-a86e-44b6f77832e8",
       "name": "/",
       "distinct_user_id": "RjCuj9IIwI",
-      "date": yesterday - 9400000 - 239 * 11520000,
+      "date": yesterday - 239 * 10800000,
       "os": "other",
       "browser": "firefox",
       "geolocation": {
@@ -4091,7 +4088,7 @@ const mockData: any = {
       "session_id": "9a262d04-353d-48c8-a725-1562c983e694",
       "name": "admin",
       "distinct_user_id": "QHxbjArp6b9",
-      "date": yesterday - 9400000 - 240 * 11520000,
+      "date": yesterday - 240 * 10800000,
       "os": "android",
       "browser": "safari",
       "geolocation": {
@@ -4108,7 +4105,7 @@ const mockData: any = {
       "session_id": "753b7c7a-eb7b-4212-b6ee-8a70d5872c6d",
       "name": "signup",
       "distinct_user_id": "a4wAAAWneP6",
-      "date": yesterday - 9400000 - 241 * 11520000,
+      "date": yesterday - 241 * 10800000,
       "os": "ios",
       "browser": "other",
       "geolocation": {
@@ -4125,7 +4122,7 @@ const mockData: any = {
       "session_id": "bab095d9-1599-4cc5-93e0-23fdec3a881f",
       "name": "login",
       "distinct_user_id": "-rM3zUf9-hj",
-      "date": yesterday - 9400000 - 242 * 11520000,
+      "date": yesterday - 242 * 10800000,
       "os": "windows",
       "browser": "safari",
       "geolocation": {
@@ -4142,7 +4139,7 @@ const mockData: any = {
       "session_id": "2b3f28e8-8450-468c-8ea9-82100e605e59",
       "name": "login",
       "distinct_user_id": "w1bhxxrmlov",
-      "date": yesterday - 9400000 - 243 * 11520000,
+      "date": yesterday - 243 * 10800000,
       "os": "windows",
       "browser": "chrome",
       "geolocation": {
@@ -4159,7 +4156,7 @@ const mockData: any = {
       "session_id": "fc067490-fddc-4dfd-a3c2-9b7920307ce5",
       "name": "admin",
       "distinct_user_id": "v4IDuhMl9LX",
-      "date": yesterday - 9400000 - 244 * 11520000,
+      "date": yesterday - 244 * 10800000,
       "os": "windows",
       "browser": "chrome",
       "geolocation": {
@@ -4176,7 +4173,7 @@ const mockData: any = {
       "session_id": "f2f0e768-5b26-4c05-ba96-d045f9a5eb80",
       "name": "admin",
       "distinct_user_id": "nxdMe1TBz4j",
-      "date": yesterday - 9400000 - 245 * 11520000,
+      "date": yesterday - 245 * 10800000,
       "os": "windows",
       "browser": "ie",
       "geolocation": {
@@ -4193,7 +4190,7 @@ const mockData: any = {
       "session_id": "a823de40-d6ca-421f-871e-d621373843ad",
       "name": "/",
       "distinct_user_id": "Z7DM1Q4VvW",
-      "date": yesterday - 9400000 - 246 * 11520000,
+      "date": yesterday - 246 * 10800000,
       "os": "other",
       "browser": "chrome",
       "geolocation": {
@@ -4210,7 +4207,7 @@ const mockData: any = {
       "session_id": "fb372d3f-ac40-4325-9f94-42683c512a1c",
       "name": "/",
       "distinct_user_id": "w1bhxxrmlov",
-      "date": yesterday - 9400000 - 247 * 11520000,
+      "date": yesterday - 247 * 10800000,
       "os": "ios",
       "browser": "safari",
       "geolocation": {
@@ -4227,7 +4224,7 @@ const mockData: any = {
       "session_id": "244e5aac-3daa-403d-be6b-98b2fe69b71c",
       "name": "admin",
       "distinct_user_id": "utuRVj4LOdB",
-      "date": yesterday - 9400000 - 248 * 11520000,
+      "date": yesterday - 248 * 10800000,
       "os": "windows",
       "browser": "other",
       "geolocation": {
@@ -4244,7 +4241,7 @@ const mockData: any = {
       "session_id": "630ff48f-c73f-4539-9642-0c3c4171afb3",
       "name": "signup",
       "distinct_user_id": "LKqwj-Dl1L0",
-      "date": yesterday - 9400000 - 249 * 11520000,
+      "date": yesterday - 249 * 10800000,
       "os": "mac",
       "browser": "other",
       "geolocation": {
