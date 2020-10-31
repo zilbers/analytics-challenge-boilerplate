@@ -32,7 +32,6 @@ Clone this repo and build your project on top of it.
 ![](https://i.imgur.com/gtPzvXP.jpg)
 
  - Add controls for time-ranges in relevant charts (you can implement it in any way that still works with the [default requirements](backend.md)) 
- - The site uses `xstate` state machines for its data. you can use another method to send out AJAX if you prefer.
 
 ### Tiles to present:
  - Showing events on Google Map (cluster events).  
@@ -92,6 +91,7 @@ note- the repo uses 'husky' and you might find you can't push to github while th
 - All system will be coded using Typescript.
 - Add Error Boundaries around each tile (chart).
 - Use Styled Components for styling.
+- The site uses `xstate` state machines for its data. you can use another method to send out AJAX if you prefer.
 - Make it responsive for any screen size.
 - LINT YOUR CODE
 - Passing backend tests will pass the challenge, but other requirements will be inspected.
