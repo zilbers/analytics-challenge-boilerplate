@@ -43,14 +43,20 @@ let exampleEvent = {
   url: 'http://localhost3000/signup'
 }
 ```
-## /all
+---
+
+## POST /events
+recives `Event` object in the request body(according to Event interface), and add it to DB. 
+
+---
+## /events/all
 returns all events in an array:
 ```typescript
 declare function allEvents():event[]
 ```
 ---
 
-## /all-filtered
+## /events/all-filtered
 
 ```typescript
 interface Filter {
@@ -179,18 +185,6 @@ example: __current date-__ 30/10/2020, __http request-__ `http://localhost:3000/
 ```
 ---
 
-## /today
-gets events from today
-```typescript
-declare function getToday() : event[] 
-```
----
-## /week
-gets events from the last 7 days
-```typescript
-declare function getWeek() : event[] 
-```
----
 ## /retention
 return the an array of objects with User retention Information for every week since launch.
 For every week, what percent of the users that signed up on that week have logged in to the site on every consecutive week.
@@ -213,17 +207,36 @@ let week0Retention : weeklyRetentionObject = {
 declare function getRetentionCohort() : weeklyRetentionObject[]
 ```
 
-## /:eventId
-return an event by its Id
-```typescript
-declare function getEventById():event
-```
 
 ## /chart/os/:time
 
 ## /chart/pageview/:time
 
-## /chart/timeonurl/allusers
+
+## /chart/geolocation/:time
+
+
+<!-- ## /today
+gets events from today
+```typescript
+declare function getToday() : event[] 
+```
+--- -->
+<!-- ## /week
+gets events from the last 7 days
+```typescript
+declare function getWeek() : event[] 
+```
+--- -->
+
+
+<!-- ## /:eventId
+return an event by its Id
+```typescript
+declare function getEventById():event
+``` -->
+
+<!-- ## /chart/timeonurl/allusers
 return array of objects. 
 every object need to seem like {_"userId": string, "username": string, "login": number, "signin": number, "admin": number, "home": number_}.
 every object show unique user and the counter of his events URL's time in seconds.
@@ -231,8 +244,4 @@ every object show unique user and the counter of his events URL's time in second
 ## /chart/timeonurl/inhours
 return array of objects. 
 every object need to seem like {_id:string ,url:string, date:number_}.
-every object show every event info with date that implements the time in hours of the event.
-
-## /chart/geolocation/:time
-
-
+every object show every event info with date that implements the time in hours of the event. -->
