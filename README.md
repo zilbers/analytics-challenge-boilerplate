@@ -6,7 +6,7 @@ You will build analytics system that would present usage analytics about a websi
 
 ## Getting Started
 
-clone the repo this repo and build your project on top of it.  
+clone this repo and build your project on top of it.  
 
 - setup server  
     1. `cd server`  
