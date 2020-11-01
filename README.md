@@ -23,7 +23,7 @@ you can use `npm run init` __in the project root__ to download both the client a
   
 ### Other useful commands:
 - /server
-    - `npm run db:seed` - reseed the database (does not affect tests.) you can determine different parameters in [.env](server/.env). Useful in case the existing data is has very old dates and you want newer entries. 
+    - `npm run db:seed` - reseed the database (does not affect tests.) you can determine different parameters in [.env](server/.env). Useful in case the existing data is has very old dates and you want newer entries, or add properties you want to the data.
 
 ## Admin Page Requirements:
 
