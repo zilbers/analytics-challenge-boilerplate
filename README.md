@@ -99,6 +99,7 @@ note- the repo uses 'husky' and you might find you can't push to github while th
 ## Bonuses
   - Make your own custom tiles.
   - Make the tiles resizable.
+  - Creating piece of code that send events from clients to the server and save it.
   - Add an option to change chart type (pie | bars | line) in the same tile 
   - Make the tiles move by drag and drop.
   - Make the time-frame adjustable on all charts
