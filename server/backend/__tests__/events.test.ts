@@ -1,8 +1,10 @@
-import { mockData } from "./mock_data";
+import mockData from "./mock_data";
 import request from "supertest";
 import app from "../app";
 import db from "../database";
 import { Event as event,os } from "../../../client/src/models/event";
+import {OneHour, OneDay, OneWeek} from '../timeFrames'
+
 
  const isEvent = (event : any ): event is event => {
    if(
@@ -80,18 +82,24 @@ describe("main test", () => {
   });
 
   it("retention cohort", async () => {
-  
-    const { body: retentionData } = await request(app).get("/events/retention").expect(200);
+    const today = new Date (new Date().toDateString()).getTime()+6*OneHour
+    const dayZero = today-5*OneWeek
+
+    const { body: retentionData } = await request(app).get(
+      `/events/retention?dayZero=${dayZero}`
+    ).expect(200);
+    
+    console.log(retentionData)
+
     expect(retentionData.length).toBe(6);
+    
+    expect(retentionData[0].weeklyRetention).toEqual([ 100, 40, 60, 90, 80, 0 ]);
+    expect(retentionData[1].weeklyRetention).toEqual([ 100, 90, 60,100,0 ]);
+    expect(retentionData[2].weeklyRetention).toEqual([ 100, 100, 82, 9 ]);
+    expect(retentionData[4].newUsers).toBe(9);
 
-    expect(retentionData[0].weeklyRetention.slice(0,4)).toEqual([100, 15, 23, 15]);
-    expect(retentionData[1].weeklyRetention.slice(0,3)).toEqual([100, 54, 23]);
-    expect(retentionData[2].weeklyRetention.slice(0,2)).toEqual([100, 62]);
-
-    expect(retentionData[1].weeklyRetention[4]).toBe(0);
 
   });
-
   it("can filter events by browser", async () => {
 
     const { body: events}  = await request(app).get("/events/all-filtered")
