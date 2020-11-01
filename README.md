@@ -6,7 +6,7 @@ You will build analytics system that would present usage analytics about a websi
 
 ## Getting Started
 
-Clone this repo and build your project on top of it.   
+Fork this repo and build your project on top of it.   
 you can use `npm run init` __in the project root__ to download both the client and server dependencies, or :   
 - Setup server  
     1. `cd server`  
@@ -27,7 +27,7 @@ you can use `npm run init` __in the project root__ to download both the client a
 
 ## Admin Page Requirements:
 
- - Make the following layout for tiles and make it compatible with different tile sizes and different screen sizes.
+ - Use the route '/admin' Make the following layout for tiles and make it compatible with different tile sizes and different screen sizes.
 
 ![](https://i.imgur.com/gtPzvXP.jpg)
 
