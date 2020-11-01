@@ -6,8 +6,8 @@ You will build analytics system that would present usage analytics about a websi
 
 ## Getting Started
 
-Clone this repo and build your project on top of it.  
-
+Clone this repo and build your project on top of it.   
+you can use `npm run init` __in the project root__ to download both the client and server dependencies, or :   
 - Setup server  
     1. `cd server`  
     3. `npm i` 
