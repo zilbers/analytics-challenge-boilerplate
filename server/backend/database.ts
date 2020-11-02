@@ -116,16 +116,29 @@ export const getFilteredEvents = (query: Filter) =>
     .get(EVENT_TABLE)
     // @ts-ignore
     .filter((event): boolean => {
-      const dates: string[] = query.sorting.split("/");
+      let start: number | undefined, end: number | undefined;
+      const dates: string[] | undefined = query.sorting?.split("/");
       const eventDate = new Date(event.date).getTime();
-      const start = new Date(Number(dates[0])).getTime();
-      const end = new Date(Number(dates[1])).getTime();
-      const checkSorting: boolean = eventDate >= start && eventDate <= end;
+      if (dates) {
+        start = new Date(Number(dates[0])).getTime();
+        end = new Date(Number(dates[1])).getTime();
+      }
+      const checkSorting: boolean =
+        query.sorting && start && end ? eventDate >= start && eventDate <= end : true;
       const checkType: boolean = query.type ? query.type === event.name : true;
       const checkBrowser: boolean = query.browser ? query.browser === event.browser : true;
-      return checkSorting && checkType && checkBrowser;
+      const checkSearch: boolean = query.search
+        ? new Date(Number(query.search)).getTime() === eventDate ||
+          event.session_id.includes(query.search) ||
+          query.search === event.name ||
+          query.search === event.url ||
+          query.search === event.distinct_user_id ||
+          query.search === event.os ||
+          query.search === event.browser
+        : true;
+      return checkSorting && checkType && checkBrowser && checkSearch;
     })
-    .slice(0, query.offset || 20)
+    .slice(0, query.offset || -1)
     .value();
 
 export const createEvent = (eventDetails: Event) => {

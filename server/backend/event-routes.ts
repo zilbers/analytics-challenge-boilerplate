@@ -19,7 +19,7 @@ const router = express.Router();
 // Routes
 
 export interface Filter {
-  sorting: string;
+  sorting?: string;
   type?: string;
   browser?: string;
   search?: string;
@@ -27,14 +27,22 @@ export interface Filter {
 }
 
 router.get("/all", (req: Request, res: Response) => {
-  const events = getAllEvents();
-  res.send(events);
+  try {
+    const events = getAllEvents();
+    res.send(events);
+  } catch {
+    res.status(500).send("An Error has happend");
+  }
 });
 
 router.get("/all-filtered", (req: Request, res: Response) => {
-  const query: Filter = req.query;
-  const events = getFilteredEvents(query);
-  res.send(events);
+  try {
+    const query: Filter = req.query;
+    const events = getFilteredEvents(query);
+    res.send({ events });
+  } catch {
+    res.status(500).send("An Error has happend");
+  }
 });
 
 router.get("/by-days/:offset", (req: Request, res: Response) => {
@@ -62,9 +70,13 @@ router.get("/:eventId", (req: Request, res: Response) => {
 });
 
 router.post("/", (req: Request, res: Response) => {
-  const event: Event = req.body;
-  createEvent(event);
-  res.send("Created Event");
+  try {
+    const event: Event = req.body;
+    createEvent(event);
+    res.send("Created Event");
+  } catch {
+    res.status(500).send("An Error has happend");
+  }
 });
 
 router.get("/chart/os/:time", (req: Request, res: Response) => {
