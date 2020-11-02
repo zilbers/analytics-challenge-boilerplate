@@ -49,7 +49,7 @@ import {
   NotificationResponseItem,
   TransactionQueryPayload,
   DefaultPrivacyLevel,
-  Event
+  Event,
 } from "../../client/src/models";
 import Fuse from "fuse.js";
 import {
@@ -69,7 +69,8 @@ import {
   isCommentNotification,
 } from "../../client/src/utils/transactionUtils";
 import { DbSchema } from "../../client/src/models/db-schema";
-
+import { find } from "lodash";
+import { Filter } from "./event-routes";
 
 export type TDatabase = {
   users: User[];
@@ -108,6 +109,46 @@ export const seedDatabase = () => {
   return;
 };
 
+// Events functions
+export const getAllEvents = () => db.get(EVENT_TABLE).value();
+export const getFilteredEvents = (query: Filter) =>
+  db
+    .get(EVENT_TABLE)
+    // @ts-ignore
+    .filter((event): boolean => {
+      const dates: string[] = query.sorting.split("/");
+      const eventDate = new Date(event.date).getTime();
+      const start = new Date(Number(dates[0])).getTime();
+      const end = new Date(Number(dates[1])).getTime();
+      const checkSorting: boolean = eventDate >= start && eventDate <= end;
+      const checkType: boolean = query.type ? query.type === event.name : true;
+      const checkBrowser: boolean = query.browser ? query.browser === event.browser : true;
+      return checkSorting && checkType && checkBrowser;
+    })
+    .slice(0, query.offset || 20)
+    .value();
+
+export const createEvent = (eventDetails: Event) => {
+  const event: Event = {
+    _id: shortid(),
+    session_id: v4(),
+    name: eventDetails.name,
+    url: eventDetails.url,
+    distinct_user_id: eventDetails.distinct_user_id,
+    date: eventDetails.date,
+    os: eventDetails.os,
+    browser: eventDetails.browser,
+    geolocation: eventDetails.geolocation,
+  };
+
+  saveEvent(event);
+  return event;
+};
+
+const saveEvent = (event: Event) => {
+  db.get(EVENT_TABLE).push(event).write();
+};
+// Users function
 export const getAllUsers = () => db.get(USER_TABLE).value();
 
 export const getAllPublicTransactions = () =>
@@ -862,6 +903,5 @@ export const getTransactionsBy = (key: string, value: string) =>
 
 /* istanbul ignore next */
 export const getTransactionsByUserId = (userId: string) => getTransactionsBy("receiverId", userId);
-
 
 export default db;
