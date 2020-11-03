@@ -4,7 +4,12 @@ import express from "express";
 import { Request, Response } from "express";
 
 // some useful database functions in here:
-import { getAllEvents, getFilteredEvents, createEvent } from "./database";
+import {
+  getAllEvents,
+  getFilteredEvents,
+  getEventsFilteredByOffset,
+  createEvent,
+} from "./database";
 import { Event, weeklyRetentionObject } from "../../client/src/models/event";
 import { ensureAuthenticated, validateMiddleware } from "./helpers";
 
@@ -30,8 +35,8 @@ router.get("/all", (req: Request, res: Response) => {
   try {
     const events = getAllEvents();
     res.send(events);
-  } catch {
-    res.status(500).send("An Error has happend");
+  } catch (err) {
+    res.status(500).send({ error: err });
   }
 });
 
@@ -39,14 +44,20 @@ router.get("/all-filtered", (req: Request, res: Response) => {
   try {
     const query: Filter = req.query;
     const events = getFilteredEvents(query);
-    res.send({ events });
-  } catch {
-    res.status(500).send("An Error has happend");
+    res.send(events);
+  } catch (err) {
+    res.status(500).send({ error: err });
   }
 });
 
 router.get("/by-days/:offset", (req: Request, res: Response) => {
-  res.send("/by-days/:offset");
+  try {
+    const offset = Number(req.params.offset);
+    const eventCount = getEventsFilteredByOffset(offset);
+    res.send(eventCount);
+  } catch (err) {
+    res.status(500).send({ error: err });
+  }
 });
 
 router.get("/by-hours/:offset", (req: Request, res: Response) => {

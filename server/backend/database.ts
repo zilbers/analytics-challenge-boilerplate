@@ -111,13 +111,22 @@ export const seedDatabase = () => {
 
 // Events functions
 export const getAllEvents = () => db.get(EVENT_TABLE).value();
-export const getFilteredEvents = (query: Filter) =>
-  db
+
+export const getFilteredEvents = (query: Filter) => {
+  let events = db
     .get(EVENT_TABLE)
     // @ts-ignore
-    .filter((event) => filterEvents(event, query))
-    .slice(0, query.offset || -1)
-    .value();
+    .filter((event) => filterEvents(event, query));
+  let length: number = events.value().length;
+  if (query.sorting) {
+    events = events.sort((eventA: Event, eventB: Event) =>
+      query.sorting === "-date" ? eventB.date - eventA.date : eventA.date - eventB.date
+    );
+  } else if (query.offset) {
+    events = events.slice(0, query.offset);
+  }
+  return { events: events.value(), more: query.offset ? length > query.offset : false };
+};
 
 export const createEvent = (eventDetails: Event) => {
   const event: Event = {
@@ -136,26 +145,44 @@ export const createEvent = (eventDetails: Event) => {
   return event;
 };
 
+export const getEventsFilteredByOffset = (offset: number) => {
+  const events = db
+    .get(EVENT_TABLE)
+    .filter((event: Event) => filterByOffset(event, offset))
+    .countBy(({ date: rawDate }) => {
+      const dateObj = new Date(rawDate);
+      const dateTime = `${dateObj.getFullYear()}-${dateObj.getMonth()}-${dateObj.getDate()}`;
+      return dateTime;
+    });
+  // const countedEvents = countEvents(events);
+  return events;
+};
+
+const filterByOffset = ({ date }: Event, offset: number) => {
+  const currentDate = new Date(new Date().getDate() - (7 + offset)).getTime();
+  return date > currentDate;
+};
+
 const saveEvent = (event: Event) => {
   db.get(EVENT_TABLE).push(event).write();
 };
 const filterEvents = (event: Event, query: Filter): boolean => {
-  let offsetDate: number | null = null;
-  const typeOfOffset: string | undefined = query.sorting?.charAt(0);
+  // let offsetDate: number | null = null;
+  // const typeOfOffset: string | undefined = query.sorting?.charAt(0);
   const eventDate = event.date;
 
-  if (typeOfOffset && query.sorting) {
-    offsetDate = Number(query.sorting.slice(1));
-  }
+  // if (typeOfOffset && query.sorting) {
+  //   offsetDate = Number(query.sorting.slice(1));
+  // }
 
-  const checkSorting: boolean =
-    query.sorting && offsetDate && typeOfOffset
-      ? typeOfOffset == "+"
-        ? eventDate >= offsetDate
-        : typeOfOffset == "-"
-        ? eventDate <= offsetDate
-        : false
-      : true;
+  // const checkSorting: boolean =
+  //   query.sorting && offsetDate && typeOfOffset
+  //     ? typeOfOffset == "+"
+  //       ? eventDate > offsetDate
+  //       : typeOfOffset == "-"
+  //       ? eventDate < offsetDate
+  //       : false
+  //     : true;
 
   const checkType: boolean = query.type ? query.type === event.name : true;
   const checkBrowser: boolean = query.browser ? query.browser === event.browser : true;
@@ -168,7 +195,7 @@ const filterEvents = (event: Event, query: Filter): boolean => {
       query.search === event.os ||
       query.search === event.browser
     : true;
-  return checkSorting && checkType && checkBrowser && checkSearch;
+  return checkType && checkBrowser && checkSearch;
 };
 // Users function
 export const getAllUsers = () => db.get(USER_TABLE).value();
