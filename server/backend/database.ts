@@ -50,6 +50,7 @@ import {
   TransactionQueryPayload,
   DefaultPrivacyLevel,
   Event,
+  weeklyRetentionObject,
 } from "../../client/src/models";
 import Fuse from "fuse.js";
 import {
@@ -71,6 +72,7 @@ import {
 import { DbSchema } from "../../client/src/models/db-schema";
 import { find } from "lodash";
 import { Filter } from "./event-routes";
+import { OneWeek, OneDay, OneHour } from "./timeFrames";
 
 export type TDatabase = {
   users: User[];
@@ -152,7 +154,7 @@ export const getEventsCountFilteredByOffset = (offset: number) => {
     .filter((event: Event) => filterByOffset(event, date, offset))
     .groupBy(({ date: rawDate }: Event) => {
       const dateObj = new Date(rawDate);
-      const dateTime = `${dateObj.getFullYear()}-${dateObj.getMonth() + 1}-${dateObj.getDate()}`;
+      const dateTime = formatDate(dateObj);
       return dateTime;
     })
     .value();
@@ -173,6 +175,40 @@ export const getEventsCountFilteredByOffset = (offset: number) => {
 export const getEventsCountPerHour = (offset: number) => {
   return;
 };
+
+export const getRetentionData = (dayZero: number) => {
+  const today = new Date(new Date().toDateString()).getTime();
+  const amountOfWeeks = Math.round((today - dayZero) / (7 * 24 * 60 * 60 * 1000));
+  const weeklyRetention: weeklyRetentionObject[] = Array(amountOfWeeks);
+  const weeklyRetentionArr: number[] = Array(amountOfWeeks);
+  const events = db.get(EVENT_TABLE);
+
+  for (let index = 0; index < amountOfWeeks; index++) {
+    const currentEvents = events.filter((event: Event) =>
+      filterByOffset(event, dayZero + index * OneWeek, 0)
+    );
+    const { signup, login } = currentEvents.groupBy("name").value();
+    const uniqLogin: Event[] = uniqBy("_id", login);
+    weeklyRetention[index] = {
+      newUsers: signup.length,
+      registrationWeek: index,
+      weeklyRetention: [uniqLogin.length],
+      start: formatDate(new Date(dayZero + index * OneWeek)),
+      end: formatDate(new Date(dayZero + (index + 1) * OneWeek)),
+    };
+    weeklyRetentionArr[index] = uniqLogin.length;
+  }
+  for (let index = 0; index < amountOfWeeks; index++) {
+    const currentWeeklyRetention = weeklyRetentionArr.slice(index);
+    weeklyRetention[index].weeklyRetention = currentWeeklyRetention.map(
+      (currentWeek) => (currentWeek / currentWeeklyRetention[0]) * 100
+    );
+  }
+  return weeklyRetention;
+};
+
+const formatDate = (dateObj: Date) =>
+  `${dateObj.getFullYear()}-${dateObj.getMonth() + 1}-${dateObj.getDate()}`;
 
 const filterByOffset = ({ date }: Event, compareDate: number, offset: number) => {
   const compareDateStart = compareDate - convertDaysToMilis(offset + 6);

@@ -9,6 +9,8 @@ import {
   getFilteredEvents,
   getEventsCountFilteredByOffset,
   createEvent,
+  getEventsCountPerHour,
+  getRetentionData,
 } from "./database";
 import { Event, weeklyRetentionObject } from "../../client/src/models/event";
 import { ensureAuthenticated, validateMiddleware } from "./helpers";
@@ -79,9 +81,15 @@ router.get("/week", (req: Request, res: Response) => {
 });
 
 router.get("/retention", (req: Request, res: Response) => {
-  const { dayZero } = req.query;
-  res.send("/retention");
+  try {
+    const { dayZero } = req.query;
+    const userRetentionData = getRetentionData(Number(dayZero));
+    res.send(userRetentionData);
+  } catch (err) {
+    res.status(500).send({ error: err });
+  }
 });
+
 router.get("/:eventId", (req: Request, res: Response) => {
   res.send("/:eventId");
 });
