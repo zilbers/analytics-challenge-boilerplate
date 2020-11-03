@@ -7,7 +7,7 @@ import { Request, Response } from "express";
 import {
   getAllEvents,
   getFilteredEvents,
-  getEventsFilteredByOffset,
+  getEventsCountFilteredByOffset,
   createEvent,
 } from "./database";
 import { Event, weeklyRetentionObject } from "../../client/src/models/event";
@@ -53,7 +53,7 @@ router.get("/all-filtered", (req: Request, res: Response) => {
 router.get("/by-days/:offset", (req: Request, res: Response) => {
   try {
     const offset = Number(req.params.offset);
-    const eventCount = getEventsFilteredByOffset(offset);
+    const eventCount = getEventsCountFilteredByOffset(offset);
     res.send(eventCount);
   } catch (err) {
     res.status(500).send({ error: err });
@@ -61,7 +61,13 @@ router.get("/by-days/:offset", (req: Request, res: Response) => {
 });
 
 router.get("/by-hours/:offset", (req: Request, res: Response) => {
-  res.send("/by-hours/:offset");
+  try {
+    const offset = Number(req.params.offset);
+    const eventCount = getEventsCountPerHour(offset);
+    res.send(eventCount);
+  } catch (err) {
+    res.status(500).send({ error: err });
+  }
 });
 
 router.get("/today", (req: Request, res: Response) => {

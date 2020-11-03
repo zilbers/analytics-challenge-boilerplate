@@ -45,6 +45,7 @@ describe("main test", () => {
 
   it("can get unique sessions count by day", async () => {
     const { body: sessionsByDays } = await request(app).get("/events/by-days/0").expect(200);
+    console.log(sessionsByDays);
 
     expect(sessionsByDays.length).toBe(7);
     expect(

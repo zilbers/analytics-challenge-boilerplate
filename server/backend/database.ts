@@ -21,7 +21,7 @@ import {
   countBy,
   groupBy,
 } from "lodash/fp";
-import { isWithinInterval } from "date-fns";
+import { compareAsc, isWithinInterval } from "date-fns";
 import low from "lowdb";
 import FileSync from "lowdb/adapters/FileSync";
 import shortid from "shortid";
@@ -145,22 +145,39 @@ export const createEvent = (eventDetails: Event) => {
   return event;
 };
 
-export const getEventsFilteredByOffset = (offset: number) => {
+export const getEventsCountFilteredByOffset = (offset: number) => {
+  const date = new Date(new Date().toDateString()).getTime();
   const events = db
     .get(EVENT_TABLE)
-    .filter((event: Event) => filterByOffset(event, offset))
-    .countBy(({ date: rawDate }) => {
+    .filter((event: Event) => filterByOffset(event, date, offset))
+    .groupBy(({ date: rawDate }: Event) => {
       const dateObj = new Date(rawDate);
-      const dateTime = `${dateObj.getFullYear()}-${dateObj.getMonth()}-${dateObj.getDate()}`;
+      const dateTime = `${dateObj.getFullYear()}-${dateObj.getMonth() + 1}-${dateObj.getDate()}`;
       return dateTime;
-    });
+    })
+    .value();
+  // .uniqBy("session_id")
+  // .countBy(({ date: rawDate }) => {
+  //   const dateObj = new Date(rawDate);
+  //   const dateTime = `${dateObj.getFullYear()}-${dateObj.getMonth() + 1}-${dateObj.getDate()}`;
+  //   return dateTime;
+  // });
+  const eventByDay = Object.keys(events).map((key) => {
+    const uniqEvent: Event[] = uniqBy("session_id", events[key]);
+    return { date: key, count: uniqEvent.length };
+  });
   // const countedEvents = countEvents(events);
-  return events;
+  return eventByDay;
 };
 
-const filterByOffset = ({ date }: Event, offset: number) => {
-  const currentDate = new Date(new Date().getDate() - (7 + offset)).getTime();
-  return date > currentDate;
+export const getEventsCountPerHour = (offset: number) => {
+  return;
+};
+
+const filterByOffset = ({ date }: Event, compareDate: number, offset: number) => {
+  const compareDateStart = compareDate - convertDaysToMilis(offset + 6);
+  const compareDateEnd = compareDate + convertDaysToMilis(1 - offset);
+  return date > compareDateStart && date < compareDateEnd;
 };
 
 const saveEvent = (event: Event) => {
@@ -197,6 +214,7 @@ const filterEvents = (event: Event, query: Filter): boolean => {
     : true;
   return checkType && checkBrowser && checkSearch;
 };
+const convertDaysToMilis = (days: number) => days * 24 * 60 * 60 * 1000;
 // Users function
 export const getAllUsers = () => db.get(USER_TABLE).value();
 
