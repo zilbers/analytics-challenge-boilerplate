@@ -115,29 +115,7 @@ export const getFilteredEvents = (query: Filter) =>
   db
     .get(EVENT_TABLE)
     // @ts-ignore
-    .filter((event): boolean => {
-      let start: number | undefined, end: number | undefined;
-      const dates: string[] | undefined = query.sorting?.split("/");
-      const eventDate = new Date(event.date).getTime();
-      if (dates) {
-        start = new Date(Number(dates[0])).getTime();
-        end = new Date(Number(dates[1])).getTime();
-      }
-      const checkSorting: boolean =
-        query.sorting && start && end ? eventDate >= start && eventDate <= end : true;
-      const checkType: boolean = query.type ? query.type === event.name : true;
-      const checkBrowser: boolean = query.browser ? query.browser === event.browser : true;
-      const checkSearch: boolean = query.search
-        ? new Date(Number(query.search)).getTime() === eventDate ||
-          event.session_id.includes(query.search) ||
-          query.search === event.name ||
-          query.search === event.url ||
-          query.search === event.distinct_user_id ||
-          query.search === event.os ||
-          query.search === event.browser
-        : true;
-      return checkSorting && checkType && checkBrowser && checkSearch;
-    })
+    .filter((event) => filterEvents(event, query))
     .slice(0, query.offset || -1)
     .value();
 
@@ -160,6 +138,37 @@ export const createEvent = (eventDetails: Event) => {
 
 const saveEvent = (event: Event) => {
   db.get(EVENT_TABLE).push(event).write();
+};
+const filterEvents = (event: Event, query: Filter): boolean => {
+  let offsetDate: number | null = null;
+  const typeOfOffset: string | undefined = query.sorting?.charAt(0);
+  const eventDate = event.date;
+
+  if (typeOfOffset && query.sorting) {
+    offsetDate = Number(query.sorting.slice(1));
+  }
+
+  const checkSorting: boolean =
+    query.sorting && offsetDate && typeOfOffset
+      ? typeOfOffset == "+"
+        ? eventDate >= offsetDate
+        : typeOfOffset == "-"
+        ? eventDate <= offsetDate
+        : false
+      : true;
+
+  const checkType: boolean = query.type ? query.type === event.name : true;
+  const checkBrowser: boolean = query.browser ? query.browser === event.browser : true;
+  const checkSearch: boolean = query.search
+    ? new Date(Number(query.search)).getTime() === eventDate ||
+      event.session_id.includes(query.search) ||
+      query.search === event.name ||
+      query.search === event.url ||
+      query.search === event.distinct_user_id ||
+      query.search === event.os ||
+      query.search === event.browser
+    : true;
+  return checkSorting && checkType && checkBrowser && checkSearch;
 };
 // Users function
 export const getAllUsers = () => db.get(USER_TABLE).value();
