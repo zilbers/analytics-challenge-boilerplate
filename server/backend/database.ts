@@ -176,11 +176,21 @@ export const getEventsCountPerHour = (offset: number) => {
       return dateTime;
     })
     .value();
-  const eventByDay = Object.keys(events).map((key) => {
+  const eventByHour = Object.keys(events).map((key) => {
     const uniqEvent: Event[] = uniqBy("session_id", events[key]);
-    return { hour: key, count: uniqEvent.length };
+    return { hour: Number(key) < 10 ? `0${key}:00` : `${key}:00`, count: uniqEvent.length };
   });
-  return eventByDay;
+  if (eventByHour.length < 24) {
+    const emptyDay = [];
+    for (let hour = 0; hour < 24; hour++) {
+      emptyDay.push({ hour: hour < 10 ? `0${hour}:00` : `${hour}:00`, count: 0 });
+    }
+    const emptyDayFiltered = emptyDay.filter((hour) => !checkExists(hour.hour, eventByHour));
+    const result = eventByHour.concat(emptyDayFiltered);
+    return result;
+  } else {
+    return eventByHour;
+  }
 };
 
 export const getRetentionData = (dayZero: number) => {
@@ -220,6 +230,15 @@ export const getRetentionData = (dayZero: number) => {
     };
   }
   return weeklyRetention;
+};
+
+const checkExists = (item: any, array: any[]) => {
+  for (let index = 0; index < array.length; index++) {
+    if (array[index].hour === item) {
+      return true;
+    }
+  }
+  return false;
 };
 
 const getUserRetention = (loginArray: string[][], signupArray: string[]) => {

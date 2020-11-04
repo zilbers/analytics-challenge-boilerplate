@@ -72,7 +72,6 @@ describe("main test", () => {
 
   it("can get unique sessions count by hour", async () => {
     const { body: sessionsByHours } = await request(app).get("/events/by-hours/0").expect(200);
-
     expect(sessionsByHours.length).toBe(24);
     expect(
       sessionsByHours.reduce(
