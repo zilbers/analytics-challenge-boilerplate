@@ -23,67 +23,23 @@ const options = {
 };
 
 function Map(): any {
-  //   const userContext = useContext(UserContext);
-  //   const gameContext = useContext(GameContext);
-
   const [userEvents, setUserEvents] = useState<Event[] | null>(null);
-  //   const [selectedCity, setSelectedCity] = useState(null);
-  //   const [currentLocation, setCurrentLocation] = useState(null);
-  //   const [userChosenLocation, setUserChosenLocation] = useState(null);
-  //   const [action, setAction] = useState(null);
-  //   const [formValues, setFormValues] = useState(null);
-
-  //   function getCurrentLocation(position) {
-  //     setCurrentLocation({
-  //       lat: parseFloat(position.coords.latitude),
-  //       lng: parseFloat(position.coords.longitude),
-  //     });
-  //   }
-
-  //   const handleClick = ({ latLng }) => {
-  //     setUserChosenLocation({
-  //       lat: latLng.lat(),
-  //       lng: latLng.lng(),
-  //     });
-  //     const distance = getDistance(latLng, {
-  //       lat: () => currentLocation.lat,
-  //       lng: () => currentLocation.lng,
-  //     });
-  //     gameContext.setDistance(distance);
-  //   };
 
   async function getAndSet(url: string, setter: Function) {
     const { data } = await axios.get(url);
+
+    console.log(data);
+
     const events: Event[] = data;
     setter(events);
     return events;
   }
 
   useEffect(() => {
-    const locations = getAndSet("/events/all", setUserEvents);
-    console.log(locations);
-    // (async () => {
-    //   try {
-    //     const { data: currentCities } = await axios.get("/api/v1/cities");
-    //     // setCities(currentCities);
-    //     if (navigator.geolocation) {
-    //       navigator.geolocation.getCurrentPosition(getCurrentLocation);
-    //     } else {
-    //       setCurrentLocation({ lat: 31.768318, lng: 35.213711 });
-    //       alert("Geolocation is not supported by this browser.");
-    //     }
-    //   } catch (e) {
-    //     console.error(e.message);
-    //   }
-    // })();
+    getAndSet("/events/all", setUserEvents);
   }, []);
   const map = userEvents ? (
-    <GoogleMap
-      defaultZoom={10}
-      defaultCenter={{ lat: 31.771959, lng: 35.217018 }}
-      //   defaultOptions={{ ...options, styles: mapStyles }}
-      //   onClick={handleClick}
-    >
+    <GoogleMap defaultZoom={10} defaultCenter={{ lat: 31.771959, lng: 35.217018 }}>
       {userEvents.map((event: Event) => {
         return (
           <>

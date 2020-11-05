@@ -63,7 +63,9 @@
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.0",
+    "react-select": "^3.1.0",
     "react-virtualized": "9.22.2",
+    "recharts": "^1.8.5",
     "shortid": "2.2.15",
     "styled-components": "^5.2.0",
     "ts-node": "9.0.0",
@@ -128,6 +130,7 @@
     "codesandbox:start:api": "yarn tsnode:not-instrumented --files backend/app.ts",
     "codesandbox:start": "NODE_ENV=development TSC_COMPILE_ON_ERROR=true concurrently \"react-scripts start\" yarn:start:api:codesandbox"
   },
+  "proxy": "http://localhost:3001",
   "eslintConfig": {
     "env": {
       "cypress/globals": true
