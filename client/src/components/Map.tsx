@@ -1,17 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import {
-  GoogleMap,
-  withScriptjs,
-  withGoogleMap,
-  Marker,
-  InfoWindow,
-  Circle,
-} from "react-google-maps";
-// import { UserContext } from "../context/UserContext";
-// import { GameContext } from "../context/GameContext";
-// import mapStyles from "../components/style/mapStyles";
-// import "../components/style/Map.css";
+import { GoogleMap, withScriptjs, withGoogleMap, Marker } from "react-google-maps";
 import { getEffectiveTypeParameterDeclarations, setTextRange } from "typescript";
 import { Event } from "../models/event";
 
@@ -27,9 +16,6 @@ function Map(): any {
 
   async function getAndSet(url: string, setter: Function) {
     const { data } = await axios.get(url);
-
-    console.log(data);
-
     const events: Event[] = data;
     setter(events);
     return events;
@@ -38,6 +24,7 @@ function Map(): any {
   useEffect(() => {
     getAndSet("/events/all", setUserEvents);
   }, []);
+
   const map = userEvents ? (
     <GoogleMap defaultZoom={10} defaultCenter={{ lat: 31.771959, lng: 35.217018 }}>
       {userEvents.map((event: Event) => {
