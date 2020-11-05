@@ -21,15 +21,18 @@ const DashBoard: React.FC = () => {
       <ChooseCharts showingCharts={showingCharts} setShowingCharts={setShowingCharts} />
 
       {showingCharts.map && (
-        <WrappedMap
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `400px` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
-        />
+        <>
+          <h3>by-location chart</h3>
+          <WrappedMap
+            loadingElement={<div style={{ height: `100%` }} />}
+            containerElement={<div style={{ height: `400px` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
+          />
+        </>
       )}
-      {showingCharts.chartByDay && <Chart url={`/events/by-days/${5}`} time="date" />}
-      {showingCharts.chartByHour && <Chart url={`/events/by-hours/${7}`} time="hour" />}
+      {showingCharts.chartByDay && <Chart url={`/events/by-days/`} time="date" />}
+      {showingCharts.chartByHour && <Chart url={`/events/by-hours/`} time="hour" />}
     </>
   );
 };

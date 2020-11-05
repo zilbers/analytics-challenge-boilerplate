@@ -31,7 +31,7 @@ function Map(): any {
         return (
           <>
             <Marker
-              key={event.session_id}
+              key={event.session_id + event.distinct_user_id}
               position={{
                 lat: event.geolocation.location.lat,
                 lng: event.geolocation.location.lng,

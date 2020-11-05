@@ -8,14 +8,13 @@ import {
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 
-export default function MaterialUIPickers() {
+export default function MaterialUIPickers({ date, setDate }: any) {
   // The first commit of Material-UI
-  const [selectedDate, setSelectedDate] = React.useState<Date | null>(
-    new Date("2014-08-18T21:11:54")
-  );
+  const [selectedDate, setSelectedDate] = React.useState<Date | null>(new Date(date));
 
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
+    setDate(() => date?.getTime());
   };
 
   return (
