@@ -15,6 +15,7 @@ const DashBoard: React.FC = () => {
     chartByDay: boolean;
     chartByHour: boolean;
   }>({ map: false, chartByDay: false, chartByHour: false });
+
   return (
     <>
       <ChooseCharts showingCharts={showingCharts} setShowingCharts={setShowingCharts} />
