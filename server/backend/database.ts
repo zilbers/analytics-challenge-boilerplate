@@ -21,7 +21,7 @@ import {
   countBy,
   groupBy,
 } from "lodash/fp";
-import { isWithinInterval } from "date-fns";
+import { compareAsc, isWithinInterval } from "date-fns";
 import low from "lowdb";
 import FileSync from "lowdb/adapters/FileSync";
 import shortid from "shortid";
@@ -49,7 +49,8 @@ import {
   NotificationResponseItem,
   TransactionQueryPayload,
   DefaultPrivacyLevel,
-  Event
+  Event,
+  weeklyRetentionObject,
 } from "../../client/src/models";
 import Fuse from "fuse.js";
 import {
@@ -69,7 +70,9 @@ import {
   isCommentNotification,
 } from "../../client/src/utils/transactionUtils";
 import { DbSchema } from "../../client/src/models/db-schema";
-
+import { find } from "lodash";
+import { Filter } from "./event-routes";
+import { OneWeek, OneDay, OneHour } from "./timeFrames";
 
 export type TDatabase = {
   users: User[];
@@ -108,6 +111,191 @@ export const seedDatabase = () => {
   return;
 };
 
+// Events functions
+export const getAllEvents = () => db.get(EVENT_TABLE).value();
+
+export const getFilteredEvents = (query: Filter) => {
+  let events = db
+    .get(EVENT_TABLE)
+    // @ts-ignore
+    .filter((event) => filterEvents(event, query));
+  let length: number = events.value().length;
+  if (query.sorting) {
+    events = events.sort((eventA: Event, eventB: Event) =>
+      query.sorting === "-date" ? eventB.date - eventA.date : eventA.date - eventB.date
+    );
+  } else if (query.offset) {
+    events = events.slice(0, query.offset);
+  }
+  return { events: events.value(), more: query.offset ? length > query.offset : false };
+};
+
+export const createEvent = (eventDetails: Event) => {
+  const event: Event = {
+    _id: shortid(),
+    session_id: v4(),
+    name: eventDetails.name,
+    url: eventDetails.url,
+    distinct_user_id: eventDetails.distinct_user_id,
+    date: eventDetails.date,
+    os: eventDetails.os,
+    browser: eventDetails.browser,
+    geolocation: eventDetails.geolocation,
+  };
+
+  saveEvent(event);
+  return event;
+};
+
+export const getEventsCountFilteredByOffset = (offset: number) => {
+  const date = new Date(new Date().toDateString()).getTime();
+  const events = db
+    .get(EVENT_TABLE)
+    .filter((event: Event) => filterByOffset(event, date, offset))
+    .groupBy(({ date: rawDate }: Event) => {
+      const dateObj = new Date(rawDate);
+      const dateTime = formatDate(dateObj);
+      return dateTime;
+    })
+    .value();
+  const eventByDay = Object.keys(events).map((key) => {
+    const uniqEvent: Event[] = uniqBy("session_id", events[key]);
+    return { date: key, count: uniqEvent.length };
+  });
+  return eventByDay;
+};
+
+export const getEventsCountPerHour = (offset: number) => {
+  const dateToCheck = new Date(new Date().toDateString()).getTime() - offset * OneDay;
+  const events = db
+    .get(EVENT_TABLE)
+    .filter(({ date }: Event) => date >= dateToCheck && date <= dateToCheck + OneDay)
+    .groupBy(({ date: rawDate }: Event) => {
+      const dateObj = new Date(rawDate);
+      const dateTime = dateObj.getHours();
+      return dateTime;
+    })
+    .value();
+  const eventByHour = Object.keys(events).map((key) => {
+    const uniqEvent: Event[] = uniqBy("session_id", events[key]);
+    return { hour: Number(key) < 10 ? `0${key}:00` : `${key}:00`, count: uniqEvent.length };
+  });
+  if (eventByHour.length < 24) {
+    const emptyDay = [];
+    for (let hour = 0; hour < 24; hour++) {
+      emptyDay.push({ hour: hour < 10 ? `0${hour}:00` : `${hour}:00`, count: 0 });
+    }
+    const emptyDayFiltered = emptyDay.filter((hour) => !checkExists(hour.hour, eventByHour));
+    const result = eventByHour.concat(emptyDayFiltered);
+    return result;
+  } else {
+    return eventByHour;
+  }
+};
+
+export const getRetentionData = (dayZero: number) => {
+  const today = new Date(new Date().toDateString()).getTime();
+  dayZero = new Date(new Date(dayZero).toDateString()).getTime();
+  const amountOfWeeks = Math.round((today - dayZero) / (7 * 24 * 60 * 60 * 1000)) + 1;
+  const weeklyRetention: weeklyRetentionObject[] = Array(amountOfWeeks);
+  const weeklyRetentionSignup: any[] = Array(amountOfWeeks);
+  const weeklyRetentionLogin: any[] = Array(amountOfWeeks);
+  const events = db.get(EVENT_TABLE);
+
+  for (let index = 0; index < amountOfWeeks; index++) {
+    const currentEvents = events.filter((event: Event) =>
+      filterByOffset(event, dayZero + index * OneWeek, -6)
+    );
+    const { signup, login } = currentEvents.groupBy("name").value();
+    const uniqLogin: string[] = uniqBy("distinct_user_id", login).map(
+      (event) => event.distinct_user_id
+    );
+    const uniqSignup: string[] = uniqBy("distinct_user_id", signup).map(
+      (event) => event.distinct_user_id
+    );
+    weeklyRetentionSignup[index] = uniqSignup;
+    weeklyRetentionLogin[index] = uniqLogin;
+  }
+
+  for (let index = 0; index < amountOfWeeks; index++) {
+    weeklyRetention[index] = {
+      newUsers: weeklyRetentionSignup[index].length,
+      registrationWeek: index,
+      weeklyRetention: getUserRetention(
+        weeklyRetentionLogin.slice(index),
+        weeklyRetentionSignup[index]
+      ),
+      start: formatDate(new Date(dayZero + index * OneWeek)),
+      end: formatDate(new Date(dayZero + (index + 1) * OneWeek - OneDay)),
+    };
+  }
+  return weeklyRetention;
+};
+
+const checkExists = (item: any, array: any[]) => {
+  for (let index = 0; index < array.length; index++) {
+    if (array[index].hour === item) {
+      return true;
+    }
+  }
+  return false;
+};
+
+const getUserRetention = (loginArray: string[][], signupArray: string[]) => {
+  const filteredLogins = loginArray.map((week) =>
+    Math.round((week.filter((id) => signupArray.includes(id)).length / signupArray.length) * 100)
+  );
+  filteredLogins[0] = 100;
+  return filteredLogins;
+};
+
+const formatDate = (dateObj: Date) =>
+  `${dateObj.getFullYear()}-${dateObj.getMonth() + 1}-${dateObj.getDate()}`;
+
+const filterByOffset = ({ date }: Event, compareDate: number, offset: number) => {
+  const compareDateStart = compareDate - convertDaysToMilis(offset + 6);
+  const compareDateEnd = compareDate + convertDaysToMilis(1 - offset);
+  return date > compareDateStart && date < compareDateEnd;
+};
+
+const saveEvent = (event: Event) => {
+  db.get(EVENT_TABLE).push(event).write();
+};
+
+const filterEvents = (event: Event, query: Filter): boolean => {
+  // let offsetDate: number | null = null;
+  // const typeOfOffset: string | undefined = query.sorting?.charAt(0);
+  const eventDate = event.date;
+
+  // if (typeOfOffset && query.sorting) {
+  //   offsetDate = Number(query.sorting.slice(1));
+  // }
+
+  // const checkSorting: boolean =
+  //   query.sorting && offsetDate && typeOfOffset
+  //     ? typeOfOffset == "+"
+  //       ? eventDate > offsetDate
+  //       : typeOfOffset == "-"
+  //       ? eventDate < offsetDate
+  //       : false
+  //     : true;
+
+  const checkType: boolean = query.type ? query.type === event.name : true;
+  const checkBrowser: boolean = query.browser ? query.browser === event.browser : true;
+  const checkSearch: boolean = query.search
+    ? new Date(Number(query.search)).getTime() === eventDate ||
+      event.session_id.includes(query.search) ||
+      query.search === event.name ||
+      query.search === event.url ||
+      query.search === event.distinct_user_id ||
+      query.search === event.os ||
+      query.search === event.browser
+    : true;
+  return checkType && checkBrowser && checkSearch;
+};
+
+const convertDaysToMilis = (days: number) => days * 24 * 60 * 60 * 1000;
+// Users function
 export const getAllUsers = () => db.get(USER_TABLE).value();
 
 export const getAllPublicTransactions = () =>
@@ -862,6 +1050,5 @@ export const getTransactionsBy = (key: string, value: string) =>
 
 /* istanbul ignore next */
 export const getTransactionsByUserId = (userId: string) => getTransactionsBy("receiverId", userId);
-
 
 export default db;
