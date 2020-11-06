@@ -1,8 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { GoogleMap, withScriptjs, withGoogleMap, Marker } from "react-google-maps";
+import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from "react-google-maps";
 import { getEffectiveTypeParameterDeclarations, setTextRange } from "typescript";
 import { Event } from "../models/event";
+
+const formatDate = (dateObj: Date) =>
+  `${dateObj.getFullYear()}-${dateObj.getMonth() + 1}-${dateObj.getDate()}`;
 
 const options = {
   mapTypeControl: false,
@@ -13,6 +16,7 @@ const options = {
 
 function Map(): any {
   const [userEvents, setUserEvents] = useState<Event[] | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<any>(null);
 
   async function getAndSet(url: string, setter: Function) {
     const { data } = await axios.get(url);
@@ -36,10 +40,30 @@ function Map(): any {
                 lat: event.geolocation.location.lat,
                 lng: event.geolocation.location.lng,
               }}
+              onClick={() => {
+                setSelectedEvent(event);
+              }}
             />
           </>
         );
       })}
+      {selectedEvent && (
+        <InfoWindow
+          position={{
+            lat: selectedEvent.geolocation.location.lat,
+            lng: selectedEvent.geolocation.location.lng,
+          }}
+          onCloseClick={() => setSelectedEvent(null)}
+        >
+          <div className="event-description">
+            <h2>{selectedEvent.name}</h2>
+            <h3>date: {formatDate(new Date(selectedEvent.date))}</h3>
+            <h3>os: {selectedEvent.os}</h3>
+            <h3>browser: {selectedEvent.browser}</h3>
+            <h3>url: {selectedEvent.url}</h3>
+          </div>
+        </InfoWindow>
+      )}
     </GoogleMap>
   ) : (
     <h1>Loading..</h1>

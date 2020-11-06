@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { useMachine } from "@xstate/react";
 import { Interpreter } from "xstate";
 import { makeStyles } from "@material-ui/core/styles";
@@ -40,6 +41,11 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(4),
     },
   },
+  container_admin: {
+    minHeight: "77vh",
+    height: "100%",
+    width: "100%",
+  },
 }));
 
 interface Props {
@@ -52,6 +58,8 @@ const MainLayout: React.FC<Props> = ({ children, notificationsService, authServi
   const classes = useStyles();
   const theme = useTheme();
   const [drawerState, sendDrawer] = useMachine(drawerMachine);
+
+  const location = useLocation();
 
   const aboveSmallBreakpoint = useMediaQuery(theme.breakpoints.up("sm"));
   const xsBreakpoint = useMediaQuery(theme.breakpoints.only("xs"));
@@ -90,15 +98,20 @@ const MainLayout: React.FC<Props> = ({ children, notificationsService, authServi
       />
       <main className={classes.content} data-test="main">
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="md" className={classes.container}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-      {children}
-      </Grid>
-          </Grid>
-        </Container>
+
+        {location.pathname === "/admin" ? (
+          <div className={classes.container_admin}>{children}</div>
+        ) : (
+          <Container maxWidth="md" className={classes.container}>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                {children}
+              </Grid>
+            </Grid>
+          </Container>
+        )}
         <footer>
-      <Footer />
+          <Footer />
         </footer>
       </main>
     </>
