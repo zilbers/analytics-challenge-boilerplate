@@ -85,7 +85,8 @@ export default function BasicTable() {
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell />
+              <TableCell> Date</TableCell>
+              <TableCell> New Users</TableCell>
               {retentionData &&
                 retentionData.map((item, index) => <TableCell>week {index}</TableCell>)}
             </TableRow>
@@ -96,6 +97,9 @@ export default function BasicTable() {
                 <TableRow key={row.name}>
                   <TableCell component="th" scope="row">
                     {formatDate(row.start)} - {formatDate(row.end)}
+                  </TableCell>
+                  <TableCell component="th" scope="row">
+                    {row.newUsers}
                   </TableCell>
                   {row.weeklyRetention.map((week: number, index: number) => (
                     <TableCell align="left" key={index}>
