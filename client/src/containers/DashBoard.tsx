@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Interpreter } from "xstate";
 import { AuthMachineContext, AuthMachineEvents } from "../machines/authMachine";
 import WrappedMap from "../components/Map";
-import Chart from "../components/Chart";
+import LineChart from "../components/LineChart";
+import CohortGraph from "../components/CohortGraph";
 import ChooseCharts from "../components/ChooseCharts";
 import styled, { css } from "styled-components";
 
@@ -27,7 +28,8 @@ const DashBoard: React.FC = () => {
     map: boolean;
     chartByDay: boolean;
     chartByHour: boolean;
-  }>({ map: false, chartByDay: false, chartByHour: false });
+    RetentionGraph: boolean;
+  }>({ map: false, chartByDay: false, chartByHour: false, RetentionGraph: false });
 
   return (
     <>
@@ -45,8 +47,9 @@ const DashBoard: React.FC = () => {
         </>
       )}
       <Container>
-        {showingCharts.chartByDay && <Chart url={`/events/by-days/`} time="date" />}
-        {showingCharts.chartByHour && <Chart url={`/events/by-hours/`} time="hour" />}
+        {showingCharts.chartByDay && <LineChart url={`/events/by-days/`} time="date" />}
+        {showingCharts.chartByHour && <LineChart url={`/events/by-hours/`} time="hour" />}
+        {showingCharts.RetentionGraph && <CohortGraph />}
       </Container>
     </>
   );

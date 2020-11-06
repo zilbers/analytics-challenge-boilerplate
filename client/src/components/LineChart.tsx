@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { LineChart, Line, CartesianGrid, YAxis, XAxis, ResponsiveContainer } from "recharts";
-import DatePicker from "../components/DatePicker";
+import DatePicker from "./DatePicker";
 import styled, { css } from "styled-components";
 
 const Today = new Date(new Date().toDateString()).getTime();
@@ -31,9 +31,11 @@ function Chart({ url, time }: { url: string; time: string }) {
 
   async function getAndSet(url: string, setter: Function) {
     const { data } = await axios.get(url);
-    const events: Event[] = data;
+    const events: any[] = data;
+    if (events[0] && events[0].date) {
+      events.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    }
     setter(events);
-    return events;
   }
 
   useEffect(() => {
@@ -47,7 +49,6 @@ function Chart({ url, time }: { url: string; time: string }) {
       <DatePicker date={date} setDate={setDate} />
       <h3>by-{time} chart</h3>
 
-      {/* <LineChart width={600} height={300} data={eventsData}> */}
       <ResponsiveContainer width="100%" aspect={4.0 / 3.0}>
         <LineChart data={eventsData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
           <Line type="monotone" dataKey={"count"} stroke="black" />

@@ -39,6 +39,17 @@ function ChooseCharts({ showingCharts, setShowingCharts }: any) {
           checked={showingCharts.chartByHour}
         />
         <label htmlFor="by-hour">Events by-hour</label>
+        <input
+          type="checkbox"
+          id="retention"
+          name="retention"
+          value="retention"
+          onChange={(e) => {
+            setShowingCharts({ ...showingCharts, RetentionGraph: !showingCharts.RetentionGraph });
+          }}
+          checked={showingCharts.RetentionGraph}
+        />
+        <label htmlFor="retention">Retention graph</label>
       </div>
     </>
   );
