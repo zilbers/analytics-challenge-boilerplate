@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { BarChart, Bar, Legend, YAxis, XAxis, ResponsiveContainer, CartesianGrid } from "recharts";
+import { Pie, PieChart, ResponsiveContainer } from "recharts";
 import styled, { css } from "styled-components";
 
 const data = [
@@ -46,13 +46,28 @@ function Chart() {
       <h3>by-os chart</h3>
 
       <ResponsiveContainer width="100%" aspect={4.0 / 3.0}>
-        <BarChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Legend />
-          <Bar dataKey="value" barSize={30} fill="#8884d8" />
-        </BarChart>
+        {/* <PieChart width={730} height={250}>
+          <Pie
+            data={data01}
+            dataKey="value"
+            nameKey="name"
+            cx="50%"
+            cy="50%"
+            outerRadius={50}
+            fill="#8884d8"
+          />
+          <Pie
+            data={data02}
+            dataKey="value"
+            nameKey="name"
+            cx="50%"
+            cy="50%"
+            innerRadius={60}
+            outerRadius={80}
+            fill="#82ca9d"
+            label
+          />
+        </PieChart> */}
       </ResponsiveContainer>
     </Container>
   );
