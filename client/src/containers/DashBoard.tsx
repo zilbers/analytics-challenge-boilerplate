@@ -16,11 +16,7 @@ const Container = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  flex-direction: column;
-
-  @media (min-width: 1300px) {
-    flex-direction: row;
-  }
+  flex-direction: row;
 `;
 
 const DashBoard: React.FC = () => {
@@ -47,9 +43,11 @@ const DashBoard: React.FC = () => {
         </>
       )}
       <Container>
+        {showingCharts.RetentionGraph && <CohortGraph />}
+        {/* <ContainerLineChart> */}
         {showingCharts.chartByDay && <LineChart url={`/events/by-days/`} time="date" />}
         {showingCharts.chartByHour && <LineChart url={`/events/by-hours/`} time="hour" />}
-        {showingCharts.RetentionGraph && <CohortGraph />}
+        {/* </ContainerLineChart> */}
       </Container>
     </>
   );

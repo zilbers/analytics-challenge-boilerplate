@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from "react-google-maps";
+import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
 import { getEffectiveTypeParameterDeclarations, setTextRange } from "typescript";
 import { Event } from "../models/event";
 
@@ -30,23 +31,25 @@ function Map(): any {
   }, []);
 
   const map = userEvents ? (
-    <GoogleMap defaultZoom={10} defaultCenter={{ lat: 31.771959, lng: 35.217018 }}>
-      {userEvents.map((event: Event) => {
-        return (
-          <>
-            <Marker
-              key={event.session_id + event.distinct_user_id}
-              position={{
-                lat: event.geolocation.location.lat,
-                lng: event.geolocation.location.lng,
-              }}
-              onClick={() => {
-                setSelectedEvent(event);
-              }}
-            />
-          </>
-        );
-      })}
+    <GoogleMap defaultZoom={3} defaultCenter={{ lat: 31.771959, lng: 35.217018 }}>
+      <MarkerClusterer averageCenter enableRetinaIcons gridSize={70}>
+        {userEvents.map((event: Event) => {
+          return (
+            <>
+              <Marker
+                key={event.session_id + event.distinct_user_id}
+                position={{
+                  lat: event.geolocation.location.lat,
+                  lng: event.geolocation.location.lng,
+                }}
+                onClick={() => {
+                  setSelectedEvent(event);
+                }}
+              />
+            </>
+          );
+        })}
+      </MarkerClusterer>
       {selectedEvent && (
         <InfoWindow
           position={{
