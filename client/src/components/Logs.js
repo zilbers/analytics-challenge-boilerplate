@@ -24,15 +24,22 @@ const columns = [
   { id: "Type", label: "Type", minWidth: 100 },
   {
     id: "os",
-    label: "os",
-    minWidth: 170,
+    label: "OS",
+    minWidth: 90,
+  },
+  {
+    id: "date",
+    label: "Date",
+    minWidth: 120,
   },
   {
     id: "browser",
     label: "Browser",
-    minWidth: 170,
+    minWidth: 100,
   },
 ];
+const formatDate = (dateObj) =>
+  `${dateObj.getFullYear()}-${dateObj.getMonth() + 1}-${dateObj.getDate()}`;
 
 export default function App() {
   const [pageNumber, setPageNumber] = useState(0);
@@ -80,6 +87,7 @@ export default function App() {
                     <TableCell>{log.session_id}</TableCell>
                     <TableCell>{log.name}</TableCell>
                     <TableCell>{log.os}</TableCell>
+                    <TableCell>{formatDate(new Date(log.date))}</TableCell>
                     <TableCell>{log.browser}</TableCell>
                   </TableRow>
                 ) : (
@@ -87,6 +95,7 @@ export default function App() {
                     <TableCell>{log.session_id}</TableCell>
                     <TableCell>{log.name}</TableCell>
                     <TableCell>{log.os}</TableCell>
+                    <TableCell>{formatDate(new Date(log.date))}</TableCell>
                     <TableCell>{log.browser}</TableCell>
                   </TableRow>
                 )
