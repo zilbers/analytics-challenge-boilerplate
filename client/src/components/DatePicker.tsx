@@ -26,7 +26,7 @@ export default function MaterialUIPickers({ date, setDate }: any) {
           format="MM/dd/yyyy"
           margin="normal"
           id="date-picker-inline"
-          label="Date picker inline"
+          label="Choose Date"
           value={selectedDate}
           onChange={handleDateChange}
           KeyboardButtonProps={{

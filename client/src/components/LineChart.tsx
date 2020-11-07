@@ -50,7 +50,7 @@ function Chart({ url, time }: { url: string; time: string }) {
       <DatePicker date={date} setDate={setDate} />
       <h3>by-{time} chart</h3>
 
-      <ResponsiveContainer width="100%" aspect={4.0 / 3.0}>
+      <ResponsiveContainer width="100%" aspect={4.0 / 3.0} maxHeight={300}>
         <LineChart data={eventsData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
           <Line type="monotone" dataKey={"count"} stroke="black" />
           <CartesianGrid stroke="#ccc" />

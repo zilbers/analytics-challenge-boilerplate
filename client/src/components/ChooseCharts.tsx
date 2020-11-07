@@ -1,11 +1,17 @@
 import React from "react";
-import { Interpreter } from "xstate";
 import { AuthMachineContext, AuthMachineEvents } from "../machines/authMachine";
+import styled, { css } from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+`;
 
 function ChooseCharts({ showingCharts, setShowingCharts }: any) {
   return (
-    <>
-      <div className="ChooseCharts">
+    <Container>
+      <span>
         <input
           type="checkbox"
           id="map"
@@ -17,39 +23,8 @@ function ChooseCharts({ showingCharts, setShowingCharts }: any) {
           checked={showingCharts.map}
         />
         <label htmlFor="vehicle1">Events by location</label>
-        <input
-          type="checkbox"
-          id="by-day"
-          name="by-day"
-          value="by-day"
-          onChange={(e) => {
-            setShowingCharts({ ...showingCharts, chartByDay: !showingCharts.chartByDay });
-          }}
-          checked={showingCharts.chartByDay}
-        />
-        <label htmlFor="by-day">Events by-day</label>
-        <input
-          type="checkbox"
-          id="by-hour"
-          name="by-hour"
-          value="by-hour"
-          onChange={(e) => {
-            setShowingCharts({ ...showingCharts, chartByHour: !showingCharts.chartByHour });
-          }}
-          checked={showingCharts.chartByHour}
-        />
-        <label htmlFor="by-hour">Events by-hour</label>
-        <input
-          type="checkbox"
-          id="retention"
-          name="retention"
-          value="retention"
-          onChange={(e) => {
-            setShowingCharts({ ...showingCharts, RetentionGraph: !showingCharts.RetentionGraph });
-          }}
-          checked={showingCharts.RetentionGraph}
-        />
-        <label htmlFor="retention">Retention graph</label>
+      </span>
+      <span>
         <input
           type="checkbox"
           id="logs"
@@ -61,8 +36,47 @@ function ChooseCharts({ showingCharts, setShowingCharts }: any) {
           checked={showingCharts.logs}
         />
         <label htmlFor="logs">Logs</label>
-      </div>
-    </>
+      </span>
+      <span>
+        <input
+          type="checkbox"
+          id="by-day"
+          name="by-day"
+          value="by-day"
+          onChange={(e) => {
+            setShowingCharts({ ...showingCharts, chartByDay: !showingCharts.chartByDay });
+          }}
+          checked={showingCharts.chartByDay}
+        />
+        <label htmlFor="by-day">Events by-day</label>
+      </span>
+      <span>
+        <input
+          type="checkbox"
+          id="by-hour"
+          name="by-hour"
+          value="by-hour"
+          onChange={(e) => {
+            setShowingCharts({ ...showingCharts, chartByHour: !showingCharts.chartByHour });
+          }}
+          checked={showingCharts.chartByHour}
+        />
+        <label htmlFor="by-hour">Events by-hour</label>
+      </span>
+      <span>
+        <input
+          type="checkbox"
+          id="retention"
+          name="retention"
+          value="retention"
+          onChange={(e) => {
+            setShowingCharts({ ...showingCharts, RetentionGraph: !showingCharts.RetentionGraph });
+          }}
+          checked={showingCharts.RetentionGraph}
+        />
+        <label htmlFor="retention">Retention graph</label>
+      </span>
+    </Container>
   );
 }
 

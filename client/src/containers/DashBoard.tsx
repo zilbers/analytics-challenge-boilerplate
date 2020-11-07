@@ -31,6 +31,7 @@ const DashBoard: React.FC = () => {
 
   return (
     <>
+      <h2>Admin Page - Dashboard</h2>
       <ChooseCharts showingCharts={showingCharts} setShowingCharts={setShowingCharts} />
       {showingCharts.map && (
         <>
