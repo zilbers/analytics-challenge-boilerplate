@@ -26,12 +26,12 @@ const DashBoard: React.FC = () => {
     chartByDay: boolean;
     chartByHour: boolean;
     RetentionGraph: boolean;
-  }>({ map: false, chartByDay: false, chartByHour: false, RetentionGraph: false });
+    logs: boolean;
+  }>({ map: false, chartByDay: false, chartByHour: false, RetentionGraph: false, logs: false });
 
   return (
     <>
       <ChooseCharts showingCharts={showingCharts} setShowingCharts={setShowingCharts} />
-      <Logs />
       {showingCharts.map && (
         <>
           <h3>by-location chart</h3>
@@ -43,12 +43,11 @@ const DashBoard: React.FC = () => {
           />
         </>
       )}
+      {showingCharts.logs && <Logs />}
       <Container>
         {showingCharts.RetentionGraph && <CohortGraph />}
-        {/* <ContainerLineChart> */}
         {showingCharts.chartByDay && <LineChart url={`/events/by-days/`} time="date" />}
         {showingCharts.chartByHour && <LineChart url={`/events/by-hours/`} time="hour" />}
-        {/* </ContainerLineChart> */}
       </Container>
     </>
   );

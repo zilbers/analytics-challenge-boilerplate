@@ -50,6 +50,17 @@ function ChooseCharts({ showingCharts, setShowingCharts }: any) {
           checked={showingCharts.RetentionGraph}
         />
         <label htmlFor="retention">Retention graph</label>
+        <input
+          type="checkbox"
+          id="logs"
+          name="logs"
+          value="logs"
+          onChange={(e) => {
+            setShowingCharts({ ...showingCharts, logs: !showingCharts.logs });
+          }}
+          checked={showingCharts.logs}
+        />
+        <label htmlFor="logs">Logs</label>
       </div>
     </>
   );

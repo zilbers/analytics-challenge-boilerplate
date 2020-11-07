@@ -13,22 +13,27 @@ import DatePicker from "./DatePicker";
 
 const Container = styled.div`
   height: 30%;
-  @media (max-width: 600px) {
-    width: 100%;
-  }
+  max-width: 100%;
 
-  @media (min-width: 600px) {
+  /* @media (min-width: 600px) {
     width: 70%;
-  }
-
-  @media (min-width: 900px) {
-    width: 40%;
-  }
-
-  @media (min-width: 1600px) {
-    width: 600px;
-  }
+  } */
 `;
+
+const backGroundCellColor = (val: number) => {
+  switch (true) {
+    case 0 <= val && val < 40:
+      return "red";
+    case 40 <= val && val < 70:
+      return "orange";
+    case 70 <= val && val < 85:
+      return "yellow";
+    case 85 <= val && val < 100:
+      return "blue";
+    default:
+      return "green";
+  }
+};
 
 const monthName = function (dt: Date) {
   const mlist = [
@@ -85,8 +90,8 @@ export default function BasicTable() {
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell> Date</TableCell>
-              <TableCell> New Users</TableCell>
+              <TableCell style={{ minWidth: "170px" }}>Date</TableCell>
+              <TableCell> ew Users</TableCell>
               {retentionData &&
                 retentionData.map((item, index) => <TableCell>week {index}</TableCell>)}
             </TableRow>
@@ -102,7 +107,11 @@ export default function BasicTable() {
                     {row.newUsers}
                   </TableCell>
                   {row.weeklyRetention.map((week: number, index: number) => (
-                    <TableCell align="left" key={index}>
+                    <TableCell
+                      align="left"
+                      key={index}
+                      style={{ backgroundColor: backGroundCellColor(week), color: "white" }}
+                    >
                       {week ? week : 0}%
                     </TableCell>
                   ))}
