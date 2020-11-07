@@ -8,6 +8,7 @@ const Today = new Date(new Date().toDateString()).getTime();
 const msInDay = 24 * 60 * 60 * 1000;
 
 const Container = styled.div`
+  flex-grow: 1;
   @media (max-width: 750px) {
     width: 100%;
   }

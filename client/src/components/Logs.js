@@ -14,6 +14,9 @@ const useStyles = makeStyles({
   container: {
     maxHeight: 250,
   },
+  root: {
+    flexGgrow: 2,
+  },
 });
 
 const columns = [
