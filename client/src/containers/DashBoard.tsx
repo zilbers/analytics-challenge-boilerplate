@@ -5,7 +5,7 @@ import WrappedMap from "../components/Map";
 import LineChart from "../components/LineChart";
 import CohortGraph from "../components/CohortGraph";
 import ChooseCharts from "../components/ChooseCharts";
-// import Logs from "../components/Logs";
+import Logs from "../components/Logs";
 import styled, { css } from "styled-components";
 
 export interface Props {
@@ -31,7 +31,7 @@ const DashBoard: React.FC = () => {
   return (
     <>
       <ChooseCharts showingCharts={showingCharts} setShowingCharts={setShowingCharts} />
-      {/* <Logs /> */}
+      <Logs />
       {showingCharts.map && (
         <>
           <h3>by-location chart</h3>
