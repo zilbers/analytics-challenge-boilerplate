@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function useSearch(pageNumber) {
+export default function useSearch(pageNumber, query, sorting) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [logs, setLogs] = useState([]);
   const [hasMore, setHasMore] = useState(false);
+
+  useEffect(() => {
+    setLogs([]);
+  }, [query, sorting]);
 
   useEffect(() => {
     setLoading(true);
@@ -14,12 +18,11 @@ export default function useSearch(pageNumber) {
     axios({
       method: "GET",
       url: `/events/logs/${pageNumber}`,
+      params: { search: query, sorting },
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
       .then((res) => {
         setLogs((prevLogs) => {
-          console.log(prevLogs);
-          console.log([...prevLogs, ...res.data]);
           return [...prevLogs, ...res.data];
         });
         setHasMore(res.data.length > 0);
@@ -30,7 +33,8 @@ export default function useSearch(pageNumber) {
         setError(true);
       });
     return () => cancel();
-  }, [pageNumber]);
+  }, [query, pageNumber, sorting]);
+  // }, [pageNumber]);
 
   return { loading, error, logs, hasMore };
 }

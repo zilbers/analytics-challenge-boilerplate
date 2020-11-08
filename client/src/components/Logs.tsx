@@ -8,7 +8,10 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import styled, { css } from "styled-components";
 import DatePicker from "./DatePicker";
+import Select from "./Select";
+import Input from "./Input";
 
 const useStyles = makeStyles({
   container: {
@@ -18,6 +21,8 @@ const useStyles = makeStyles({
     flexGgrow: 2,
   },
 });
+const formatDate = (dateObj: Date) =>
+  `${dateObj.getFullYear()}-${dateObj.getMonth() + 1}-${dateObj.getDate()}`;
 
 const columns: { id: string; label: string; minWidth: number }[] = [
   { id: "name", label: "Session ID", minWidth: 170 },
@@ -38,11 +43,22 @@ const columns: { id: string; label: string; minWidth: number }[] = [
     minWidth: 120,
   },
 ];
-const formatDate = (dateObj: Date) =>
-  `${dateObj.getFullYear()}-${dateObj.getMonth() + 1}-${dateObj.getDate()}`;
+const sortingOptions = [
+  { label: "From End", value: "-date" },
+  { label: "From Start", value: "+date" },
+];
+
+const OptionsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+`;
 
 export default function App() {
   const [pageNumber, setPageNumber] = useState(0);
+  const [search, setSearch] = useState<string>(() => "");
+  const [sort, setSort] = useState<string>(() => "");
 
   const {
     logs,
@@ -50,7 +66,9 @@ export default function App() {
     loading,
     error,
   }: { logs: any[]; hasMore: boolean; loading: boolean; error: boolean } = useLogsSearch(
-    pageNumber
+    pageNumber,
+    search,
+    sort
   );
   const classes = useStyles();
 
@@ -74,6 +92,16 @@ export default function App() {
 
   return (
     <>
+      <OptionsContainer>
+        <Select
+          options={sortingOptions}
+          currentChosenOpttion={sort}
+          setOption={setSort}
+          select="Sort"
+        />
+        <Input value={search} setValue={setSearch} label="Search" setPage={setPageNumber} />
+      </OptionsContainer>
+
       <Paper className={classes.root}>
         <TableContainer className={classes.container}>
           <Table stickyHeader aria-label="sticky table">

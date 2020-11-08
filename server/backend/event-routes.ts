@@ -45,11 +45,10 @@ router.get("/all", (req: Request, res: Response) => {
 router.get("/logs/:page", (req: Request, res: Response) => {
   try {
     const page = Number(req.params.page);
-    // const events = getAllEvents();
     const query: Filter = req.query;
     const { events } = getFilteredEvents(query);
-    const sortedEvents = events.sort((a, b) => b.date - a.date);
-    res.send(sortedEvents.slice(page * 10, page * 10 + 10));
+    // const sortedEvents = events.sort((a, b) => b.date - a.date);
+    res.send(events.slice(page * 10, page * 10 + 10));
   } catch (err) {
     res.status(500).send({ error: err });
   }
