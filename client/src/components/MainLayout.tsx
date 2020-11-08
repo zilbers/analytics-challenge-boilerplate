@@ -102,17 +102,19 @@ const MainLayout: React.FC<Props> = ({ children, notificationsService, authServi
         {location.pathname === "/admin" ? (
           <div className={classes.container_admin}>{children}</div>
         ) : (
-          <Container maxWidth="md" className={classes.container}>
-            <Grid container spacing={3}>
-              <Grid item xs={12}>
-                {children}
+          <>
+            <Container maxWidth="md" className={classes.container}>
+              <Grid container spacing={3}>
+                <Grid item xs={12}>
+                  {children}
+                </Grid>
               </Grid>
-            </Grid>
-          </Container>
+            </Container>
+            <footer>
+              <Footer />
+            </footer>
+          </>
         )}
-        <footer>
-          <Footer />
-        </footer>
       </main>
     </>
   );

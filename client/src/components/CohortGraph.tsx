@@ -89,9 +89,9 @@ export default function BasicTable() {
           <TableHead>
             <TableRow>
               <TableCell style={{ minWidth: "170px" }}>Date</TableCell>
-              <TableCell> ew Users</TableCell>
+              <TableCell>New Users</TableCell>
               {retentionData &&
-                retentionData.map((item, index) => <TableCell>week {index}</TableCell>)}
+                retentionData.map((item, index) => <TableCell>Week {index}</TableCell>)}
             </TableRow>
           </TableHead>
           <TableBody>
