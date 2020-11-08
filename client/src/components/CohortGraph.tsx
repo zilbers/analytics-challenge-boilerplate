@@ -82,7 +82,7 @@ export default function BasicTable() {
   return (
     <Container>
       <DatePicker date={date} setDate={setDate} />
-      <h3>Retention graph</h3>
+      <h3>retention graph</h3>
 
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
