@@ -47,8 +47,8 @@ function Chart({ url, time }: { url: string; time: string }) {
 
   return (
     <Container>
-      <DatePicker date={date} setDate={setDate} />
       <h3>by-{time} chart</h3>
+      <DatePicker date={date} setDate={setDate} />
 
       <ResponsiveContainer width="100%" aspect={4.0 / 3.0} maxHeight={300}>
         <LineChart data={eventsData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
