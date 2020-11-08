@@ -263,22 +263,7 @@ const saveEvent = (event: Event) => {
 };
 
 const filterEvents = (event: Event, query: Filter): boolean => {
-  // let offsetDate: number | null = null;
-  // const typeOfOffset: string | undefined = query.sorting?.charAt(0);
   const eventDate = event.date;
-
-  // if (typeOfOffset && query.sorting) {
-  //   offsetDate = Number(query.sorting.slice(1));
-  // }
-
-  // const checkSorting: boolean =
-  //   query.sorting && offsetDate && typeOfOffset
-  //     ? typeOfOffset == "+"
-  //       ? eventDate > offsetDate
-  //       : typeOfOffset == "-"
-  //       ? eventDate < offsetDate
-  //       : false
-  //     : true;
 
   const checkType: boolean = query.type ? query.type === event.name : true;
   const checkBrowser: boolean = query.browser ? query.browser === event.browser : true;
