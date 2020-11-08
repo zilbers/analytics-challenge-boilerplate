@@ -14,10 +14,7 @@ import DatePicker from "./DatePicker";
 const Container = styled.div`
   height: 30%;
   max-width: 100%;
-
-  /* @media (min-width: 600px) {
-    width: 70%;
-  } */
+  flex-grow: 1;
 `;
 
 const backGroundCellColor = (val: number) => {
@@ -110,7 +107,11 @@ export default function BasicTable() {
                     <TableCell
                       align="left"
                       key={index}
-                      style={{ backgroundColor: backGroundCellColor(week), color: "white" }}
+                      style={{
+                        backgroundColor: backGroundCellColor(week),
+                        color: "white",
+                        textAlign: "center",
+                      }}
                     >
                       {week ? week : 0}%
                     </TableCell>
